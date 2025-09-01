@@ -1,0 +1,389 @@
+{
+  "wefe_pillars": {
+    "water": {
+      "key": "water",
+      "label": "Water",
+      "icon": "💧",
+      "color": "#3498db",
+      "description": "Water pillar of the WEFE Nexus focusing on water security, access, and sustainable management",
+      "score_formula": {
+        "method": "mean",
+        "description": "Overall water score calculated as the mean of all water indicators across access and availability categories",
+        "formula": "(sum of all water indicators) / (total number of water indicators)",
+        "components": [
+          "basic_drinking_water_services",
+          "basic_sanitation_services",
+          "iwrm_implementation",
+          "freshwater_withdrawals_percent",
+          "renewable_freshwater_per_capita",
+          "environmental_flow_requirements",
+          "average_precipitation"
+        ]
+      },
+      "categories": {
+        "access": {
+          "description": "Indicators measuring population access to water services and management systems",
+          "indicators": {
+            "basic_drinking_water_services": {
+              "name": "Basic Drinking Water Services",
+              "short_description": "Percentage of population with access to basic drinking water services",
+              "description_of_calculation": "Percentage of population using at least basic drinking water services (improved water sources that are accessible on premises, available when needed, and free from faecal and priority chemical contamination)",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100
+            },
+            "basic_sanitation_services": {
+              "name": "Basic Sanitation Services",
+              "short_description": "Percentage of population with access to basic sanitation services",
+              "description_of_calculation": "Percentage of population using at least basic sanitation services (improved sanitation facilities that are not shared with other households)",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100
+            },
+            "iwrm_implementation": {
+              "name": "Integrated Water Resources Management Implementation",
+              "short_description": "Degree of integrated water resources management implementation",
+              "description_of_calculation": "Score based on enabling environment, institutions and participation, management instruments, and financing for integrated water resources management (IWRM)",
+              "unit": "score (0-100)",
+              "min_value": 0,
+              "max_value": 100
+            }
+          }
+        },
+        "availability": {
+          "description": "Indicators measuring water resource availability and sustainability",
+          "indicators": {
+            "freshwater_withdrawals_percent": {
+              "name": "Freshwater Withdrawals",
+              "short_description": "Percentage of renewable freshwater resources withdrawn",
+              "description_of_calculation": "Total freshwater withdrawals (municipal, industrial and agricultural) as a percentage of total renewable freshwater resources",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100
+            },
+            "renewable_freshwater_per_capita": {
+              "name": "Renewable Freshwater Per Capita",
+              "short_description": "Annual renewable freshwater resources per capita",
+              "description_of_calculation": "Total renewable freshwater resources divided by population, measured annually",
+              "unit": "cubic meters per capita per year",
+              "min_value": 0,
+              "max_value": 50000
+            },
+            "environmental_flow_requirements": {
+              "name": "Environmental Flow Requirements",
+              "short_description": "Percentage of water allocated for environmental flows",
+              "description_of_calculation": "Percentage of total water resources allocated to maintain ecosystem health and environmental services",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100
+            },
+            "average_precipitation": {
+              "name": "Average Precipitation",
+              "short_description": "Annual average precipitation",
+              "description_of_calculation": "Mean annual precipitation measured over long-term climate records",
+              "unit": "millimeters per year",
+              "min_value": 0,
+              "max_value": 10000
+            }
+          }
+        }
+      }
+    },
+    "energy": {
+      "key": "energy",
+      "label": "Energy",
+      "icon": "⚡",
+      "color": "#f39c12",
+      "description": "Energy pillar of the WEFE Nexus focusing on energy security, access, and sustainability",
+      "score_formula": {
+        "method": "mean",
+        "description": "Overall energy score calculated as the mean of all energy indicators across access and availability categories",
+        "formula": "(sum of all energy indicators) / (total number of energy indicators)",
+        "components": [
+          "electricity_access_percent",
+          "renewable_energy_consumption",
+          "renewable_electricity_output",
+          "co2_emissions_per_capita",
+          "electric_power_consumption",
+          "energy_imports_net_percent"
+        ]
+      },
+      "categories": {
+        "access": {
+          "description": "Indicators measuring population access to energy services and clean energy sources",
+          "indicators": {
+            "electricity_access_percent": {
+              "name": "Electricity Access",
+              "short_description": "Percentage of population with access to electricity",
+              "description_of_calculation": "Percentage of population with access to electricity, including grid and off-grid connections",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100
+            },
+            "renewable_energy_consumption": {
+              "name": "Renewable Energy Consumption",
+              "short_description": "Percentage of total energy consumption from renewable sources",
+              "description_of_calculation": "Share of renewable energy in total final energy consumption, including hydro, solar, wind, biomass, and geothermal",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100
+            },
+            "renewable_electricity_output": {
+              "name": "Renewable Electricity Output",
+              "short_description": "Percentage of electricity generated from renewable sources",
+              "description_of_calculation": "Share of electricity generated from renewable sources as percentage of total electricity generation",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100
+            },
+            "co2_emissions_per_capita": {
+              "name": "CO2 Emissions Per Capita",
+              "short_description": "Annual carbon dioxide emissions per person",
+              "description_of_calculation": "Total CO2 emissions from fossil fuel combustion and cement production divided by population",
+              "unit": "metric tons CO2 per capita per year",
+              "min_value": 0,
+              "max_value": 50
+            }
+          }
+        },
+        "availability": {
+          "description": "Indicators measuring energy supply and consumption patterns",
+          "indicators": {
+            "electric_power_consumption": {
+              "name": "Electric Power Consumption",
+              "short_description": "Annual electric power consumption per capita",
+              "description_of_calculation": "Total electricity consumption divided by population, measured annually",
+              "unit": "kilowatt hours per capita per year",
+              "min_value": 0,
+              "max_value": 25000
+            },
+            "energy_imports_net_percent": {
+              "name": "Net Energy Imports",
+              "short_description": "Percentage of energy use met by imports",
+              "description_of_calculation": "Net energy imports as percentage of energy use (negative values indicate net energy exports)",
+              "unit": "percentage",
+              "min_value": -100,
+              "max_value": 100
+            }
+          }
+        }
+      }
+    },
+    "food": {
+      "key": "food",
+      "label": "Food",
+      "icon": "🌾",
+      "color": "#27ae60",
+      "description": "Food pillar of the WEFE Nexus focusing on food security, nutrition, and agricultural sustainability",
+      "score_formula": {
+        "method": "mean",
+        "description": "Overall food score calculated as the mean of all food indicators across access and availability categories",
+        "formula": "(sum of all food indicators) / (total number of food indicators)",
+        "components": [
+          "undernourishment_prevalence",
+          "children_wasting_percent",
+          "children_stunted_percent",
+          "adult_obesity_prevalence",
+          "protein_supply_grams_per_capita",
+          "cereal_yield_kg_per_hectare",
+          "dietary_energy_supply_adequacy",
+          "food_production_value_usd_per_capita"
+        ]
+      },
+      "categories": {
+        "access": {
+          "description": "Indicators measuring population access to adequate nutrition and food security",
+          "indicators": {
+            "undernourishment_prevalence": {
+              "name": "Undernourishment Prevalence",
+              "short_description": "Percentage of population suffering from undernourishment",
+              "description_of_calculation": "Percentage of population whose dietary energy consumption is less than the minimum energy requirement",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100
+            },
+            "children_wasting_percent": {
+              "name": "Children Wasting",
+              "short_description": "Percentage of children under 5 suffering from wasting",
+              "description_of_calculation": "Percentage of children under 5 years whose weight-for-height is below -2 standard deviations from median of reference population",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 50
+            },
+            "children_stunted_percent": {
+              "name": "Children Stunting",
+              "short_description": "Percentage of children under 5 suffering from stunting",
+              "description_of_calculation": "Percentage of children under 5 years whose height-for-age is below -2 standard deviations from median of reference population",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 70
+            },
+            "adult_obesity_prevalence": {
+              "name": "Adult Obesity Prevalence",
+              "short_description": "Percentage of adult population with obesity",
+              "description_of_calculation": "Percentage of adults aged 18+ with Body Mass Index (BMI) ≥30 kg/m²",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 50
+            }
+          }
+        },
+        "availability": {
+          "description": "Indicators measuring food production capacity and dietary supply adequacy",
+          "indicators": {
+            "protein_supply_grams_per_capita": {
+              "name": "Protein Supply Per Capita",
+              "short_description": "Daily protein supply per person",
+              "description_of_calculation": "Average daily protein supply available for human consumption per capita",
+              "unit": "grams per capita per day",
+              "min_value": 0,
+              "max_value": 200
+            },
+            "cereal_yield_kg_per_hectare": {
+              "name": "Cereal Yield",
+              "short_description": "Agricultural productivity of cereal crops",
+              "description_of_calculation": "Cereal yield measured as kilograms harvested per hectare of harvested land for wheat, rice, maize, barley, oats, rye, millet, sorghum, buckwheat, and mixed grains",
+              "unit": "kilograms per hectare",
+              "min_value": 0,
+              "max_value": 15000
+            },
+            "dietary_energy_supply_adequacy": {
+              "name": "Dietary Energy Supply Adequacy",
+              "short_description": "Adequacy of dietary energy supply relative to requirements",
+              "description_of_calculation": "Ratio of dietary energy supply to average dietary energy requirement, expressed as percentage",
+              "unit": "percentage",
+              "min_value": 50,
+              "max_value": 200
+            },
+            "food_production_value_usd_per_capita": {
+              "name": "Food Production Value Per Capita",
+              "short_description": "Per capita value of food production",
+              "description_of_calculation": "Gross value of food production per capita in constant USD",
+              "unit": "USD per capita per year",
+              "min_value": 0,
+              "max_value": 1000
+            }
+          }
+        }
+      }
+    },
+    "ecosystems": {
+      "key": "ecosystems",
+      "label": "Ecosystems",
+      "icon": "🌳",
+      "color": "#16a085",
+      "description": "Ecosystems pillar of the WEFE Nexus focusing on biodiversity conservation and ecosystem services",
+      "score_formula": {
+        "method": "mean",
+        "description": "Overall ecosystems score calculated as the mean of all ecosystem indicators across biodiversity and ecosystem services categories",
+        "formula": "(sum of all ecosystem indicators) / (total number of ecosystem indicators)",
+        "components": [
+          "protected_area_coverage",
+          "forest_coverage_percent",
+          "species_richness_index",
+          "endangered_species_count",
+          "carbon_sequestration_rate",
+          "soil_erosion_rate",
+          "water_quality_index",
+          "pollination_services_index"
+        ]
+      },
+      "categories": {
+        "biodiversity": {
+          "description": "Indicators measuring biodiversity conservation and species protection",
+          "indicators": {
+            "protected_area_coverage": {
+              "name": "Protected Area Coverage",
+              "short_description": "Percentage of land area under protected status",
+              "description_of_calculation": "Percentage of total land area covered by protected areas (IUCN categories I-VI and other effective area-based conservation measures)",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100
+            },
+            "forest_coverage_percent": {
+              "name": "Forest Coverage",
+              "short_description": "Percentage of land area covered by forests",
+              "description_of_calculation": "Percentage of total land area covered by forest (land spanning more than 0.5 hectares with trees higher than 5 meters and canopy cover of more than 10%)",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100
+            },
+            "species_richness_index": {
+              "name": "Species Richness Index",
+              "short_description": "Normalized index of local species diversity",
+              "description_of_calculation": "Composite index measuring species richness and diversity relative to regional baseline, normalized between 0 and 1",
+              "unit": "index (0-1)",
+              "min_value": 0,
+              "max_value": 1
+            },
+            "endangered_species_count": {
+              "name": "Endangered Species Count",
+              "short_description": "Number of endangered species in the area",
+              "description_of_calculation": "Total count of species classified as endangered (IUCN Red List categories: Critically Endangered, Endangered, Vulnerable) within the area",
+              "unit": "count",
+              "min_value": 0,
+              "max_value": 1000
+            }
+          }
+        },
+        "ecosystem_services": {
+          "description": "Indicators measuring the provision and quality of ecosystem services",
+          "indicators": {
+            "carbon_sequestration_rate": {
+              "name": "Carbon Sequestration Rate",
+              "short_description": "Annual rate of carbon sequestration by ecosystems",
+              "description_of_calculation": "Annual rate of carbon dioxide equivalent sequestered by vegetation and soils per unit area",
+              "unit": "metric tons CO2 equivalent per hectare per year",
+              "min_value": 0,
+              "max_value": 20
+            },
+            "soil_erosion_rate": {
+              "name": "Soil Erosion Rate",
+              "short_description": "Annual rate of soil loss due to erosion",
+              "description_of_calculation": "Annual soil loss rate due to water and wind erosion, measured as tons of soil lost per hectare per year",
+              "unit": "metric tons per hectare per year",
+              "min_value": 0,
+              "max_value": 100
+            },
+            "water_quality_index": {
+              "name": "Water Quality Index",
+              "short_description": "Composite index of water quality",
+              "description_of_calculation": "Composite index measuring water quality based on physical, chemical, and biological parameters, normalized between 0 and 1 (1 = excellent quality)",
+              "unit": "index (0-1)",
+              "min_value": 0,
+              "max_value": 1
+            },
+            "pollination_services_index": {
+              "name": "Pollination Services Index",
+              "short_description": "Index measuring pollination service provision",
+              "description_of_calculation": "Composite index measuring the capacity of ecosystems to provide pollination services based on pollinator abundance and diversity, normalized between 0 and 1",
+              "unit": "index (0-1)",
+              "min_value": 0,
+              "max_value": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "metadata": {
+    "version": "1.0",
+    "description": "Comprehensive definitions of WEFE Nexus indicators used in Trans-Sahara Living Labs",
+    "created_date": "2024",
+    "notes": [
+      "All percentage values range from 0-100 unless otherwise specified",
+      "Index values are normalized between 0 and 1 where 1 represents optimal conditions",
+      "Negative values for energy imports indicate net energy exports",
+      "Maximum values are based on realistic upper bounds observed globally",
+      "Some indicators may require local calibration based on regional conditions"
+    ],
+    "score_calculation_notes": [
+      "Overall pillar scores are calculated using the mean of all indicators within that pillar",
+      "Before calculating the mean, all indicators should be normalized to a 0-100 scale",
+      "Some indicators may need to be inverted (e.g., lower undernourishment is better)",
+      "Normalization formula: ((value - min_value) / (max_value - min_value)) * 100",
+      "For inverted indicators: 100 - normalized_value",
+      "Missing or invalid indicator values should be excluded from the mean calculation"
+    ]
+  }
+}

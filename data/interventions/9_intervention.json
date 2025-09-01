@@ -1,0 +1,33 @@
+{
+  "title": "Wetland restoration and buffer strips",
+  "description": "Restore degraded wetlands and riparian buffers to enhance ecosystem services and water quality.",
+  "land_use": "Riparian/wetland",
+  "land_cover_type": "Wetlands and riparian vegetation",
+  "timeline": {"build_months": 10, "lifespan_years": 30},
+  "needs": {
+    "restoration_area_ha": 80,
+    "buffer_width_m": 15,
+    "capex_usd": 140000,
+    "opex_usd_per_year": 12000,
+    "co2_operational_tco2e_per_year": 0.8
+  },
+  "required_resources": [
+    "Native plant materials",
+    "Erosion control fabrics",
+    "Community stewardship agreements",
+    "Monitoring protocols"
+  ],
+  "outcomes": {
+    "carbon_sequestration_tco2e_per_year": 96,
+    "nitrate_reduction_percent": 22,
+    "flood_peak_reduction_percent": 12,
+    "co2_impact_tco2e_per_year": -95.2,
+    "payback_years": 7.4,
+    "indicators": [
+      {"indicator": "carbon_sequestration_rate", "expected_change": 1.2, "unit": "metric tons CO2 equivalent per hectare per year", "basis": "restored area", "timeframe_years": 3},
+      {"indicator": "water_quality_index", "expected_change": 0.06, "unit": "index (0-1)", "basis": "downstream reaches", "timeframe_years": 2},
+      {"indicator": "species_richness_index", "expected_change": 0.08, "unit": "index (0-1)", "basis": "wetland habitat", "timeframe_years": 3}
+    ]
+  }
+}
+

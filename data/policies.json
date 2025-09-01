@@ -1,0 +1,662 @@
+[
+  {
+    "title": "Universal Clean Water Access",
+    "description": "Implementation of comprehensive water infrastructure projects including treatment plants, distribution networks, and sanitation facilities to ensure 100% access to clean drinking water and adequate sanitation for all communities.",
+    "livinglabs": ["Tunis", "Sfax", "Gabes"],
+    "avg_completion_time": "48 months",
+    "avg_realization_cost": "$25M",
+    "avg_maintenance_cost": "$800K/year",
+    "policy_type": "WEFE",
+    "sdg_targets": [6, 11],
+    "co2_reduction": "-2.5%",
+    "biodiversity_impact": "+8%",
+    "resilience_score": 85,
+    "stakeholder_involvement": "High",
+    "synergies": [
+      {
+        "title": "Public Health Improvement",
+        "description": "Significant reduction in waterborne diseases and improved community health outcomes",
+        "category": "Health",
+        "affected_indicators": [
+          {"indicator": "basic_drinking_water_services", "expected_change": "+20%"},
+          {"indicator": "basic_sanitation_services", "expected_change": "+30%"},
+          {"indicator": "water_quality_index", "expected_change": "+15%"}
+        ]
+      },
+      {
+        "title": "Economic Development",
+        "description": "Enhanced economic productivity through improved health and reduced healthcare costs",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "renewable_freshwater_per_capita", "expected_change": "+150"},
+          {"indicator": "food_production_value_usd_per_capita", "expected_change": "+20%"},
+          {"indicator": "protein_supply_grams_per_capita", "expected_change": "+10"}
+        ]
+      },
+      {
+        "title": "Gender Equality",
+        "description": "Reduced burden on women and girls for water collection, enabling education and economic participation",
+        "category": "Social",
+        "affected_indicators": [
+          {"indicator": "basic_drinking_water_services", "expected_change": "+20%"},
+          {"indicator": "basic_sanitation_services", "expected_change": "+20%"},
+          {"indicator": "iwrm_implementation", "expected_change": "+10"}
+        ]
+      }
+    ],
+    "trade_offs": [
+      {
+        "title": "Water Allocation Pressure",
+        "description": "Expanded water services can increase withdrawals and reduce environmental flows if not managed",
+        "category": "Water",
+        "affected_indicators": [
+          {"indicator": "freshwater_withdrawals_percent", "expected_change": "+10%"},
+          {"indicator": "environmental_flow_requirements", "expected_change": "-5%"}
+        ]
+      },
+      {
+        "title": "Energy Requirements",
+        "description": "Increased energy consumption for water treatment and distribution",
+        "category": "Energy",
+        "affected_indicators": [
+          {"indicator": "electric_power_consumption", "expected_change": "+25%"},
+          {"indicator": "co2_emissions_per_capita", "expected_change": "+15%"}
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Renewable Energy Transition",
+    "description": "Large-scale deployment of solar, wind, and hydroelectric power generation facilities to achieve 100% renewable energy targets, including grid modernization and energy storage solutions.",
+    "livinglabs": ["Gabes", "Gafsa", "Tunis"],
+    "avg_completion_time": "60 months",
+    "avg_realization_cost": "$150M",
+    "avg_maintenance_cost": "$5M/year",
+    "policy_type": "WEFE",
+    "sdg_targets": [7, 13, 9],
+    "co2_reduction": "-45%",
+    "biodiversity_impact": "+3%",
+    "resilience_score": 90,
+    "stakeholder_involvement": "High",
+    "synergies": [
+      {
+        "title": "Climate Action",
+        "description": "Massive reduction in greenhouse gas emissions and fossil fuel dependence",
+        "category": "Climate",
+        "affected_indicators": [
+          {"indicator": "co2_emissions_per_capita", "expected_change": "-60%"},
+          {"indicator": "renewable_energy_consumption", "expected_change": "+40%"},
+          {"indicator": "renewable_electricity_output", "expected_change": "+50%"}
+        ]
+      },
+      {
+        "title": "Energy Security",
+        "description": "Enhanced energy independence and reduced vulnerability to fuel price fluctuations",
+        "category": "Energy",
+        "affected_indicators": [
+          {"indicator": "energy_imports_net_percent", "expected_change": "-70%"},
+          {"indicator": "electricity_access_percent", "expected_change": "+35%"},
+          {"indicator": "renewable_electricity_output", "expected_change": "+25%"}
+        ]
+      },
+      {
+        "title": "Job Creation",
+        "description": "Creation of thousands of jobs in renewable energy sector and related industries",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "renewable_electricity_output", "expected_change": "+25%"},
+          {"indicator": "electricity_access_percent", "expected_change": "+10%"},
+          {"indicator": "energy_imports_net_percent", "expected_change": "-5%"}
+        ]
+      }
+    ],
+    "trade_offs": [
+      {
+        "title": "Land Use Requirements",
+        "description": "Large land areas needed for solar and wind installations",
+        "category": "Land",
+        "affected_indicators": [
+          {"indicator": "protected_area_coverage", "expected_change": "-5%"},
+          {"indicator": "forest_coverage_percent", "expected_change": "-3%"}
+        ]
+      },
+      {
+        "title": "Initial Investment",
+        "description": "Extremely high upfront costs for renewable energy infrastructure",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "electric_power_consumption", "expected_change": "+15%"},
+          {"indicator": "energy_imports_net_percent", "expected_change": "+10%"}
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Sustainable Agriculture Revolution",
+    "description": "Comprehensive transformation of agricultural practices including precision farming, organic methods, crop diversification, and integrated pest management to ensure food security while protecting ecosystems.",
+    "livinglabs": ["Kairouan", "Gafsa", "Sfax"],
+    "avg_completion_time": "36 months",
+    "avg_realization_cost": "$45M",
+    "avg_maintenance_cost": "$2M/year",
+    "policy_type": "Agroforestry",
+    "sdg_targets": [2, 12, 15],
+    "co2_reduction": "-8%",
+    "biodiversity_impact": "+25%",
+    "resilience_score": 88,
+    "stakeholder_involvement": "High",
+    "synergies": [
+      {
+        "title": "Food Security",
+        "description": "Increased and stable food production with improved nutritional quality",
+        "category": "Food",
+        "affected_indicators": [
+          {"indicator": "cereal_yield_kg_per_hectare", "expected_change": "+25%"},
+          {"indicator": "dietary_energy_supply_adequacy", "expected_change": "+10%"},
+          {"indicator": "food_production_value_usd_per_capita", "expected_change": "+15%"}
+        ]
+      },
+      {
+        "title": "Ecosystem Protection",
+        "description": "Enhanced biodiversity and reduced environmental degradation",
+        "category": "Ecosystem",
+        "affected_indicators": [
+          {"indicator": "species_richness_index", "expected_change": "+12%"},
+          {"indicator": "soil_erosion_rate", "expected_change": "-20%"},
+          {"indicator": "water_quality_index", "expected_change": "+15%"}
+        ]
+      },
+      {
+        "title": "Climate Resilience",
+        "description": "Improved agricultural resilience to climate change and extreme weather",
+        "category": "Climate",
+        "affected_indicators": [
+          {"indicator": "carbon_sequestration_rate", "expected_change": "+20%"},
+          {"indicator": "pollination_services_index", "expected_change": "+18%"},
+          {"indicator": "water_quality_index", "expected_change": "+10%"}
+        ]
+      }
+    ],
+    "trade_offs": [
+      {
+        "title": "Transition Costs",
+        "description": "High costs for farmer training, equipment, and initial yield reductions",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "food_production_value_usd_per_capita", "expected_change": "-5%"},
+          {"indicator": "protein_supply_grams_per_capita", "expected_change": "-3"}
+        ]
+      },
+      {
+        "title": "Learning Period",
+        "description": "Time required for farmers to adapt to new practices",
+        "category": "Social",
+        "affected_indicators": [
+          {"indicator": "dietary_energy_supply_adequacy", "expected_change": "-1%"},
+          {"indicator": "protein_supply_grams_per_capita", "expected_change": "-2"}
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Digital Infrastructure Development",
+    "description": "Comprehensive digital transformation including broadband internet, smart city technologies, digital government services, and digital literacy programs to bridge the digital divide.",
+    "livinglabs": ["Tunis", "Sfax", "Gabes"],
+    "avg_completion_time": "42 months",
+    "avg_realization_cost": "$80M",
+    "avg_maintenance_cost": "$3M/year",
+    "policy_type": "Others",
+    "sdg_targets": [9, 4, 8],
+    "co2_reduction": "-3%",
+    "biodiversity_impact": "+1%",
+    "resilience_score": 75,
+    "stakeholder_involvement": "Medium",
+    "synergies": [
+      {
+        "title": "Education Access",
+        "description": "Improved access to quality education through digital learning platforms",
+        "category": "Education",
+        "affected_indicators": [
+          {"indicator": "electricity_access_percent", "expected_change": "+20%"},
+          {"indicator": "renewable_electricity_output", "expected_change": "+15%"},
+          {"indicator": "energy_imports_net_percent", "expected_change": "-2%"}
+        ]
+      },
+      {
+        "title": "Economic Growth",
+        "description": "Enhanced economic opportunities through digital entrepreneurship and e-commerce",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "electricity_access_percent", "expected_change": "+5%"},
+          {"indicator": "renewable_electricity_output", "expected_change": "+3%"},
+          {"indicator": "energy_imports_net_percent", "expected_change": "-2%"}
+        ]
+      },
+      {
+        "title": "Government Efficiency",
+        "description": "Improved public service delivery and reduced bureaucratic inefficiencies",
+        "category": "Governance",
+        "affected_indicators": [
+          {"indicator": "water_quality_index", "expected_change": "+5%"},
+          {"indicator": "renewable_energy_consumption", "expected_change": "+10%"},
+          {"indicator": "electricity_access_percent", "expected_change": "+5%"}
+        ]
+      }
+    ],
+    "trade_offs": [
+      {
+        "title": "Operational Energy Overhead",
+        "description": "Higher electricity demand for networks, devices, and data centers",
+        "category": "Energy",
+        "affected_indicators": [
+          {"indicator": "electric_power_consumption", "expected_change": "+6%"},
+          {"indicator": "co2_emissions_per_capita", "expected_change": "+3%"}
+        ]
+      },
+      {
+        "title": "Network Infrastructure Load",
+        "description": "Additional power required to operate and maintain expanded digital infrastructure",
+        "category": "Energy",
+        "affected_indicators": [
+          {"indicator": "electric_power_consumption", "expected_change": "+4%"},
+          {"indicator": "energy_imports_net_percent", "expected_change": "+2%"}
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Urban Green Infrastructure",
+    "description": "Comprehensive urban greening including parks, green roofs, urban forests, and sustainable drainage systems to create livable, resilient, and environmentally friendly cities.",
+    "livinglabs": ["Tunis", "Sfax", "Gabes"],
+    "avg_completion_time": "30 months",
+    "avg_realization_cost": "$35M",
+    "avg_maintenance_cost": "$1.5M/year",
+    "policy_type": "WEFE",
+    "sdg_targets": [11, 13, 15],
+    "co2_reduction": "-12%",
+    "biodiversity_impact": "+35%",
+    "resilience_score": 82,
+    "stakeholder_involvement": "High",
+    "synergies": [
+      {
+        "title": "Climate Mitigation",
+        "description": "Significant carbon sequestration and urban heat island reduction",
+        "category": "Climate",
+        "affected_indicators": [
+          {"indicator": "carbon_sequestration_rate", "expected_change": "+50%"},
+          {"indicator": "water_quality_index", "expected_change": "+10%"},
+          {"indicator": "soil_erosion_rate", "expected_change": "-15%"}
+        ]
+      },
+      {
+        "title": "Public Health",
+        "description": "Improved mental and physical health through access to green spaces",
+        "category": "Health",
+        "affected_indicators": [
+          {"indicator": "basic_drinking_water_services", "expected_change": "+5%"},
+          {"indicator": "water_quality_index", "expected_change": "+10%"},
+          {"indicator": "basic_sanitation_services", "expected_change": "+5%"}
+        ]
+      },
+      {
+        "title": "Biodiversity Enhancement",
+        "description": "Creation of urban wildlife corridors and habitat restoration",
+        "category": "Ecosystem",
+        "affected_indicators": [
+          {"indicator": "species_richness_index", "expected_change": "+20%"},
+          {"indicator": "protected_area_coverage", "expected_change": "+5%"},
+          {"indicator": "forest_coverage_percent", "expected_change": "+8%"}
+        ]
+      }
+    ],
+    "trade_offs": [
+      {
+        "title": "Land Use Competition",
+        "description": "Potential conflict with other urban development priorities",
+        "category": "Land",
+        "affected_indicators": [
+          {"indicator": "protected_area_coverage", "expected_change": "-2%"},
+          {"indicator": "forest_coverage_percent", "expected_change": "-1%"}
+        ]
+      },
+      {
+        "title": "Maintenance Requirements",
+        "description": "Ongoing costs for green infrastructure maintenance and management",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "food_production_value_usd_per_capita", "expected_change": "-2%"},
+          {"indicator": "electric_power_consumption", "expected_change": "+2%"}
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Circular Economy Implementation",
+    "description": "Systematic transformation to circular economic models including waste reduction, recycling infrastructure, product design for circularity, and sustainable consumption patterns.",
+    "livinglabs": ["Tunis", "Sfax", "Gabes", "Gafsa"],
+    "avg_completion_time": "54 months",
+    "avg_realization_cost": "$60M",
+    "avg_maintenance_cost": "$2.5M/year",
+    "policy_type": "Others",
+    "sdg_targets": [12, 8, 9],
+    "co2_reduction": "-18%",
+    "biodiversity_impact": "+15%",
+    "resilience_score": 78,
+    "stakeholder_involvement": "Medium",
+    "synergies": [
+      {
+        "title": "Resource Efficiency",
+        "description": "Dramatic reduction in resource consumption and waste generation",
+        "category": "Resources",
+        "affected_indicators": [
+          {"indicator": "electric_power_consumption", "expected_change": "-10%"},
+          {"indicator": "water_quality_index", "expected_change": "+10%"},
+          {"indicator": "renewable_energy_consumption", "expected_change": "+10%"}
+        ]
+      },
+      {
+        "title": "Economic Innovation",
+        "description": "New business models and economic opportunities in circular economy",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "food_production_value_usd_per_capita", "expected_change": "+6%"},
+          {"indicator": "dietary_energy_supply_adequacy", "expected_change": "+3%"},
+          {"indicator": "renewable_electricity_output", "expected_change": "+5%"}
+        ]
+      },
+      {
+        "title": "Environmental Protection",
+        "description": "Reduced pollution and environmental degradation through waste elimination",
+        "category": "Ecosystem",
+        "affected_indicators": [
+          {"indicator": "water_quality_index", "expected_change": "+15%"},
+          {"indicator": "soil_erosion_rate", "expected_change": "-10%"},
+          {"indicator": "carbon_sequestration_rate", "expected_change": "+10%"}
+        ]
+      }
+    ],
+    "trade_offs": [
+      {
+        "title": "Transition Costs",
+        "description": "High initial investment for new infrastructure and business model changes",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "electric_power_consumption", "expected_change": "+5%"},
+          {"indicator": "energy_imports_net_percent", "expected_change": "+3%"}
+        ]
+      },
+      {
+        "title": "Behavioral Change",
+        "description": "Time and effort required for consumer and business adoption",
+        "category": "Social",
+        "affected_indicators": [
+          {"indicator": "dietary_energy_supply_adequacy", "expected_change": "-2%"},
+          {"indicator": "electricity_access_percent", "expected_change": "-4%"}
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Marine Conservation & Blue Economy",
+    "description": "Comprehensive marine ecosystem protection including marine protected areas, sustainable fisheries management, and development of sustainable ocean-based economic activities.",
+    "livinglabs": ["Gabes", "Sfax", "Tunis"],
+    "avg_completion_time": "48 months",
+    "avg_realization_cost": "$40M",
+    "avg_maintenance_cost": "$1.8M/year",
+    "policy_type": "WEFE",
+    "sdg_targets": [14, 8, 15],
+    "co2_reduction": "-5%",
+    "biodiversity_impact": "+40%",
+    "resilience_score": 85,
+    "stakeholder_involvement": "High",
+    "synergies": [
+      {
+        "title": "Marine Biodiversity",
+        "description": "Significant recovery of marine ecosystems and species populations",
+        "category": "Ecosystem",
+        "affected_indicators": [
+          {"indicator": "species_richness_index", "expected_change": "+15%"},
+          {"indicator": "protected_area_coverage", "expected_change": "+10%"},
+          {"indicator": "water_quality_index", "expected_change": "+10%"}
+        ]
+      },
+      {
+        "title": "Sustainable Fisheries",
+        "description": "Long-term food security through sustainable fishing practices",
+        "category": "Food",
+        "affected_indicators": [
+          {"indicator": "protein_supply_grams_per_capita", "expected_change": "+5"},
+          {"indicator": "food_production_value_usd_per_capita", "expected_change": "+6%"},
+          {"indicator": "dietary_energy_supply_adequacy", "expected_change": "+4%"}
+        ]
+      },
+      {
+        "title": "Blue Economy Growth",
+        "description": "Development of sustainable ocean-based industries and tourism",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "food_production_value_usd_per_capita", "expected_change": "+5%"},
+          {"indicator": "renewable_electricity_output", "expected_change": "+3%"},
+          {"indicator": "electric_power_consumption", "expected_change": "+2%"}
+        ]
+      }
+    ],
+    "trade_offs": [
+      {
+        "title": "Economic Restrictions",
+        "description": "Temporary limitations on certain fishing and marine activities",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "food_production_value_usd_per_capita", "expected_change": "-5%"},
+          {"indicator": "protein_supply_grams_per_capita", "expected_change": "-2"}
+        ]
+      },
+      {
+        "title": "Enforcement Costs",
+        "description": "Ongoing costs for monitoring and enforcement of marine protection",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "electric_power_consumption", "expected_change": "+3%"},
+          {"indicator": "energy_imports_net_percent", "expected_change": "+2%"}
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Gender Equality & Women Empowerment",
+    "description": "Comprehensive programs to eliminate gender discrimination, ensure equal access to education and economic opportunities, and promote women's leadership in all sectors of society.",
+    "livinglabs": ["Tunis", "Sfax", "Gabes", "Kairouan", "Gafsa"],
+    "avg_completion_time": "60 months",
+    "avg_realization_cost": "$25M",
+    "avg_maintenance_cost": "$800K/year",
+    "policy_type": "Others",
+    "sdg_targets": [5, 4, 8],
+    "co2_reduction": "-1%",
+    "biodiversity_impact": "+2%",
+    "resilience_score": 70,
+    "stakeholder_involvement": "High",
+    "synergies": [
+      {
+        "title": "Economic Growth",
+        "description": "Enhanced economic productivity through full participation of women",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "food_production_value_usd_per_capita", "expected_change": "+5%"},
+          {"indicator": "protein_supply_grams_per_capita", "expected_change": "+2"},
+          {"indicator": "dietary_energy_supply_adequacy", "expected_change": "+2%"}
+        ]
+      },
+      {
+        "title": "Education Quality",
+        "description": "Improved educational outcomes for girls and women",
+        "category": "Education",
+        "affected_indicators": [
+          {"indicator": "electricity_access_percent", "expected_change": "+5%"},
+          {"indicator": "renewable_electricity_output", "expected_change": "+3%"},
+          {"indicator": "electric_power_consumption", "expected_change": "+2%"}
+        ]
+      },
+      {
+        "title": "Social Development",
+        "description": "Enhanced social cohesion and reduced gender-based violence",
+        "category": "Social",
+        "affected_indicators": [
+          {"indicator": "basic_drinking_water_services", "expected_change": "+2%"},
+          {"indicator": "basic_sanitation_services", "expected_change": "+2%"},
+          {"indicator": "iwrm_implementation", "expected_change": "+1"}
+        ]
+      }
+    ],
+    "trade_offs": [
+      {
+        "title": "Household Energy Demand",
+        "description": "Improved access and empowerment can increase household energy usage",
+        "category": "Energy",
+        "affected_indicators": [
+          {"indicator": "electric_power_consumption", "expected_change": "+2%"},
+          {"indicator": "energy_imports_net_percent", "expected_change": "+1%"}
+        ]
+      },
+      {
+        "title": "Mobility & Appliance Uptake",
+        "description": "Greater participation increases device use and mobility needs",
+        "category": "Energy",
+        "affected_indicators": [
+          {"indicator": "co2_emissions_per_capita", "expected_change": "+1%"},
+          {"indicator": "electric_power_consumption", "expected_change": "+1%"}
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Climate Adaptation & Resilience",
+    "description": "Comprehensive climate adaptation strategies including early warning systems, climate-resilient infrastructure, ecosystem-based adaptation, and community capacity building for climate resilience.",
+    "livinglabs": ["Tunis", "Sfax", "Gabes", "Kairouan", "Gafsa"],
+    "avg_completion_time": "72 months",
+    "avg_realization_cost": "$100M",
+    "avg_maintenance_cost": "$4M/year",
+    "policy_type": "WEFE",
+    "sdg_targets": [13, 11, 15],
+    "co2_reduction": "-8%",
+    "biodiversity_impact": "+20%",
+    "resilience_score": 95,
+    "stakeholder_involvement": "High",
+    "synergies": [
+      {
+        "title": "Disaster Risk Reduction",
+        "description": "Significant reduction in climate-related disaster impacts",
+        "category": "Disaster",
+        "affected_indicators": [
+          {"indicator": "water_quality_index", "expected_change": "+10%"},
+          {"indicator": "renewable_electricity_output", "expected_change": "+5%"},
+          {"indicator": "electric_power_consumption", "expected_change": "-5%"}
+        ]
+      },
+      {
+        "title": "Ecosystem Services",
+        "description": "Enhanced ecosystem resilience and natural climate solutions",
+        "category": "Ecosystem",
+        "affected_indicators": [
+          {"indicator": "carbon_sequestration_rate", "expected_change": "+15%"},
+          {"indicator": "soil_erosion_rate", "expected_change": "-10%"},
+          {"indicator": "pollination_services_index", "expected_change": "+12%"}
+        ]
+      },
+      {
+        "title": "Community Resilience",
+        "description": "Strengthened community capacity to cope with climate impacts",
+        "category": "Social",
+        "affected_indicators": [
+          {"indicator": "basic_drinking_water_services", "expected_change": "+3%"},
+          {"indicator": "basic_sanitation_services", "expected_change": "+3%"},
+          {"indicator": "iwrm_implementation", "expected_change": "+1"}
+        ]
+      }
+    ],
+    "trade_offs": [
+      {
+        "title": "High Investment",
+        "description": "Extremely high costs for comprehensive climate adaptation infrastructure",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "electric_power_consumption", "expected_change": "+8%"},
+          {"indicator": "energy_imports_net_percent", "expected_change": "+4%"}
+        ]
+      },
+      {
+        "title": "Long Implementation",
+        "description": "Extended time required for full climate adaptation implementation",
+        "category": "Time",
+        "affected_indicators": [
+          {"indicator": "undernourishment_prevalence", "expected_change": "+1%"},
+          {"indicator": "electric_power_consumption", "expected_change": "+1%"}
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Universal Health Coverage",
+    "description": "Comprehensive healthcare system reform including primary healthcare access, health insurance coverage, medical infrastructure development, and preventive healthcare programs for all citizens.",
+    "livinglabs": ["Tunis", "Sfax", "Gabes", "Kairouan", "Gafsa"],
+    "avg_completion_time": "84 months",
+    "avg_realization_cost": "$200M",
+    "avg_maintenance_cost": "$15M/year",
+    "policy_type": "Others",
+    "sdg_targets": [3, 1, 10],
+    "co2_reduction": "-2%",
+    "biodiversity_impact": "+1%",
+    "resilience_score": 88,
+    "stakeholder_involvement": "High",
+    "synergies": [
+      {
+        "title": "Public Health Improvement",
+        "description": "Dramatic improvement in population health outcomes and life expectancy",
+        "category": "Health",
+        "affected_indicators": [
+          {"indicator": "basic_drinking_water_services", "expected_change": "+5%"},
+          {"indicator": "basic_sanitation_services", "expected_change": "+5%"},
+          {"indicator": "electricity_access_percent", "expected_change": "+3%"}
+        ]
+      },
+      {
+        "title": "Economic Productivity",
+        "description": "Enhanced economic output through improved workforce health",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "food_production_value_usd_per_capita", "expected_change": "+2%"},
+          {"indicator": "electricity_access_percent", "expected_change": "+3%"},
+          {"indicator": "renewable_electricity_output", "expected_change": "+2%"}
+        ]
+      },
+      {
+        "title": "Social Equity",
+        "description": "Reduced health inequalities and improved access for vulnerable populations",
+        "category": "Social",
+        "affected_indicators": [
+          {"indicator": "basic_drinking_water_services", "expected_change": "+2%"},
+          {"indicator": "basic_sanitation_services", "expected_change": "+2%"},
+          {"indicator": "iwrm_implementation", "expected_change": "+1"}
+        ]
+      }
+    ],
+    "trade_offs": [
+      {
+        "title": "Extremely High Costs",
+        "description": "Massive investment required for comprehensive healthcare infrastructure",
+        "category": "Economic",
+        "affected_indicators": [
+          {"indicator": "electric_power_consumption", "expected_change": "+10%"},
+          {"indicator": "energy_imports_net_percent", "expected_change": "+5%"}
+        ]
+      },
+      {
+        "title": "Long Implementation",
+        "description": "Extended period required for full healthcare system transformation",
+        "category": "Time",
+        "affected_indicators": [
+          {"indicator": "iwrm_implementation", "expected_change": "+1"},
+          {"indicator": "electricity_access_percent", "expected_change": "+2%"}
+        ]
+      }
+    ]
+  }
+] 

@@ -1,0 +1,32 @@
+{
+  "title": "Small-scale desalination for saline wells (pilot)",
+  "description": "Pilot PV-powered reverse osmosis or membrane distillation units for safe potable/irrigation blending.",
+  "land_use": "Coastal agriculture/settlements",
+  "land_cover_type": "Coastal/bare lands",
+  "timeline": {"build_months": 9, "lifespan_years": 10},
+  "needs": {
+    "product_water_m3_per_day": 120,
+    "specific_energy_kwh_per_m3": 3.2,
+    "pv_capacity_kwp": 55,
+    "capex_usd": 210000,
+    "opex_usd_per_year": 18000,
+    "co2_operational_tco2e_per_year": -35
+  },
+  "required_resources": [
+    "RO/MD unit",
+    "PV array and pre-treatment filters",
+    "Brine management infrastructure",
+    "Water quality monitoring"
+  ],
+  "outcomes": {
+    "potable_supply_increase_m3_per_year": 36000,
+    "co2_impact_tco2e_per_year": -48,
+    "payback_years": 6.7,
+    "indicators": [
+      {"indicator": "renewable_freshwater_per_capita", "expected_change": 18, "unit": "cubic meters per capita per year", "basis": "pilot settlement", "timeframe_years": 1},
+      {"indicator": "water_quality_index", "expected_change": 0.05, "unit": "index (0-1)", "basis": "drinking water", "timeframe_years": 1},
+      {"indicator": "co2_emissions_per_capita", "expected_change": -0.005, "unit": "metric tons CO2 per capita per year", "basis": "pilot population", "timeframe_years": 1}
+    ]
+  }
+}
+

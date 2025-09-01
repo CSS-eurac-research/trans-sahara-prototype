@@ -1,0 +1,33 @@
+{
+  "title": "Efficient livestock water points and rotational grazing",
+  "description": "Develop trough-fed water points with controlled access and rotational paddocks to protect rangeland.",
+  "land_use": "Rangeland",
+  "land_cover_type": "Grassland/savanna",
+  "timeline": {"build_months": 5, "lifespan_years": 15},
+  "needs": {
+    "herd_size_lsu": 800,
+    "water_demand_m3_per_year": 73000,
+    "paddock_area_ha": 1500,
+    "capex_usd": 85000,
+    "opex_usd_per_year": 9000,
+    "co2_operational_tco2e_per_year": 2.5
+  },
+  "required_resources": [
+    "Borehole/pump or tanker supply",
+    "Troughs with float valves",
+    "Fencing and mobile shade",
+    "Pasture monitoring tools"
+  ],
+  "outcomes": {
+    "water_loss_reduction_percent": 18,
+    "weight_gain_increase_percent": 7,
+    "co2_impact_tco2e_per_year": -12,
+    "payback_years": 3.8,
+    "indicators": [
+      {"indicator": "renewable_freshwater_per_capita", "expected_change": 10, "unit": "cubic meters per capita per year", "basis": "pastoral communities", "timeframe_years": 1},
+      {"indicator": "soil_erosion_rate", "expected_change": -3, "unit": "metric tons per hectare per year", "basis": "water points vicinity", "timeframe_years": 2},
+      {"indicator": "species_richness_index", "expected_change": 0.03, "unit": "index (0-1)", "basis": "rangeland plots", "timeframe_years": 2}
+    ]
+  }
+}
+

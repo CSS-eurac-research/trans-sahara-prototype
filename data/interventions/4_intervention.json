@@ -1,0 +1,33 @@
+{
+  "title": "Conservation agriculture with soil moisture retention",
+  "description": "Adopt minimum tillage, residue retention, and precise planting to conserve soil moisture and reduce input needs.",
+  "land_use": "Rainfed cropland",
+  "land_cover_type": "Herbaceous cover",
+  "timeline": {"build_months": 3, "lifespan_years": 10},
+  "needs": {
+    "area_ha": 200,
+    "diesel_use_reduction_l_per_ha": 25,
+    "mulch_requirement_t_per_ha": 2.5,
+    "capex_usd": 40000,
+    "opex_usd_per_year": 8000,
+    "co2_operational_tco2e_per_year": -35
+  },
+  "required_resources": [
+    "Rippers/planters for minimum till",
+    "Cover crop seeds",
+    "Residue management tools",
+    "Soil testing kits"
+  ],
+  "outcomes": {
+    "yield_gain_percent": 12,
+    "water_productivity_increase_percent": 18,
+    "co2_impact_tco2e_per_year": -95,
+    "payback_years": 2.9,
+    "indicators": [
+      {"indicator": "cereal_yield_kg_per_hectare", "expected_change": 300, "unit": "kilograms per hectare", "basis": "maize/wheat", "timeframe_years": 2},
+      {"indicator": "soil_erosion_rate", "expected_change": -5, "unit": "metric tons per hectare per year", "basis": "treated fields", "timeframe_years": 2},
+      {"indicator": "electric_power_consumption", "expected_change": -1, "unit": "percentage", "basis": "regional ag energy", "timeframe_years": 1}
+    ]
+  }
+}
+

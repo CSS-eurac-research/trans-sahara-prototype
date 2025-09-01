@@ -1,0 +1,34 @@
+{
+  "title": "Agroforestry windbreaks and alley cropping",
+  "description": "Establish nitrogen-fixing trees/shrubs in rows to reduce wind erosion, enhance soil moisture, and diversify outputs.",
+  "land_use": "Cropland/rangeland interface",
+  "land_cover_type": "Shrubland and cropland mosaic",
+  "timeline": {"build_months": 8, "lifespan_years": 25},
+  "needs": {
+    "area_ha": 100,
+    "tree_density_trees_per_ha": 80,
+    "irrigation_establishment_m3": 5000,
+    "energy_demand_kwh_per_year": 1200,
+    "capex_usd": 65000,
+    "opex_usd_per_year": 5000,
+    "co2_operational_tco2e_per_year": 1.2
+  },
+  "required_resources": [
+    "Seedlings of suitable species (e.g., Faidherbia, Acacia)",
+    "Tree guards and drip kits",
+    "Mulch and compost",
+    "Extension support"
+  ],
+  "outcomes": {
+    "carbon_sequestration_tco2e_per_year": 180,
+    "wind_speed_reduction_percent": 20,
+    "co2_impact_tco2e_per_year": -178.8,
+    "payback_years": 6.0,
+    "indicators": [
+      {"indicator": "carbon_sequestration_rate", "expected_change": 0.8, "unit": "metric tons CO2 equivalent per hectare per year", "basis": "treated area", "timeframe_years": 3},
+      {"indicator": "soil_erosion_rate", "expected_change": -6, "unit": "metric tons per hectare per year", "basis": "wind-exposed plots", "timeframe_years": 2},
+      {"indicator": "species_richness_index", "expected_change": 0.06, "unit": "index (0-1)", "basis": "field margins", "timeframe_years": 3}
+    ]
+  }
+}
+

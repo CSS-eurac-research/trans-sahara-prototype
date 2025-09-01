@@ -1,0 +1,35 @@
+{
+  "title": "Rainwater harvesting and storage ponds",
+  "description": "Construct lined ponds and rooftop/catchment harvesting to buffer rainfall variability for multiple uses.",
+  "land_use": "Peri-urban agriculture",
+  "land_cover_type": "Mosaic cropland/settlement",
+  "timeline": {"build_months": 4, "lifespan_years": 20},
+  "needs": {
+    "catchment_area_ha": 20,
+    "storage_capacity_m3": 80000,
+    "water_capture_m3_per_year": 120000,
+    "energy_demand_kwh_per_year": 5000,
+    "land_area_ha": 1.2,
+    "capex_usd": 90000,
+    "opex_usd_per_year": 7000,
+    "co2_operational_tco2e_per_year": 3.0
+  },
+  "required_resources": [
+    "Earthworks and pond liners (HDPE/clay)",
+    "Gutters and first-flush diverters",
+    "Sediment traps",
+    "Fencing and safety signage"
+  ],
+  "outcomes": {
+    "water_offset_m3_per_year": 100000,
+    "co2_impact_tco2e_per_year": -12,
+    "payback_years": 4.8,
+    "indicators": [
+      {"indicator": "renewable_freshwater_per_capita", "expected_change": 50, "unit": "cubic meters per capita per year", "basis": "served community", "timeframe_years": 1},
+      {"indicator": "freshwater_withdrawals_percent", "expected_change": -2, "unit": "percentage", "basis": "municipal/agric share", "timeframe_years": 1},
+      {"indicator": "water_quality_index", "expected_change": 0.03, "unit": "index (0-1)", "basis": "local streams", "timeframe_years": 2},
+      {"indicator": "soil_erosion_rate", "expected_change": -8, "unit": "metric tons per hectare per year", "basis": "catchment hillslopes", "timeframe_years": 2}
+    ]
+  }
+}
+

@@ -1,0 +1,390 @@
+[
+  {
+    "id": 1,
+    "name": "Ghana Living Lab Example",
+    "climate_type": "semi-arid",
+    "geolocation_area": {
+      "upper_left": {"lat": 11.0, "lon": -3.0},
+      "lower_right": {"lat": 10.0, "lon": -2.0}
+    },
+    "country": "Ghana",
+    "description": "Living lab focused on WEFE solutions for the northern region of Ghana, addressing water scarcity and agricultural challenges in semi-arid conditions.",
+    "surface_m3": 1500000,
+    "land_use_surfaces_m3": {
+      "residential": 400000,
+      "mixed": 500000,
+      "green": 500000,
+      "water": 100000
+    },
+    "wefe_pillars": {
+      "water": {
+        "score": 52.3,
+        "indicators": {
+          "access": {
+            "basic_drinking_water_services": 78.5,
+            "basic_sanitation_services": 42.1,
+            "iwrm_implementation": 35
+          },
+          "availability": {
+            "freshwater_withdrawals_percent": 8.2,
+            "renewable_freshwater_per_capita": 1250,
+            "environmental_flow_requirements": 8.7,
+            "average_precipitation": 850
+          }
+        }
+      },
+      "energy": {
+        "score": 61.8,
+        "indicators": {
+          "access": {
+            "electricity_access_percent": 85.2,
+            "renewable_energy_consumption": 28.4,
+            "renewable_electricity_output": 65.3,
+            "co2_emissions_per_capita": 0.8
+          },
+          "availability": {
+            "electric_power_consumption": 1850.7,
+            "energy_imports_net_percent": 25.3
+          }
+        }
+      },
+      "food": {
+        "score": 58.9,
+        "indicators": {
+          "access": {
+            "undernourishment_prevalence": 6.8,
+            "children_wasting_percent": 4.2,
+            "children_stunted_percent": 18.7,
+            "adult_obesity_prevalence": 15.3
+          },
+          "availability": {
+            "protein_supply_grams_per_capita": 68,
+            "cereal_yield_kg_per_hectare": 2850.3,
+            "dietary_energy_supply_adequacy": 108,
+            "food_production_value_usd_per_capita": 95
+          }
+        }
+      },
+      "ecosystems": {
+        "score": 64.2,
+        "indicators": {
+          "biodiversity": {
+            "protected_area_coverage": 12.8,
+            "forest_coverage_percent": 24.5,
+            "species_richness_index": 0.72,
+            "endangered_species_count": 45
+          },
+          "ecosystem_services": {
+            "carbon_sequestration_rate": 2.1,
+            "soil_erosion_rate": 8.5,
+            "water_quality_index": 0.68,
+            "pollination_services_index": 0.75
+          }
+        }
+      }
+    },
+    "challenges": [
+      "Water scarcity during dry seasons affecting agricultural productivity",
+      "Limited access to modern irrigation systems",
+      "Dependency on rain-fed agriculture",
+      "Soil degradation and erosion",
+      "Limited access to renewable energy infrastructure",
+      "High energy costs for rural communities",
+      "Food security challenges due to climate variability",
+      "Limited agricultural technology adoption",
+      "Biodiversity loss due to agricultural expansion",
+      "Deforestation for fuelwood collection"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Ethiopia Living Lab Example",
+    "climate_type": "semi-arid",
+    "geolocation_area": {
+      "upper_left": {"lat": 9.0, "lon": 38.0},
+      "lower_right": {"lat": 8.0, "lon": 39.0}
+    },
+    "country": "Ethiopia",
+    "description": "Living lab for agricultural innovation and resource management in the Ethiopian highlands, focusing on sustainable farming practices and water conservation.",
+    "surface_m3": 1200000,
+    "land_use_surfaces_m3": {
+      "residential": 300000,
+      "mixed": 400000,
+      "green": 400000,
+      "water": 100000
+    },
+    "wefe_pillars": {
+      "water": {
+        "score": 48.7,
+        "indicators": {
+          "access": {
+            "basic_drinking_water_services": 72.3,
+            "basic_sanitation_services": 38.9,
+            "iwrm_implementation": 28
+          },
+          "availability": {
+            "freshwater_withdrawals_percent": 12.5,
+            "renewable_freshwater_per_capita": 890,
+            "environmental_flow_requirements": 6.3,
+            "average_precipitation": 650
+          }
+        }
+      },
+      "energy": {
+        "score": 55.4,
+        "indicators": {
+          "access": {
+            "electricity_access_percent": 45.8,
+            "renewable_energy_consumption": 92.1,
+            "renewable_electricity_output": 98.7,
+            "co2_emissions_per_capita": 0.3
+          },
+          "availability": {
+            "electric_power_consumption": 890.2,
+            "energy_imports_net_percent": 5.2
+          }
+        }
+      },
+      "food": {
+        "score": 52.1,
+        "indicators": {
+          "access": {
+            "undernourishment_prevalence": 8.9,
+            "children_wasting_percent": 6.8,
+            "children_stunted_percent": 37.2,
+            "adult_obesity_prevalence": 8.7
+          },
+          "availability": {
+            "protein_supply_grams_per_capita": 52,
+            "cereal_yield_kg_per_hectare": 2450.8,
+            "dietary_energy_supply_adequacy": 95,
+            "food_production_value_usd_per_capita": 78
+          }
+        }
+      },
+      "ecosystems": {
+        "score": 71.5,
+        "indicators": {
+          "biodiversity": {
+            "protected_area_coverage": 18.2,
+            "forest_coverage_percent": 15.8,
+            "species_richness_index": 0.85,
+            "endangered_species_count": 67
+          },
+          "ecosystem_services": {
+            "carbon_sequestration_rate": 3.2,
+            "soil_erosion_rate": 12.8,
+            "water_quality_index": 0.58,
+            "pollination_services_index": 0.82
+          }
+        }
+      }
+    },
+    "challenges": [
+      "High population pressure on natural resources",
+      "Land degradation and soil erosion in highlands",
+      "Limited access to clean water in rural areas",
+      "Dependency on traditional farming methods",
+      "Climate change impacts on agricultural productivity",
+      "Limited access to modern energy infrastructure",
+      "Food insecurity in drought-prone regions",
+      "Overgrazing and deforestation",
+      "Water pollution from agricultural runoff",
+      "Limited capacity for sustainable resource management"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Tunisia Living Lab Example",
+    "climate_type": "arid",
+    "geolocation_area": {
+      "upper_left": {"lat": 34.0, "lon": 10.0},
+      "lower_right": {"lat": 33.0, "lon": 11.0}
+    },
+    "country": "Tunisia",
+    "description": "Living lab for environmental sustainability in the Tunis region, addressing water scarcity and renewable energy integration in arid climate conditions.",
+    "surface_m3": 900000,
+    "land_use_surfaces_m3": {
+      "residential": 350000,
+      "mixed": 300000,
+      "green": 200000,
+      "water": 50000
+    },
+    "wefe_pillars": {
+      "water": {
+        "score": 41.2,
+        "indicators": {
+          "access": {
+            "basic_drinking_water_services": 95.8,
+            "basic_sanitation_services": 89.2,
+            "iwrm_implementation": 65
+          },
+          "availability": {
+            "freshwater_withdrawals_percent": 85.7,
+            "renewable_freshwater_per_capita": 420,
+            "environmental_flow_requirements": 2.1,
+            "average_precipitation": 280
+          }
+        }
+      },
+      "energy": {
+        "score": 68.9,
+        "indicators": {
+          "access": {
+            "electricity_access_percent": 99.8,
+            "renewable_energy_consumption": 15.3,
+            "renewable_electricity_output": 8.9,
+            "co2_emissions_per_capita": 2.4
+          },
+          "availability": {
+            "electric_power_consumption": 3450.6,
+            "energy_imports_net_percent": 45.8
+          }
+        }
+      },
+      "food": {
+        "score": 65.3,
+        "indicators": {
+          "access": {
+            "undernourishment_prevalence": 3.2,
+            "children_wasting_percent": 2.1,
+            "children_stunted_percent": 8.9,
+            "adult_obesity_prevalence": 24.8
+          },
+          "availability": {
+            "protein_supply_grams_per_capita": 98,
+            "cereal_yield_kg_per_hectare": 3850.4,
+            "dietary_energy_supply_adequacy": 125,
+            "food_production_value_usd_per_capita": 145
+          }
+        }
+      },
+      "ecosystems": {
+        "score": 58.7,
+        "indicators": {
+          "biodiversity": {
+            "protected_area_coverage": 8.9,
+            "forest_coverage_percent": 6.2,
+            "species_richness_index": 0.45,
+            "endangered_species_count": 23
+          },
+          "ecosystem_services": {
+            "carbon_sequestration_rate": 1.2,
+            "soil_erosion_rate": 15.6,
+            "water_quality_index": 0.42,
+            "pollination_services_index": 0.58
+          }
+        }
+      }
+    },
+    "challenges": [
+      "Severe water scarcity and drought conditions",
+      "High water demand for agriculture and urban use",
+      "Limited renewable energy integration",
+      "Desertification and land degradation",
+      "Coastal erosion and sea level rise",
+      "Urban water management challenges",
+      "Agricultural water efficiency issues",
+      "Energy dependency on fossil fuels",
+      "Biodiversity loss in arid ecosystems",
+      "Climate change adaptation needs"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Burkina Faso Living Lab Example",
+    "climate_type": "semi-arid",
+    "geolocation_area": {
+      "upper_left": {"lat": 13.0, "lon": -2.0},
+      "lower_right": {"lat": 12.0, "lon": -1.0}
+    },
+    "country": "Burkina Faso",
+    "description": "Living lab for integrated resource management in Burkina Faso, focusing on sustainable agriculture and water management in semi-arid Sahelian conditions.",
+    "surface_m3": 1100000,
+    "land_use_surfaces_m3": {
+      "residential": 250000,
+      "mixed": 300000,
+      "green": 450000,
+      "water": 100000
+    },
+    "wefe_pillars": {
+      "water": {
+        "score": 45.8,
+        "indicators": {
+          "access": {
+            "basic_drinking_water_services": 68.7,
+            "basic_sanitation_services": 32.4,
+            "iwrm_implementation": 22
+          },
+          "availability": {
+            "freshwater_withdrawals_percent": 15.8,
+            "renewable_freshwater_per_capita": 680,
+            "environmental_flow_requirements": 4.2,
+            "average_precipitation": 580
+          }
+        }
+      },
+      "energy": {
+        "score": 42.1,
+        "indicators": {
+          "access": {
+            "electricity_access_percent": 22.5,
+            "renewable_energy_consumption": 85.6,
+            "renewable_electricity_output": 92.3,
+            "co2_emissions_per_capita": 0.2
+          },
+          "availability": {
+            "electric_power_consumption": 450.8,
+            "energy_imports_net_percent": 8.7
+          }
+        }
+      },
+      "food": {
+        "score": 48.9,
+        "indicators": {
+          "access": {
+            "undernourishment_prevalence": 12.4,
+            "children_wasting_percent": 8.9,
+            "children_stunted_percent": 42.8,
+            "adult_obesity_prevalence": 6.2
+          },
+          "availability": {
+            "protein_supply_grams_per_capita": 45,
+            "cereal_yield_kg_per_hectare": 1850.6,
+            "dietary_energy_supply_adequacy": 88,
+            "food_production_value_usd_per_capita": 62
+          }
+        }
+      },
+      "ecosystems": {
+        "score": 66.8,
+        "indicators": {
+          "biodiversity": {
+            "protected_area_coverage": 15.6,
+            "forest_coverage_percent": 20.3,
+            "species_richness_index": 0.78,
+            "endangered_species_count": 38
+          },
+          "ecosystem_services": {
+            "carbon_sequestration_rate": 2.8,
+            "soil_erosion_rate": 18.9,
+            "water_quality_index": 0.52,
+            "pollination_services_index": 0.71
+          }
+        }
+      }
+    },
+    "challenges": [
+      "Extreme water scarcity in Sahelian climate",
+      "Limited access to electricity in rural areas",
+      "High food insecurity and malnutrition",
+      "Soil degradation and desertification",
+      "Dependency on traditional energy sources",
+      "Limited agricultural productivity",
+      "Climate variability and extreme weather events",
+      "Limited access to modern farming technologies",
+      "Deforestation for fuelwood and agriculture",
+      "Limited capacity for sustainable development"
+    ]
+  }
+] 

@@ -1,0 +1,35 @@
+{
+  "title": "Efficient pressurized irrigation retrofits",
+  "description": "Convert surface irrigation to sprinkler/drip with flow measurement and scheduling based on ET.",
+  "land_use": "Irrigated schemes",
+  "land_cover_type": "Irrigated cropland",
+  "timeline": {"build_months": 6, "lifespan_years": 12},
+  "needs": {
+    "area_ha": 300,
+    "baseline_application_m3_per_ha": 7000,
+    "target_application_m3_per_ha": 4500,
+    "energy_demand_change_kwh_per_ha": -120,
+    "capex_usd": 480000,
+    "opex_usd_per_year": 38000,
+    "co2_operational_tco2e_per_year": -60
+  },
+  "required_resources": [
+    "Sprinkler/drip kits",
+    "Flow meters and pressure gauges",
+    "Scheduling tools (ET, soil moisture)",
+    "Technician training"
+  ],
+  "outcomes": {
+    "water_savings_m3_per_year": 750000,
+    "energy_savings_kwh_per_year": 36000,
+    "salinity_risk_reduction_percent": 15,
+    "co2_impact_tco2e_per_year": -42,
+    "payback_years": 3.2,
+    "indicators": [
+      {"indicator": "freshwater_withdrawals_percent", "expected_change": -3.5, "unit": "percentage", "basis": "scheme-level", "timeframe_years": 1},
+      {"indicator": "cereal_yield_kg_per_hectare", "expected_change": 450, "unit": "kilograms per hectare", "basis": "served crops", "timeframe_years": 2},
+      {"indicator": "co2_emissions_per_capita", "expected_change": -0.008, "unit": "metric tons CO2 per capita per year", "basis": "living lab", "timeframe_years": 1}
+    ]
+  }
+}
+

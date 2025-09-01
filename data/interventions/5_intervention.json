@@ -1,0 +1,33 @@
+{
+  "title": "Greywater reuse for urban gardens",
+  "description": "Treat household greywater with simple bio-sand/constructed wetland units for safe irrigation of non-leafy crops.",
+  "land_use": "Urban/peri-urban",
+  "land_cover_type": "Built-up areas with gardens",
+  "timeline": {"build_months": 2, "lifespan_years": 12},
+  "needs": {
+    "households_served": 250,
+    "greywater_volume_m3_per_year": 36500,
+    "energy_demand_kwh_per_year": 2200,
+    "capex_usd": 55000,
+    "opex_usd_per_year": 4500,
+    "co2_operational_tco2e_per_year": 1.1
+  },
+  "required_resources": [
+    "Settler tank",
+    "Bio-sand filter or wetland bed media",
+    "PVC piping and valves",
+    "Water quality test kits"
+  ],
+  "outcomes": {
+    "potable_water_offset_m3_per_year": 32850,
+    "nutrient_recovery_kgN_per_year": 450,
+    "co2_impact_tco2e_per_year": -6,
+    "payback_years": 3.6,
+    "indicators": [
+      {"indicator": "basic_sanitation_services", "expected_change": 1.5, "unit": "percentage", "basis": "served neighborhoods", "timeframe_years": 1},
+      {"indicator": "water_quality_index", "expected_change": 0.02, "unit": "index (0-1)", "basis": "receiving waters", "timeframe_years": 1},
+      {"indicator": "electric_power_consumption", "expected_change": -0.3, "unit": "percentage", "basis": "WWTP load reduction", "timeframe_years": 1}
+    ]
+  }
+}
+

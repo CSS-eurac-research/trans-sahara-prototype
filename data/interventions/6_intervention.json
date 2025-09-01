@@ -1,0 +1,34 @@
+{
+  "title": "Solar-powered cold chain for perishables",
+  "description": "Deploy solar direct-drive cold rooms and insulated transport to reduce post-harvest losses.",
+  "land_use": "Market hubs and farm clusters",
+  "land_cover_type": "Built-up commercial",
+  "timeline": {"build_months": 7, "lifespan_years": 12},
+  "needs": {
+    "cold_room_capacity_tons": 20,
+    "daily_cooling_load_kwh": 280,
+    "pv_capacity_kwp": 90,
+    "battery_storage_kwh": 350,
+    "capex_usd": 320000,
+    "opex_usd_per_year": 22000,
+    "co2_operational_tco2e_per_year": -110
+  },
+  "required_resources": [
+    "Solar direct-drive refrigeration units",
+    "Battery or thermal storage (as needed)",
+    "Insulated crates",
+    "O&M training"
+  ],
+  "outcomes": {
+    "postharvest_loss_reduction_percent": 25,
+    "grid_energy_offset_kwh_per_year": 160000,
+    "co2_impact_tco2e_per_year": -140,
+    "payback_years": 4.5,
+    "indicators": [
+      {"indicator": "electric_power_consumption", "expected_change": -1.5, "unit": "percentage", "basis": "regional grid demand", "timeframe_years": 1},
+      {"indicator": "co2_emissions_per_capita", "expected_change": -0.03, "unit": "metric tons CO2 per capita per year", "basis": "served population", "timeframe_years": 1},
+      {"indicator": "food_production_value_usd_per_capita", "expected_change": 3, "unit": "percentage", "basis": "high-value chains", "timeframe_years": 2}
+    ]
+  }
+}
+

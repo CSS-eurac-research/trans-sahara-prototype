@@ -1,0 +1,38 @@
+{
+  "title": "Solar-powered drip irrigation",
+  "description": "Deploy solar-powered pumps with pressure-regulated drip lines to irrigate crops efficiently using renewable energy.",
+  "land_use": "Cropland",
+  "land_cover_type": "Irrigated cropland",
+  "timeline": {"build_months": 6, "lifespan_years": 15},
+  "needs": {
+    "service_area_ha": 50,
+    "peak_flow_lps": 25,
+    "water_demand_m3_per_year": 350000,
+    "energy_demand_kwh_per_year": 0,
+    "land_area_ha": 0.2,
+    "capex_usd": 120000,
+    "opex_usd_per_year": 6000,
+    "co2_operational_tco2e_per_year": 0.0
+  },
+  "required_resources": [
+    "Photovoltaic panels",
+    "DC/AC pump",
+    "Drip lines and emitters",
+    "Pressure regulators and filters",
+    "Water storage tank",
+    "Technician training"
+  ],
+  "outcomes": {
+    "water_savings_m3_per_year": 150000,
+    "energy_savings_kwh_per_year": 60000,
+    "co2_impact_tco2e_per_year": -45,
+    "payback_years": 5.2,
+    "indicators": [
+      {"indicator": "freshwater_withdrawals_percent", "expected_change": -4, "unit": "percentage", "basis": "scheme-level", "timeframe_years": 1},
+      {"indicator": "renewable_energy_consumption", "expected_change": 1.2, "unit": "percentage", "basis": "district share", "timeframe_years": 1},
+      {"indicator": "cereal_yield_kg_per_hectare", "expected_change": 600, "unit": "kilograms per hectare", "basis": "served area", "timeframe_years": 2},
+      {"indicator": "co2_emissions_per_capita", "expected_change": -0.01, "unit": "metric tons CO2 per capita per year", "basis": "living lab population", "timeframe_years": 1}
+    ]
+  }
+}
+
