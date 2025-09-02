@@ -15,7 +15,7 @@ def create_living_labs_map(selected_lab=None):
     # Map settings
     center_lat = 18.0
     center_lon = 10.0
-    zoom_level = 4.5   
+    zoom_level = 3.5   
     m = folium.Map(
         location=[center_lat, center_lon],
         zoom_start=zoom_level,
@@ -202,12 +202,10 @@ def render_welcome_page():
     
     selected_lab = st.session_state.get('current_selected_lab', None)
     
-    col1, col2 = st.columns([3, 1])    
+    col1, col2 = st.columns([3, 2])    
     
+
     with col1:
-        map_obj = create_living_labs_map(selected_lab)
-        st.components.v1.html(map_obj._repr_html_(), height=800, width=None)
-    with col2:
         if selected_lab:
             lab_info = get_selected_lab_info(selected_lab)
             if lab_info:
@@ -250,6 +248,9 @@ def render_welcome_page():
             st.subheader("Living Lab Information")
             st.info("Select a living lab from the sidebar to view its details.")
             lab_info = None
+    with col2:
+        map_obj = create_living_labs_map(selected_lab)
+        st.components.v1.html(map_obj._repr_html_(), height=500, width=None)
     
     render_overall_wefe_score(lab_info)
     render_wefe_pillars_view(lab_info) 
