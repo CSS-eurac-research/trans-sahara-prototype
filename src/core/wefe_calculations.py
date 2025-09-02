@@ -9,12 +9,13 @@ import sys
 # Add the src directory to the path to import policy modules
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from policy.data import load_policies, parse_change_value
+import math
 
 
 def load_pillars():
     """Load WEFE pillars configuration from JSON file"""
     try:
-        json_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'pillars.json')
+        json_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'new_pillars.json')
         with open(json_path, 'r', encoding='utf-8') as f:
             pillars_data = json.load(f)
         
@@ -29,11 +30,11 @@ def load_pillars():
             })
         return pillars_list
     except FileNotFoundError:
-        print(f"Error: Could not find pillars.json at {json_path}")
+        print(f"Error: Could not find new_pillars.json at {json_path}")
         # Check if file exists in current directory
-        current_dir_path = 'data/pillars.json'
+        current_dir_path = 'data/new_pillars.json'
         if os.path.exists(current_dir_path):
-            print(f"Found pillars.json in current directory: {current_dir_path}")
+            print(f"Found new_pillars.json in current directory: {current_dir_path}")
             with open(current_dir_path, 'r', encoding='utf-8') as f:
                 pillars_data = json.load(f)
             
@@ -115,7 +116,9 @@ def get_indicators_to_invert():
         'freshwater_withdrawals_percent',
         'energy_imports_net_percent',
         'endangered_species_count',
-        'soil_erosion_rate'
+        'soil_erosion_rate',
+        # New KPI-derived indicator that should be inverted (lower intensity is better)
+        'IND_E_CW_ENERGY_INTENSITY'
     }
 
 
@@ -131,40 +134,33 @@ def calculate_pillar_score(pillar_key, lab_data, pillars_definitions):
     Returns:
         Calculated pillar score (0-100)
     """
-    if not lab_data or 'wefe_pillars' not in lab_data:
+    if not lab_data:
         return None
     
-    pillar_data = lab_data['wefe_pillars'].get(pillar_key)
-    if not pillar_data or 'indicators' not in pillar_data:
-        return None
-    
+    # Load new pillar definitions and use KPI indicators set for this pillar
     pillars_def = pillars_definitions.get('wefe_pillars', {})
     pillar_def = pillars_def.get(pillar_key, {})
-    
     if not pillar_def:
         return None
     
-    # Get all indicator values from the lab data
-    all_indicators = {}
-    for category_name, category_data in pillar_data['indicators'].items():
-        if isinstance(category_data, dict):
-            all_indicators.update(category_data)
+    kpi_indicators_values = lab_data.get('kpi_indicators', {})
+    if not isinstance(kpi_indicators_values, dict):
+        return None
     
     # Get indicator definitions and calculate normalized scores
     normalized_scores = []
     indicators_to_invert = get_indicators_to_invert()
     
-    # Get indicator definitions from pillars.json
+    # From new_pillars.json, use only the KPI indicators category
     for category_name, category_def in pillar_def.get('categories', {}).items():
-        for indicator_name, indicator_def in category_def.get('indicators', {}).items():
-            if indicator_name in all_indicators:
-                raw_value = all_indicators[indicator_name]
+        indicators_def = category_def.get('indicators', {})
+        for indicator_name, indicator_def in indicators_def.items():
+            if indicator_name in kpi_indicators_values:
+                raw_value = kpi_indicators_values.get(indicator_name)
                 min_val = indicator_def.get('min_value')
                 max_val = indicator_def.get('max_value')
-                
                 should_invert = indicator_name in indicators_to_invert
                 normalized_score = normalize_indicator(raw_value, min_val, max_val, invert=should_invert)
-                
                 if normalized_score is not None:
                     normalized_scores.append(normalized_score)
     
@@ -200,16 +196,16 @@ def calculate_all_pillar_scores(lab_data):
 def _load_pillars_definitions_local():
     """Load pillars definitions locally to avoid circular imports"""
     try:
-        json_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'pillars.json')
+        json_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'new_pillars.json')
         with open(json_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
-        current_dir_path = os.path.join('..', '..', 'data', 'pillars.json')
+        current_dir_path = os.path.join('..', '..', 'data', 'new_pillars.json')
         if os.path.exists(current_dir_path):
             with open(current_dir_path, 'r', encoding='utf-8') as f:
                 return json.load(f)
         else:
-            print(f"Error: Could not find pillars.json")
+            print(f"Error: Could not find new_pillars.json")
             return {}
     except Exception as e:
         print(f"Error loading pillars definitions: {e}")
@@ -372,11 +368,116 @@ def format_indicator_with_unit(indicator_name, value, units_dict=None):
         return f"{value}"
 
 
+def _load_kpi_definitions_local():
+    """Load KPI definitions from data/kpi.json"""
+    try:
+        json_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'kpi.json')
+        with open(json_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _normalize_for_kpi(value: float, bounds: Dict, invert: bool = False) -> float | None:
+    if value is None:
+        return None
+    min_val = bounds.get('min')
+    max_val = bounds.get('max')
+    if min_val is None or max_val is None or max_val == min_val:
+        return None
+    normalized = (value - min_val) / (max_val - min_val)
+    normalized = max(0.0, min(1.0, normalized))
+    if invert:
+        normalized = 1.0 - normalized
+    return normalized
+
+
+def calculate_kpi_scores(lab_data: Dict) -> Dict[str, float]:
+    """Compute each KPI score (0-100) from kpi.json and lab kpi_indicators."""
+    kpi_defs = _load_kpi_definitions_local().get('kpis', [])
+    if not kpi_defs:
+        return {}
+    indicators = lab_data.get('kpi_indicators', {}) or {}
+    scores: Dict[str, float] = {}
+    for kpi in kpi_defs:
+        kpi_id = kpi.get('id')
+        norm_conf = kpi.get('normalization', {})
+        bounds_map = norm_conf.get('bounds', {})
+        inversions = set(norm_conf.get('inversions', []) or [])
+        machine = kpi.get('formula_machine', {})
+        inputs = machine.get('inputs', [])
+        weights = machine.get('weights', [])
+        normalized_values = []
+        used_weights = []
+        for idx, inp in enumerate(inputs):
+            ind_id = inp.get('id')
+            val = indicators.get(ind_id)
+            bnds = bounds_map.get(ind_id, {})
+            inv = ind_id in inversions or bool(inp.get('invert'))
+            n = _normalize_for_kpi(val, bnds, invert=inv)
+            if n is not None:
+                normalized_values.append(n)
+                used_weights.append(weights[idx] if idx < len(weights) else 1.0)
+        if not normalized_values:
+            continue
+        # geometric mean with weights
+        try:
+            if not used_weights:
+                gm = math.exp(sum(math.log(max(v, 1e-9)) for v in normalized_values) / len(normalized_values))
+            else:
+                wsum = sum(used_weights)
+                gm = math.exp(sum(w * math.log(max(v, 1e-9)) for v, w in zip(normalized_values, used_weights)) / wsum)
+            scores[kpi_id] = round(gm * 100.0, 1)
+        except Exception:
+            continue
+    return scores
+
+
+def calculate_overall_wefe_score_from_kpis(lab_data: Dict) -> tuple[float | None, Dict]:
+    """Calculate overall score as mean of KPI scores."""
+    kpi_scores = calculate_kpi_scores(lab_data)
+    if not kpi_scores:
+        return None, {"kpi_scores": {}}
+    values = list(kpi_scores.values())
+    overall = round(sum(values) / len(values), 1)
+    return overall, {"kpi_scores": kpi_scores}
+
+
+def get_kpi_def_summaries() -> Dict[str, Dict]:
+    """Return mapping of KPI id -> {name: str, inputs: [indicator_ids]}"""
+    data = _load_kpi_definitions_local()
+    summaries: Dict[str, Dict] = {}
+    for k in data.get('kpis', []) or []:
+        kpi_id = k.get('id')
+        if not kpi_id:
+            continue
+        name = k.get('name', kpi_id)
+        machine = k.get('formula_machine', {}) or {}
+        inputs = [i.get('id') for i in (machine.get('inputs') or []) if i.get('id')]
+        summaries[kpi_id] = {"name": name, "inputs": inputs}
+    return summaries
+
+
+def get_indicator_display_names() -> Dict[str, str]:
+    """Map indicator IDs to human-friendly names from new_pillars.json."""
+    pillars_definitions = _load_pillars_definitions_local()
+    display_names: Dict[str, str] = {}
+    wefe = pillars_definitions.get('wefe_pillars', {}) if isinstance(pillars_definitions, dict) else {}
+    for pillar_key, pillar_data in (wefe or {}).items():
+        categories = (pillar_data or {}).get('categories', {})
+        for _, category_data in (categories or {}).items():
+            indicators = (category_data or {}).get('indicators', {})
+            for ind_id, ind_obj in (indicators or {}).items():
+                name = (ind_obj or {}).get('name')
+                if ind_id and name:
+                    display_names[ind_id] = name
+    return display_names
+
 def calculate_new_wefe_score_after_policies(lab_info, selected_policies):
     """
     Calculate the new WEFE score after applying selected policies to indicators
     """
-    if not lab_info or 'wefe_pillars' not in lab_info or not selected_policies:
+    if not lab_info or not selected_policies:
         return None
     
     try:
@@ -399,24 +500,20 @@ def calculate_new_wefe_score_after_policies(lab_info, selected_policies):
                                 indicator_improvements[indicator_key] = 0
                             indicator_improvements[indicator_key] += change_value
         
-        # Create a copy of lab_info with improved indicators
+        # Create a copy of lab_info with improved KPI indicators
         improved_lab_info = lab_info.copy()
-        improved_lab_info['wefe_pillars'] = lab_info['wefe_pillars'].copy()
-        
-        # Apply improvements to indicators
-        for pillar_key in improved_lab_info['wefe_pillars']:
-            pillar_data = improved_lab_info['wefe_pillars'][pillar_key]
-            if 'indicators' in pillar_data:
-                pillar_data['indicators'] = pillar_data['indicators'].copy()
-                for category_name, category_data in pillar_data['indicators'].items():
-                    if isinstance(category_data, dict):
-                        category_data = category_data.copy()
-                        for indicator_name, indicator_value in category_data.items():
-                            if indicator_name in indicator_improvements:
-                                improvement_percent = indicator_improvements[indicator_name]
-                                improved_value = indicator_value + (indicator_value / 100 * improvement_percent)
-                                category_data[indicator_name] = improved_value
-                        pillar_data['indicators'][category_name] = category_data
+        existing_kpi_indicators = lab_info.get('kpi_indicators', {}) or {}
+        improved_kpis = dict(existing_kpi_indicators)
+
+        # Apply improvements to KPI indicators (percentage values treated as relative % change)
+        for indicator_name, base_value in existing_kpi_indicators.items():
+            if indicator_name in indicator_improvements:
+                change = indicator_improvements[indicator_name]
+                # If expected_change looks like a percentage (parse_change_value returns number),
+                # apply relative change; otherwise it was absolute already converted upstream.
+                improved_value = base_value + (base_value * (change / 100.0))
+                improved_kpis[indicator_name] = improved_value
+        improved_lab_info['kpi_indicators'] = improved_kpis
         
         # Calculate new overall score
         new_score, _ = calculate_overall_wefe_score(improved_lab_info)

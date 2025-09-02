@@ -18,7 +18,6 @@
     },
     "wefe_pillars": {
       "water": {
-        "score": 52.3,
         "indicators": {
           "access": {
             "basic_drinking_water_services": 78.5,
@@ -34,7 +33,6 @@
         }
       },
       "energy": {
-        "score": 61.8,
         "indicators": {
           "access": {
             "electricity_access_percent": 85.2,
@@ -49,7 +47,6 @@
         }
       },
       "food": {
-        "score": 58.9,
         "indicators": {
           "access": {
             "undernourishment_prevalence": 6.8,
@@ -66,7 +63,6 @@
         }
       },
       "ecosystems": {
-        "score": 64.2,
         "indicators": {
           "biodiversity": {
             "protected_area_coverage": 12.8,
@@ -82,6 +78,42 @@
           }
         }
       }
+    },
+    "kpi_indicators": {
+      "IND_W_WW_TREATED_VOL": 450000,
+      "IND_W_WW_TREATED_SHARE": 60,
+      "IND_F_TWW_IRRIGATION_VOL": 200000,
+      "IND_F_TWW_IRRIGATION_SHARE": 12,
+      "IND_W_MAR_RECHARGE_VOL": 120000,
+      "IND_W_GW_LEVEL_RISE": 0.6,
+      "IND_E_PUMPING_ENERGY_SAVED": 1200000,
+      "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD": 0.15,
+      "IND_W_WW_TO_AD_VOL": 90000,
+      "IND_E_BIOGAS_FROM_WW_ENERGY": 3000000,
+      "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": 2100000,
+      "IND_F_ORG_WASTE_TO_AD_MASS": 35000,
+      "IND_F_ORG_WASTE_DIVERTED_SHARE": 25,
+      "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": 5000000,
+      "IND_W_SEWAGE_CODIGEST_VOL": 50000,
+      "IND_F_ORG_WASTE_CODIGEST_MASS": 25000,
+      "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": 6500000,
+      "IND_E_NET_ENERGY_FROM_CODIGEST": 5800000,
+      "IND_F_DIGESTATE_APPLIED_MASS": 40000,
+      "IND_F_NUTRIENT_VALUE_APPLIED": 1200000,
+      "IND_F_SYNTH_FERTILIZER_DISPLACED": 80000,
+      "IND_W_CW_TREATED_VOL": 150000,
+      "IND_E_ENERGY_SAVED_CW": 600000,
+      "IND_E_CW_ENERGY_INTENSITY": 0.12,
+      "IND_F_CW_IRRIGATION_VOL": 120000
+    },
+    "kpis": {
+      "KPI_WF_1": null,
+      "KPI_WE_1": null,
+      "KPI_WE_2": null,
+      "KPI_FE_1": null,
+      "KPI_WFE_1": null,
+      "KPI_WEF_1": null,
+      "KPI_WEF_2": null
     },
     "challenges": [
       "Water scarcity during dry seasons affecting agricultural productivity",
@@ -115,7 +147,6 @@
     },
     "wefe_pillars": {
       "water": {
-        "score": 48.7,
         "indicators": {
           "access": {
             "basic_drinking_water_services": 72.3,
@@ -131,7 +162,6 @@
         }
       },
       "energy": {
-        "score": 55.4,
         "indicators": {
           "access": {
             "electricity_access_percent": 45.8,
@@ -146,7 +176,6 @@
         }
       },
       "food": {
-        "score": 52.1,
         "indicators": {
           "access": {
             "undernourishment_prevalence": 8.9,
@@ -163,7 +192,6 @@
         }
       },
       "ecosystems": {
-        "score": 71.5,
         "indicators": {
           "biodiversity": {
             "protected_area_coverage": 18.2,
@@ -179,6 +207,42 @@
           }
         }
       }
+    },
+    "kpi_indicators": {
+      "IND_W_WW_TREATED_VOL": 300000,
+      "IND_W_WW_TREATED_SHARE": 45,
+      "IND_F_TWW_IRRIGATION_VOL": 120000,
+      "IND_F_TWW_IRRIGATION_SHARE": 10,
+      "IND_W_MAR_RECHARGE_VOL": 180000,
+      "IND_W_GW_LEVEL_RISE": 0.8,
+      "IND_E_PUMPING_ENERGY_SAVED": 1800000,
+      "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD": 0.18,
+      "IND_W_WW_TO_AD_VOL": 60000,
+      "IND_E_BIOGAS_FROM_WW_ENERGY": 2000000,
+      "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": 1400000,
+      "IND_F_ORG_WASTE_TO_AD_MASS": 28000,
+      "IND_F_ORG_WASTE_DIVERTED_SHARE": 20,
+      "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": 3200000,
+      "IND_W_SEWAGE_CODIGEST_VOL": 40000,
+      "IND_F_ORG_WASTE_CODIGEST_MASS": 20000,
+      "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": 5000000,
+      "IND_E_NET_ENERGY_FROM_CODIGEST": 4400000,
+      "IND_F_DIGESTATE_APPLIED_MASS": 30000,
+      "IND_F_NUTRIENT_VALUE_APPLIED": 900000,
+      "IND_F_SYNTH_FERTILIZER_DISPLACED": 60000,
+      "IND_W_CW_TREATED_VOL": 100000,
+      "IND_E_ENERGY_SAVED_CW": 400000,
+      "IND_E_CW_ENERGY_INTENSITY": 0.11,
+      "IND_F_CW_IRRIGATION_VOL": 80000
+    },
+    "kpis": {
+      "KPI_WF_1": null,
+      "KPI_WE_1": null,
+      "KPI_WE_2": null,
+      "KPI_FE_1": null,
+      "KPI_WFE_1": null,
+      "KPI_WEF_1": null,
+      "KPI_WEF_2": null
     },
     "challenges": [
       "High population pressure on natural resources",
@@ -212,7 +276,6 @@
     },
     "wefe_pillars": {
       "water": {
-        "score": 41.2,
         "indicators": {
           "access": {
             "basic_drinking_water_services": 95.8,
@@ -228,7 +291,6 @@
         }
       },
       "energy": {
-        "score": 68.9,
         "indicators": {
           "access": {
             "electricity_access_percent": 99.8,
@@ -243,7 +305,6 @@
         }
       },
       "food": {
-        "score": 65.3,
         "indicators": {
           "access": {
             "undernourishment_prevalence": 3.2,
@@ -260,7 +321,6 @@
         }
       },
       "ecosystems": {
-        "score": 58.7,
         "indicators": {
           "biodiversity": {
             "protected_area_coverage": 8.9,
@@ -276,6 +336,42 @@
           }
         }
       }
+    },
+    "kpi_indicators": {
+      "IND_W_WW_TREATED_VOL": 700000,
+      "IND_W_WW_TREATED_SHARE": 80,
+      "IND_F_TWW_IRRIGATION_VOL": 350000,
+      "IND_F_TWW_IRRIGATION_SHARE": 22,
+      "IND_W_MAR_RECHARGE_VOL": 60000,
+      "IND_W_GW_LEVEL_RISE": 0.3,
+      "IND_E_PUMPING_ENERGY_SAVED": 500000,
+      "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD": 0.12,
+      "IND_W_WW_TO_AD_VOL": 120000,
+      "IND_E_BIOGAS_FROM_WW_ENERGY": 4500000,
+      "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": 3000000,
+      "IND_F_ORG_WASTE_TO_AD_MASS": 45000,
+      "IND_F_ORG_WASTE_DIVERTED_SHARE": 30,
+      "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": 6000000,
+      "IND_W_SEWAGE_CODIGEST_VOL": 90000,
+      "IND_F_ORG_WASTE_CODIGEST_MASS": 40000,
+      "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": 9000000,
+      "IND_E_NET_ENERGY_FROM_CODIGEST": 8000000,
+      "IND_F_DIGESTATE_APPLIED_MASS": 55000,
+      "IND_F_NUTRIENT_VALUE_APPLIED": 1800000,
+      "IND_F_SYNTH_FERTILIZER_DISPLACED": 120000,
+      "IND_W_CW_TREATED_VOL": 220000,
+      "IND_E_ENERGY_SAVED_CW": 900000,
+      "IND_E_CW_ENERGY_INTENSITY": 0.1,
+      "IND_F_CW_IRRIGATION_VOL": 180000
+    },
+    "kpis": {
+      "KPI_WF_1": null,
+      "KPI_WE_1": null,
+      "KPI_WE_2": null,
+      "KPI_FE_1": null,
+      "KPI_WFE_1": null,
+      "KPI_WEF_1": null,
+      "KPI_WEF_2": null
     },
     "challenges": [
       "Severe water scarcity and drought conditions",
@@ -309,7 +405,6 @@
     },
     "wefe_pillars": {
       "water": {
-        "score": 45.8,
         "indicators": {
           "access": {
             "basic_drinking_water_services": 68.7,
@@ -325,7 +420,6 @@
         }
       },
       "energy": {
-        "score": 42.1,
         "indicators": {
           "access": {
             "electricity_access_percent": 22.5,
@@ -340,7 +434,6 @@
         }
       },
       "food": {
-        "score": 48.9,
         "indicators": {
           "access": {
             "undernourishment_prevalence": 12.4,
@@ -357,7 +450,6 @@
         }
       },
       "ecosystems": {
-        "score": 66.8,
         "indicators": {
           "biodiversity": {
             "protected_area_coverage": 15.6,
@@ -373,6 +465,33 @@
           }
         }
       }
+    },
+    "kpi_indicators": {
+      "IND_W_WW_TREATED_VOL": 180000,
+      "IND_W_WW_TREATED_SHARE": 35,
+      "IND_F_TWW_IRRIGATION_VOL": 70000,
+      "IND_F_TWW_IRRIGATION_SHARE": 6,
+      "IND_W_MAR_RECHARGE_VOL": 90000,
+      "IND_W_GW_LEVEL_RISE": 0.5,
+      "IND_E_PUMPING_ENERGY_SAVED": 900000,
+      "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD": 0.16,
+      "IND_W_WW_TO_AD_VOL": 30000,
+      "IND_E_BIOGAS_FROM_WW_ENERGY": 1200000,
+      "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": 800000,
+      "IND_F_ORG_WASTE_TO_AD_MASS": 18000,
+      "IND_F_ORG_WASTE_DIVERTED_SHARE": 15,
+      "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": 1800000,
+      "IND_W_SEWAGE_CODIGEST_VOL": 20000,
+      "IND_F_ORG_WASTE_CODIGEST_MASS": 10000,
+      "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": 2400000,
+      "IND_E_NET_ENERGY_FROM_CODIGEST": 2100000,
+      "IND_F_DIGESTATE_APPLIED_MASS": 12000,
+      "IND_F_NUTRIENT_VALUE_APPLIED": 360000,
+      "IND_F_SYNTH_FERTILIZER_DISPLACED": 24000,
+      "IND_W_CW_TREATED_VOL": 60000,
+      "IND_E_ENERGY_SAVED_CW": 250000,
+      "IND_E_CW_ENERGY_INTENSITY": 0.14,
+      "IND_F_CW_IRRIGATION_VOL": 45000
     },
     "challenges": [
       "Extreme water scarcity in Sahelian climate",

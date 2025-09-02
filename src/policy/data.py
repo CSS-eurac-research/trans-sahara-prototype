@@ -31,10 +31,10 @@ def get_policies_by_category(policies: List[Dict], category: str) -> List[Dict]:
 def load_pillars_definitions():
     """Load pillars definitions from JSON file"""
     try:
-        with open(os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'pillars.json'), 'r') as f:
+        with open(os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'new_pillars.json'), 'r') as f:
             return json.load(f)
     except FileNotFoundError:
-        st.error("Pillars definitions file not found!")
+        st.error("Pillars definitions file (new_pillars.json) not found!")
         return {}
 
 

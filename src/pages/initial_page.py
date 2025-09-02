@@ -4,7 +4,7 @@ import folium
 from folium import plugins
 import pandas as pd
 from src.core.data_loader import load_living_labs, get_regions_from_labs
-from src.core.wefe_calculations import PILLARS, calculate_all_pillar_scores, calculate_overall_wefe_score, get_indicator_units, format_indicator_with_unit
+from src.core.wefe_calculations import PILLARS, calculate_kpi_scores, calculate_overall_wefe_score_from_kpis, get_indicator_units, format_indicator_with_unit, get_kpi_def_summaries, get_indicator_display_names
 import streamviz
 from src.policy.data import get_indicator_numbering, get_indicator_with_number
 
@@ -106,46 +106,37 @@ def render_sidebar_welcome_page():
 
 def render_wefe_pillars_view(lab_info):
     """Render a card-style view for all 4 WEFE pillars of the selected living lab."""
-    if not lab_info or 'wefe_pillars' not in lab_info:
+    if not lab_info:
         st.info("No WEFE data available for this living lab.")
         return
 
     pillars = PILLARS
-    calculated_scores = calculate_all_pillar_scores(lab_info)
     units_dict = get_indicator_units()
+    indicator_names = get_indicator_display_names()
 
     cols = st.columns(4)
     for i, pillar in enumerate(pillars):
-        data = lab_info['wefe_pillars'].get(pillar["key"], {})
-        
-        calculated_score = calculated_scores.get(pillar["key"])
-        score_display = f"{calculated_score}" if calculated_score is not None else "-"
+        data = lab_info.get('kpi_indicators', {})
         
         with cols[i]:
             with st.container(border=True):
                 internal_col1, internal_col2 = st.columns([1, 2])
                 with internal_col1:
                     st.markdown(f"<div style='display:flex;align-items:center;'><span style='font-size:2rem;'>{pillar['icon']}</span> <span style='font-size:2rem;font-weight:700;margin-left:0.5em;color:{pillar['color']}'>{pillar['label']}</span></div>", unsafe_allow_html=True)
-                with internal_col2:
-                    st.markdown(
-                        f"""
-                        <div style='display: flex; justify-content: flex-end; align-items: center;'>
-                            <div>
-                                <span style='font-size: 0.9rem; color: #888;'>Score</span><br>
-                                <span style='font-size: 1.5rem; font-weight: bold;'>{score_display}</span>
-                            </div>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                indicators = data.get("indicators", {})
-                for subpillar, subdata in indicators.items():
-                    st.divider()
-                    st.markdown(f"**{subpillar.capitalize()}**")
-                    for ind_name, ind_value in subdata.items():
-                        formatted_value = format_indicator_with_unit(ind_name, ind_value, units_dict)
-                        numbered_indicator = get_indicator_with_number(ind_name)
-                        st.write(f"{numbered_indicator.replace('_', ' ').capitalize()}: {formatted_value}")
+                # no per-pillar score
+                # Show KPI indicators relevant for this pillar
+                st.divider()
+                # Determine indicators for this pillar from new_pillars.json units dict keys
+                for ind_name in sorted(units_dict.keys()):
+                    # crude filter by prefix convention IND_<PILLARLETTER>_
+                    if pillar["key"] == 'water' and ind_name.startswith('IND_W_') \
+                       or pillar["key"] == 'energy' and ind_name.startswith('IND_E_') \
+                       or pillar["key"] == 'food' and ind_name.startswith('IND_F_'):
+                        if ind_name in data:
+                            ind_value = data[ind_name]
+                            formatted_value = format_indicator_with_unit(ind_name, ind_value, units_dict)
+                            display_name = indicator_names.get(ind_name, ind_name)
+                            st.markdown(f"**{display_name}**: {formatted_value}")
 
 def render_overall_wefe_score(lab_info):
     """Render the overall WEFE Nexus score container"""
@@ -158,8 +149,8 @@ def render_overall_wefe_score(lab_info):
         "Water": 3, "Energy": 3, "Food": 3, "Ecosystem": 3
     })
     
-    # Calculate overall WEFE score
-    overall_score, breakdown = calculate_overall_wefe_score(lab_info, weights)
+    # Calculate KPI scores and overall WEFE score from KPIs
+    overall_score, breakdown = calculate_overall_wefe_score_from_kpis(lab_info)
     
     if overall_score is not None:
         # Create the main container
@@ -195,6 +186,22 @@ def render_overall_wefe_score(lab_info):
                     """,
                     unsafe_allow_html=True
                 )
+            # KPI list table with Influenced by (one indicator per row)
+            kpi_scores = breakdown.get("kpi_scores", {})
+            if kpi_scores:
+                kpi_defs = get_kpi_def_summaries()
+                indicator_names = get_indicator_display_names()
+                rows = []
+                # Map KPI id to display name and expand per input indicator
+                for kpi_id, score in sorted(kpi_scores.items(), key=lambda x: x[0]):
+                    meta = kpi_defs.get(kpi_id, {"name": kpi_id, "inputs": []})
+                    kpi_name = meta.get("name", kpi_id)
+                    inputs = meta.get("inputs", []) or [""]
+                    for ind in inputs:
+                        human = indicator_names.get(ind, ind)
+                        rows.append({"KPI": kpi_name, "Score": score, "Influenced by": human})
+                df = pd.DataFrame(rows)
+                st.dataframe(df, use_container_width=True)
     
 
 def render_welcome_page():

@@ -18,9 +18,9 @@
         "description": "Significant reduction in waterborne diseases and improved community health outcomes",
         "category": "Health",
         "affected_indicators": [
-          {"indicator": "basic_drinking_water_services", "expected_change": "+20%"},
-          {"indicator": "basic_sanitation_services", "expected_change": "+30%"},
-          {"indicator": "water_quality_index", "expected_change": "+15%"}
+          {"indicator": "IND_W_WW_TREATED_SHARE", "expected_change": "+20%"},
+          {"indicator": "IND_W_WW_TREATED_VOL", "expected_change": "+150000"},
+          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+120000"}
         ]
       },
       {
@@ -28,9 +28,8 @@
         "description": "Enhanced economic productivity through improved health and reduced healthcare costs",
         "category": "Economic",
         "affected_indicators": [
-          {"indicator": "renewable_freshwater_per_capita", "expected_change": "+150"},
-          {"indicator": "food_production_value_usd_per_capita", "expected_change": "+20%"},
-          {"indicator": "protein_supply_grams_per_capita", "expected_change": "+10"}
+          {"indicator": "IND_F_TWW_IRRIGATION_SHARE", "expected_change": "+5%"},
+          {"indicator": "IND_F_CW_IRRIGATION_VOL", "expected_change": "+60000"}
         ]
       },
       {
@@ -38,29 +37,32 @@
         "description": "Reduced burden on women and girls for water collection, enabling education and economic participation",
         "category": "Social",
         "affected_indicators": [
-          {"indicator": "basic_drinking_water_services", "expected_change": "+20%"},
-          {"indicator": "basic_sanitation_services", "expected_change": "+20%"},
-          {"indicator": "iwrm_implementation", "expected_change": "+10"}
+          {"indicator": "IND_W_WW_TREATED_SHARE", "expected_change": "+10%"},
+          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+80000"}
         ]
       }
+    ],
+    "kpi_impacts": [
+      { "kpi_id": "KPI_WF_1", "expected_change": "+" },
+      { "kpi_id": "KPI_WEF_2", "expected_change": "+" }
     ],
     "trade_offs": [
       {
         "title": "Water Allocation Pressure",
-        "description": "Expanded water services can increase withdrawals and reduce environmental flows if not managed",
+        "description": "Expanded water services can increase irrigation demand and stress local resources if not managed",
         "category": "Water",
         "affected_indicators": [
-          {"indicator": "freshwater_withdrawals_percent", "expected_change": "+10%"},
-          {"indicator": "environmental_flow_requirements", "expected_change": "-5%"}
+          {"indicator": "IND_F_TWW_IRRIGATION_SHARE", "expected_change": "+10%"},
+          {"indicator": "IND_F_CW_IRRIGATION_VOL", "expected_change": "+80000"}
         ]
       },
       {
         "title": "Energy Requirements",
-        "description": "Increased energy consumption for water treatment and distribution",
+        "description": "Energy demand for treatment and distribution may increase despite efficiency gains",
         "category": "Energy",
         "affected_indicators": [
-          {"indicator": "electric_power_consumption", "expected_change": "+25%"},
-          {"indicator": "co2_emissions_per_capita", "expected_change": "+15%"}
+          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "+0.02"},
+          {"indicator": "IND_E_ENERGY_SAVED_CW", "expected_change": "-5%"}
         ]
       }
     ]
@@ -84,9 +86,9 @@
         "description": "Massive reduction in greenhouse gas emissions and fossil fuel dependence",
         "category": "Climate",
         "affected_indicators": [
-          {"indicator": "co2_emissions_per_capita", "expected_change": "-60%"},
-          {"indicator": "renewable_energy_consumption", "expected_change": "+40%"},
-          {"indicator": "renewable_electricity_output", "expected_change": "+50%"}
+          {"indicator": "IND_E_BIOGAS_FROM_WW_ENERGY", "expected_change": "+30%"},
+          {"indicator": "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY", "expected_change": "+35%"},
+          {"indicator": "IND_E_BIOGAS_FROM_CODIGEST_ENERGY", "expected_change": "+40%"}
         ]
       },
       {
@@ -94,9 +96,8 @@
         "description": "Enhanced energy independence and reduced vulnerability to fuel price fluctuations",
         "category": "Energy",
         "affected_indicators": [
-          {"indicator": "energy_imports_net_percent", "expected_change": "-70%"},
-          {"indicator": "electricity_access_percent", "expected_change": "+35%"},
-          {"indicator": "renewable_electricity_output", "expected_change": "+25%"}
+          {"indicator": "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS", "expected_change": "+25%"},
+          {"indicator": "IND_E_NET_ENERGY_FROM_CODIGEST", "expected_change": "+20%"}
         ]
       },
       {
@@ -104,11 +105,14 @@
         "description": "Creation of thousands of jobs in renewable energy sector and related industries",
         "category": "Economic",
         "affected_indicators": [
-          {"indicator": "renewable_electricity_output", "expected_change": "+25%"},
-          {"indicator": "electricity_access_percent", "expected_change": "+10%"},
-          {"indicator": "energy_imports_net_percent", "expected_change": "-5%"}
+          {"indicator": "IND_W_WW_TO_AD_VOL", "expected_change": "+20%"},
+          {"indicator": "IND_F_ORG_WASTE_TO_AD_MASS", "expected_change": "+20%"}
         ]
       }
+    ],
+    "kpi_impacts": [
+      { "kpi_id": "KPI_WE_2", "expected_change": "+" },
+      { "kpi_id": "KPI_WFE_1", "expected_change": "+" }
     ],
     "trade_offs": [
       {
@@ -150,9 +154,9 @@
         "description": "Increased and stable food production with improved nutritional quality",
         "category": "Food",
         "affected_indicators": [
-          {"indicator": "cereal_yield_kg_per_hectare", "expected_change": "+25%"},
-          {"indicator": "dietary_energy_supply_adequacy", "expected_change": "+10%"},
-          {"indicator": "food_production_value_usd_per_capita", "expected_change": "+15%"}
+          {"indicator": "IND_F_TWW_IRRIGATION_VOL", "expected_change": "+150000"},
+          {"indicator": "IND_F_DIGESTATE_APPLIED_MASS", "expected_change": "+20000"},
+          {"indicator": "IND_F_NUTRIENT_VALUE_APPLIED", "expected_change": "+300000"}
         ]
       },
       {
@@ -160,9 +164,8 @@
         "description": "Enhanced biodiversity and reduced environmental degradation",
         "category": "Ecosystem",
         "affected_indicators": [
-          {"indicator": "species_richness_index", "expected_change": "+12%"},
-          {"indicator": "soil_erosion_rate", "expected_change": "-20%"},
-          {"indicator": "water_quality_index", "expected_change": "+15%"}
+          {"indicator": "IND_E_ENERGY_SAVED_CW", "expected_change": "+15%"},
+          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "-0.02"}
         ]
       },
       {
@@ -170,11 +173,14 @@
         "description": "Improved agricultural resilience to climate change and extreme weather",
         "category": "Climate",
         "affected_indicators": [
-          {"indicator": "carbon_sequestration_rate", "expected_change": "+20%"},
-          {"indicator": "pollination_services_index", "expected_change": "+18%"},
-          {"indicator": "water_quality_index", "expected_change": "+10%"}
+          {"indicator": "IND_W_MAR_RECHARGE_VOL", "expected_change": "+50000"}
         ]
       }
+    ],
+    "kpi_impacts": [
+      { "kpi_id": "KPI_WF_1", "expected_change": "+" },
+      { "kpi_id": "KPI_WEF_1", "expected_change": "+" },
+      { "kpi_id": "KPI_WEF_2", "expected_change": "+" }
     ],
     "trade_offs": [
       {
@@ -216,9 +222,8 @@
         "description": "Improved access to quality education through digital learning platforms",
         "category": "Education",
         "affected_indicators": [
-          {"indicator": "electricity_access_percent", "expected_change": "+20%"},
-          {"indicator": "renewable_electricity_output", "expected_change": "+15%"},
-          {"indicator": "energy_imports_net_percent", "expected_change": "-2%"}
+          {"indicator": "IND_E_BIOGAS_FROM_WW_ENERGY", "expected_change": "+10%"},
+          {"indicator": "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS", "expected_change": "+8%"}
         ]
       },
       {
@@ -226,9 +231,7 @@
         "description": "Enhanced economic opportunities through digital entrepreneurship and e-commerce",
         "category": "Economic",
         "affected_indicators": [
-          {"indicator": "electricity_access_percent", "expected_change": "+5%"},
-          {"indicator": "renewable_electricity_output", "expected_change": "+3%"},
-          {"indicator": "energy_imports_net_percent", "expected_change": "-2%"}
+          {"indicator": "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY", "expected_change": "+5%"}
         ]
       },
       {
@@ -236,11 +239,12 @@
         "description": "Improved public service delivery and reduced bureaucratic inefficiencies",
         "category": "Governance",
         "affected_indicators": [
-          {"indicator": "water_quality_index", "expected_change": "+5%"},
-          {"indicator": "renewable_energy_consumption", "expected_change": "+10%"},
-          {"indicator": "electricity_access_percent", "expected_change": "+5%"}
+          {"indicator": "IND_E_ENERGY_SAVED_CW", "expected_change": "+5%"}
         ]
       }
+    ],
+    "kpi_impacts": [
+      { "kpi_id": "KPI_WE_1", "expected_change": "+/-" }
     ],
     "trade_offs": [
       {
@@ -308,14 +312,16 @@
         ]
       }
     ],
+    "kpi_impacts": [
+      { "kpi_id": "KPI_WEF_2", "expected_change": "+" }
+    ],
     "trade_offs": [
       {
         "title": "Land Use Competition",
         "description": "Potential conflict with other urban development priorities",
         "category": "Land",
         "affected_indicators": [
-          {"indicator": "protected_area_coverage", "expected_change": "-2%"},
-          {"indicator": "forest_coverage_percent", "expected_change": "-1%"}
+          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+30000"}
         ]
       },
       {
@@ -323,8 +329,7 @@
         "description": "Ongoing costs for green infrastructure maintenance and management",
         "category": "Economic",
         "affected_indicators": [
-          {"indicator": "food_production_value_usd_per_capita", "expected_change": "-2%"},
-          {"indicator": "electric_power_consumption", "expected_change": "+2%"}
+          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "+0.01"}
         ]
       }
     ]
@@ -348,9 +353,8 @@
         "description": "Dramatic reduction in resource consumption and waste generation",
         "category": "Resources",
         "affected_indicators": [
-          {"indicator": "electric_power_consumption", "expected_change": "-10%"},
-          {"indicator": "water_quality_index", "expected_change": "+10%"},
-          {"indicator": "renewable_energy_consumption", "expected_change": "+10%"}
+          {"indicator": "IND_E_ENERGY_SAVED_CW", "expected_change": "+10%"},
+          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "-0.02"}
         ]
       },
       {
@@ -358,9 +362,8 @@
         "description": "New business models and economic opportunities in circular economy",
         "category": "Economic",
         "affected_indicators": [
-          {"indicator": "food_production_value_usd_per_capita", "expected_change": "+6%"},
-          {"indicator": "dietary_energy_supply_adequacy", "expected_change": "+3%"},
-          {"indicator": "renewable_electricity_output", "expected_change": "+5%"}
+          {"indicator": "IND_F_ORG_WASTE_TO_AD_MASS", "expected_change": "+20%"},
+          {"indicator": "IND_W_WW_TO_AD_VOL", "expected_change": "+15%"}
         ]
       },
       {
@@ -368,11 +371,14 @@
         "description": "Reduced pollution and environmental degradation through waste elimination",
         "category": "Ecosystem",
         "affected_indicators": [
-          {"indicator": "water_quality_index", "expected_change": "+15%"},
-          {"indicator": "soil_erosion_rate", "expected_change": "-10%"},
-          {"indicator": "carbon_sequestration_rate", "expected_change": "+10%"}
+          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+60000"}
         ]
       }
+    ],
+    "kpi_impacts": [
+      { "kpi_id": "KPI_FE_1", "expected_change": "+" },
+      { "kpi_id": "KPI_WFE_1", "expected_change": "+" },
+      { "kpi_id": "KPI_WEF_1", "expected_change": "+" }
     ],
     "trade_offs": [
       {
@@ -440,6 +446,9 @@
         ]
       }
     ],
+    "kpi_impacts": [
+      { "kpi_id": "KPI_WF_1", "expected_change": "+/-" }
+    ],
     "trade_offs": [
       {
         "title": "Economic Restrictions",
@@ -505,6 +514,10 @@
           {"indicator": "iwrm_implementation", "expected_change": "+1"}
         ]
       }
+    ],
+    "kpi_impacts": [
+      { "kpi_id": "KPI_WF_1", "expected_change": "+" },
+      { "kpi_id": "KPI_WE_1", "expected_change": "+/-" }
     ],
     "trade_offs": [
       {
@@ -572,6 +585,10 @@
         ]
       }
     ],
+    "kpi_impacts": [
+      { "kpi_id": "KPI_WE_1", "expected_change": "+" },
+      { "kpi_id": "KPI_WEF_2", "expected_change": "+" }
+    ],
     "trade_offs": [
       {
         "title": "High Investment",
@@ -637,6 +654,9 @@
           {"indicator": "iwrm_implementation", "expected_change": "+1"}
         ]
       }
+    ],
+    "kpi_impacts": [
+      { "kpi_id": "KPI_WF_1", "expected_change": "+/-" }
     ],
     "trade_offs": [
       {

@@ -1,0 +1,254 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "description": "New WEFE indicators derived from KPI set, each linked to one or more KPIs",
+    "created_date": "2025",
+    "notes": [
+      "All indicators include kpi_ids linking them to KPI objects in data/kpi.json",
+      "Units and bounds aligned with KPI normalization bounds"
+    ]
+  },
+  "wefe_pillars": {
+    "water": {
+      "key": "water",
+      "label": "Water",
+      "icon": "💧",
+      "color": "#3498db",
+      "categories": {
+        "kpi_indicators": {
+          "description": "Water indicators directly supporting KPI calculations",
+          "indicators": {
+            "IND_W_WW_TREATED_VOL": {
+              "name": "Wastewater Treated Volume",
+              "short_description": "Annual volume of wastewater treated",
+              "unit": "cubic meters per year",
+              "min_value": 0,
+              "max_value": 2000000,
+              "kpi_ids": ["KPI_WF_1"]
+            },
+            "IND_W_WW_TREATED_SHARE": {
+              "name": "Share of Wastewater Treated",
+              "short_description": "Percent of generated wastewater that is treated",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100,
+              "kpi_ids": ["KPI_WF_1"]
+            },
+            "IND_W_MAR_RECHARGE_VOL": {
+              "name": "MAR Recharge Volume",
+              "short_description": "Water volume recharged via managed aquifer recharge",
+              "unit": "cubic meters per year",
+              "min_value": 0,
+              "max_value": 1000000,
+              "kpi_ids": ["KPI_WE_1"]
+            },
+            "IND_W_GW_LEVEL_RISE": {
+              "name": "Groundwater Level Rise",
+              "short_description": "Rise in groundwater level attributable to MAR",
+              "unit": "meters",
+              "min_value": 0,
+              "max_value": 5,
+              "kpi_ids": ["KPI_WE_1"]
+            },
+            "IND_W_WW_TO_AD_VOL": {
+              "name": "Wastewater to Anaerobic Digestion",
+              "short_description": "Volume of wastewater fed to AD",
+              "unit": "cubic meters per year",
+              "min_value": 0,
+              "max_value": 1000000,
+              "kpi_ids": ["KPI_WE_2"]
+            },
+            "IND_W_SEWAGE_CODIGEST_VOL": {
+              "name": "Sewage/Septage Co-digested Volume",
+              "short_description": "Volume of sewage/septage co-digested",
+              "unit": "cubic meters per year",
+              "min_value": 0,
+              "max_value": 800000,
+              "kpi_ids": ["KPI_WFE_1", "KPI_WEF_1"]
+            },
+            "IND_W_CW_TREATED_VOL": {
+              "name": "Constructed Wetlands Treated Volume",
+              "short_description": "Wastewater treated by constructed wetlands",
+              "unit": "cubic meters per year",
+              "min_value": 0,
+              "max_value": 1500000,
+              "kpi_ids": ["KPI_WEF_2"]
+            }
+          }
+        }
+      }
+    },
+    "energy": {
+      "key": "energy",
+      "label": "Energy",
+      "icon": "⚡",
+      "color": "#f39c12",
+      "categories": {
+        "kpi_indicators": {
+          "description": "Energy indicators directly supporting KPI calculations",
+          "indicators": {
+            "IND_E_PUMPING_ENERGY_SAVED": {
+              "name": "Pumping Energy Saved",
+              "short_description": "Energy saved due to groundwater level rise",
+              "unit": "kilowatt hours per year",
+              "min_value": 0,
+              "max_value": 10000000,
+              "kpi_ids": ["KPI_WE_1"]
+            },
+            "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD": {
+              "name": "Specific Energy Saved per Unit Head Recovery",
+              "short_description": "Energy saved per m³ per meter of head",
+              "unit": "kilowatt hours per cubic meter per meter",
+              "min_value": 0,
+              "max_value": 2,
+              "kpi_ids": ["KPI_WE_1"]
+            },
+            "IND_E_BIOGAS_FROM_WW_ENERGY": {
+              "name": "Biogas Energy from Wastewater",
+              "short_description": "Energy generated from AD of wastewater",
+              "unit": "kilowatt hours per year",
+              "min_value": 0,
+              "max_value": 20000000,
+              "kpi_ids": ["KPI_WE_2"]
+            },
+            "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": {
+              "name": "Electricity/Heat from Biogas",
+              "short_description": "Useful energy produced from biogas",
+              "unit": "kilowatt hours per year",
+              "min_value": 0,
+              "max_value": 15000000,
+              "kpi_ids": ["KPI_WE_2"]
+            },
+            "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": {
+              "name": "Biogas Energy from Organic Waste",
+              "short_description": "Energy generated from AD of organic waste",
+              "unit": "kilowatt hours per year",
+              "min_value": 0,
+              "max_value": 20000000,
+              "kpi_ids": ["KPI_FE_1"]
+            },
+            "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": {
+              "name": "Biogas Energy from Co-digestion",
+              "short_description": "Energy generated from co-digestion",
+              "unit": "kilowatt hours per year",
+              "min_value": 0,
+              "max_value": 30000000,
+              "kpi_ids": ["KPI_WFE_1", "KPI_WEF_1"]
+            },
+            "IND_E_NET_ENERGY_FROM_CODIGEST": {
+              "name": "Net Energy from Co-digestion",
+              "short_description": "Net energy after parasitic loads",
+              "unit": "kilowatt hours per year",
+              "min_value": 0,
+              "max_value": 25000000,
+              "kpi_ids": ["KPI_WFE_1"]
+            },
+            "IND_E_ENERGY_SAVED_CW": {
+              "name": "Energy Saved by Constructed Wetlands",
+              "short_description": "Energy saved vs conventional treatment",
+              "unit": "kilowatt hours per year",
+              "min_value": 0,
+              "max_value": 15000000,
+              "kpi_ids": ["KPI_WEF_2"]
+            },
+            "IND_E_CW_ENERGY_INTENSITY": {
+              "name": "Constructed Wetlands Energy Intensity",
+              "short_description": "O&M energy intensity of constructed wetlands",
+              "unit": "kilowatt hours per cubic meter",
+              "min_value": 0.05,
+              "max_value": 0.6,
+              "kpi_ids": ["KPI_WEF_2"]
+            }
+          }
+        }
+      }
+    },
+    "food": {
+      "key": "food",
+      "label": "Food",
+      "icon": "🌾",
+      "color": "#27ae60",
+      "categories": {
+        "kpi_indicators": {
+          "description": "Food/agriculture indicators directly supporting KPI calculations",
+          "indicators": {
+            "IND_F_TWW_IRRIGATION_VOL": {
+              "name": "Treated Wastewater to Irrigation",
+              "short_description": "Volume of treated wastewater applied to agriculture",
+              "unit": "cubic meters per year",
+              "min_value": 0,
+              "max_value": 1500000,
+              "kpi_ids": ["KPI_WF_1"]
+            },
+            "IND_F_TWW_IRRIGATION_SHARE": {
+              "name": "Share of Irrigation Met by TWW",
+              "short_description": "Percent of irrigation demand met by treated wastewater",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100,
+              "kpi_ids": ["KPI_WF_1"]
+            },
+            "IND_F_ORG_WASTE_TO_AD_MASS": {
+              "name": "Organic Waste to AD",
+              "short_description": "Mass of organic/agri-food waste digested",
+              "unit": "tons per year",
+              "min_value": 0,
+              "max_value": 500000,
+              "kpi_ids": ["KPI_FE_1"]
+            },
+            "IND_F_ORG_WASTE_DIVERTED_SHARE": {
+              "name": "Share of Organic Waste Diverted to AD",
+              "short_description": "Percent of organic waste diverted from disposal to AD",
+              "unit": "percentage",
+              "min_value": 0,
+              "max_value": 100,
+              "kpi_ids": ["KPI_FE_1"]
+            },
+            "IND_F_ORG_WASTE_CODIGEST_MASS": {
+              "name": "Organic Waste Co-digested",
+              "short_description": "Mass of organic waste co-digested with sewage/septage",
+              "unit": "tons per year",
+              "min_value": 0,
+              "max_value": 400000,
+              "kpi_ids": ["KPI_WFE_1"]
+            },
+            "IND_F_DIGESTATE_APPLIED_MASS": {
+              "name": "Digestate Applied to Fields",
+              "short_description": "Quantity of digestate/compost applied to farmland",
+              "unit": "tons per year",
+              "min_value": 0,
+              "max_value": 300000,
+              "kpi_ids": ["KPI_WEF_1"]
+            },
+            "IND_F_NUTRIENT_VALUE_APPLIED": {
+              "name": "Nutrient Value Applied",
+              "short_description": "Total nutrient value (N+P+K) applied from digestate",
+              "unit": "kilograms per year",
+              "min_value": 0,
+              "max_value": 10000000,
+              "kpi_ids": ["KPI_WEF_1"]
+            },
+            "IND_F_SYNTH_FERTILIZER_DISPLACED": {
+              "name": "Synthetic Fertilizer Displaced",
+              "short_description": "Quantity of synthetic fertilizer displaced",
+              "unit": "kilograms per year",
+              "min_value": 0,
+              "max_value": 500000,
+              "kpi_ids": ["KPI_WEF_1"]
+            },
+            "IND_F_CW_IRRIGATION_VOL": {
+              "name": "Constructed Wetlands Irrigation Volume",
+              "short_description": "Volume of CW-treated water used for irrigation",
+              "unit": "cubic meters per year",
+              "min_value": 0,
+              "max_value": 1200000,
+              "kpi_ids": ["KPI_WEF_2"]
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+

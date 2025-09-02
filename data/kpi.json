@@ -1,0 +1,309 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "description": "WEFE Nexus KPI definitions, normalization and aggregation formulas",
+    "created_date": "2025"
+  },
+  "kpis": [
+    {
+      "id": "KPI_WF_1",
+      "name": "Wastewater treated used for agricultural irrigation",
+      "wefe_scope": ["W", "F"],
+      "description": "Extent to which treated wastewater supports agricultural irrigation.",
+      "unit": "composite_index",
+      "target_direction": "higher_is_better",
+      "indicator_refs": [
+        { "indicator_id": "IND_W_WW_TREATED_VOL", "role": "input" },
+        { "indicator_id": "IND_W_WW_TREATED_SHARE", "role": "supporting" },
+        { "indicator_id": "IND_F_TWW_IRRIGATION_VOL", "role": "output" },
+        { "indicator_id": "IND_F_TWW_IRRIGATION_SHARE", "role": "supporting" }
+      ],
+      "normalization": {
+        "method": "min_max",
+        "bounds": {
+          "IND_W_WW_TREATED_VOL": { "min": 0, "max": 2000000 },
+          "IND_W_WW_TREATED_SHARE": { "min": 0, "max": 100 },
+          "IND_F_TWW_IRRIGATION_VOL": { "min": 0, "max": 1500000 },
+          "IND_F_TWW_IRRIGATION_SHARE": { "min": 0, "max": 100 }
+        }
+      },
+      "aggregation": {
+        "method": "geometric_mean",
+        "weights": {
+          "IND_W_WW_TREATED_VOL": 0.35,
+          "IND_W_WW_TREATED_SHARE": 0.15,
+          "IND_F_TWW_IRRIGATION_VOL": 0.35,
+          "IND_F_TWW_IRRIGATION_SHARE": 0.15
+        }
+      },
+      "formula_human": "GM( n(WW_treated_vol), n(WW_treated_share), n(TWW_to_irrigation_vol), n(TWW_irrigation_share) )",
+      "formula_machine": {
+        "type": "geometric_mean",
+        "inputs": [
+          { "id": "IND_W_WW_TREATED_VOL", "normalized": true },
+          { "id": "IND_W_WW_TREATED_SHARE", "normalized": true },
+          { "id": "IND_F_TWW_IRRIGATION_VOL", "normalized": true },
+          { "id": "IND_F_TWW_IRRIGATION_SHARE", "normalized": true }
+        ],
+        "weights": [0.35, 0.15, 0.35, 0.15]
+      }
+    },
+    {
+      "id": "KPI_WE_1",
+      "name": "Managed aquifer recharge raising GW level and reducing pumping energy",
+      "wefe_scope": ["W", "E"],
+      "description": "Performance of MAR in recharging groundwater and saving pumping energy.",
+      "unit": "composite_index",
+      "target_direction": "higher_is_better",
+      "indicator_refs": [
+        { "indicator_id": "IND_W_MAR_RECHARGE_VOL", "role": "input" },
+        { "indicator_id": "IND_W_GW_LEVEL_RISE", "role": "supporting" },
+        { "indicator_id": "IND_E_PUMPING_ENERGY_SAVED", "role": "benefit" },
+        { "indicator_id": "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD", "role": "supporting" }
+      ],
+      "normalization": {
+        "method": "min_max",
+        "bounds": {
+          "IND_W_MAR_RECHARGE_VOL": { "min": 0, "max": 1000000 },
+          "IND_W_GW_LEVEL_RISE": { "min": 0, "max": 5 },
+          "IND_E_PUMPING_ENERGY_SAVED": { "min": 0, "max": 10000000 },
+          "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD": { "min": 0, "max": 2 }
+        }
+      },
+      "aggregation": {
+        "method": "geometric_mean",
+        "weights": {
+          "IND_W_MAR_RECHARGE_VOL": 0.4,
+          "IND_W_GW_LEVEL_RISE": 0.2,
+          "IND_E_PUMPING_ENERGY_SAVED": 0.3,
+          "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD": 0.1
+        }
+      },
+      "formula_human": "GM( n(MAR_vol), n(GW_level_rise), n(pumping_energy_saved), n(specific_energy_saved) )",
+      "formula_machine": {
+        "type": "geometric_mean",
+        "inputs": [
+          { "id": "IND_W_MAR_RECHARGE_VOL", "normalized": true },
+          { "id": "IND_W_GW_LEVEL_RISE", "normalized": true },
+          { "id": "IND_E_PUMPING_ENERGY_SAVED", "normalized": true },
+          { "id": "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD", "normalized": true }
+        ],
+        "weights": [0.4, 0.2, 0.3, 0.1]
+      }
+    },
+    {
+      "id": "KPI_WE_2",
+      "name": "Wastewater used for biogas generation",
+      "wefe_scope": ["W", "E"],
+      "description": "Conversion of wastewater to biogas and useful energy.",
+      "unit": "composite_index",
+      "target_direction": "higher_is_better",
+      "indicator_refs": [
+        { "indicator_id": "IND_W_WW_TO_AD_VOL", "role": "input" },
+        { "indicator_id": "IND_E_BIOGAS_FROM_WW_ENERGY", "role": "output" },
+        { "indicator_id": "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS", "role": "supporting" }
+      ],
+      "normalization": {
+        "method": "min_max",
+        "bounds": {
+          "IND_W_WW_TO_AD_VOL": { "min": 0, "max": 1000000 },
+          "IND_E_BIOGAS_FROM_WW_ENERGY": { "min": 0, "max": 20000000 },
+          "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": { "min": 0, "max": 15000000 }
+        }
+      },
+      "aggregation": {
+        "method": "geometric_mean",
+        "weights": {
+          "IND_W_WW_TO_AD_VOL": 0.4,
+          "IND_E_BIOGAS_FROM_WW_ENERGY": 0.4,
+          "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": 0.2
+        }
+      },
+      "formula_human": "GM( n(WW_to_AD_vol), n(biogas_energy_from_WW), n(electricity_heat_from_biogas) )",
+      "formula_machine": {
+        "type": "geometric_mean",
+        "inputs": [
+          { "id": "IND_W_WW_TO_AD_VOL", "normalized": true },
+          { "id": "IND_E_BIOGAS_FROM_WW_ENERGY", "normalized": true },
+          { "id": "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS", "normalized": true }
+        ],
+        "weights": [0.4, 0.4, 0.2]
+      }
+    },
+    {
+      "id": "KPI_FE_1",
+      "name": "Organic waste used for biogas generation",
+      "wefe_scope": ["F", "E"],
+      "description": "Biogas generation from organic/agri-food waste and diversion from disposal.",
+      "unit": "composite_index",
+      "target_direction": "higher_is_better",
+      "indicator_refs": [
+        { "indicator_id": "IND_F_ORG_WASTE_TO_AD_MASS", "role": "input" },
+        { "indicator_id": "IND_F_ORG_WASTE_DIVERTED_SHARE", "role": "supporting" },
+        { "indicator_id": "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY", "role": "output" }
+      ],
+      "normalization": {
+        "method": "min_max",
+        "bounds": {
+          "IND_F_ORG_WASTE_TO_AD_MASS": { "min": 0, "max": 500000 },
+          "IND_F_ORG_WASTE_DIVERTED_SHARE": { "min": 0, "max": 100 },
+          "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": { "min": 0, "max": 20000000 }
+        }
+      },
+      "aggregation": {
+        "method": "geometric_mean",
+        "weights": {
+          "IND_F_ORG_WASTE_TO_AD_MASS": 0.45,
+          "IND_F_ORG_WASTE_DIVERTED_SHARE": 0.15,
+          "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": 0.4
+        }
+      },
+      "formula_human": "GM( n(org_waste_to_AD_mass), n(share_diverted), n(biogas_energy_from_org_waste) )",
+      "formula_machine": {
+        "type": "geometric_mean",
+        "inputs": [
+          { "id": "IND_F_ORG_WASTE_TO_AD_MASS", "normalized": true },
+          { "id": "IND_F_ORG_WASTE_DIVERTED_SHARE", "normalized": true },
+          { "id": "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY", "normalized": true }
+        ],
+        "weights": [0.45, 0.15, 0.4]
+      }
+    },
+    {
+      "id": "KPI_WFE_1",
+      "name": "Co-digestion of sewage/septage and organic waste for biogas",
+      "wefe_scope": ["W", "F", "E"],
+      "description": "Biogas generation from co-digestion of sewage/septage and organic waste.",
+      "unit": "composite_index",
+      "target_direction": "higher_is_better",
+      "indicator_refs": [
+        { "indicator_id": "IND_W_SEWAGE_CODIGEST_VOL", "role": "input" },
+        { "indicator_id": "IND_F_ORG_WASTE_CODIGEST_MASS", "role": "input" },
+        { "indicator_id": "IND_E_BIOGAS_FROM_CODIGEST_ENERGY", "role": "output" },
+        { "indicator_id": "IND_E_NET_ENERGY_FROM_CODIGEST", "role": "supporting" }
+      ],
+      "normalization": {
+        "method": "min_max",
+        "bounds": {
+          "IND_W_SEWAGE_CODIGEST_VOL": { "min": 0, "max": 800000 },
+          "IND_F_ORG_WASTE_CODIGEST_MASS": { "min": 0, "max": 400000 },
+          "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": { "min": 0, "max": 30000000 },
+          "IND_E_NET_ENERGY_FROM_CODIGEST": { "min": 0, "max": 25000000 }
+        }
+      },
+      "aggregation": {
+        "method": "geometric_mean",
+        "weights": {
+          "IND_W_SEWAGE_CODIGEST_VOL": 0.3,
+          "IND_F_ORG_WASTE_CODIGEST_MASS": 0.3,
+          "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": 0.3,
+          "IND_E_NET_ENERGY_FROM_CODIGEST": 0.1
+        }
+      },
+      "formula_human": "GM( n(sewage_codigest_vol), n(org_waste_codigest_mass), n(biogas_energy_codigest), n(net_energy_codigest) )",
+      "formula_machine": {
+        "type": "geometric_mean",
+        "inputs": [
+          { "id": "IND_W_SEWAGE_CODIGEST_VOL", "normalized": true },
+          { "id": "IND_F_ORG_WASTE_CODIGEST_MASS", "normalized": true },
+          { "id": "IND_E_BIOGAS_FROM_CODIGEST_ENERGY", "normalized": true },
+          { "id": "IND_E_NET_ENERGY_FROM_CODIGEST", "normalized": true }
+        ],
+        "weights": [0.3, 0.3, 0.3, 0.1]
+      }
+    },
+    {
+      "id": "KPI_WEF_1",
+      "name": "Co-digestion generating organic fertiliser applied in agriculture",
+      "wefe_scope": ["W", "E", "F"],
+      "description": "Energy generation and nutrient recycling via co-digestion with fertiliser application.",
+      "unit": "composite_index",
+      "target_direction": "higher_is_better",
+      "indicator_refs": [
+        { "indicator_id": "IND_W_SEWAGE_CODIGEST_VOL", "role": "input" },
+        { "indicator_id": "IND_E_BIOGAS_FROM_CODIGEST_ENERGY", "role": "output" },
+        { "indicator_id": "IND_F_DIGESTATE_APPLIED_MASS", "role": "benefit" },
+        { "indicator_id": "IND_F_NUTRIENT_VALUE_APPLIED", "role": "supporting" },
+        { "indicator_id": "IND_F_SYNTH_FERTILIZER_DISPLACED", "role": "supporting" }
+      ],
+      "normalization": {
+        "method": "min_max",
+        "bounds": {
+          "IND_W_SEWAGE_CODIGEST_VOL": { "min": 0, "max": 800000 },
+          "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": { "min": 0, "max": 30000000 },
+          "IND_F_DIGESTATE_APPLIED_MASS": { "min": 0, "max": 300000 },
+          "IND_F_NUTRIENT_VALUE_APPLIED": { "min": 0, "max": 10000000 },
+          "IND_F_SYNTH_FERTILIZER_DISPLACED": { "min": 0, "max": 500000 }
+        }
+      },
+      "aggregation": {
+        "method": "geometric_mean",
+        "weights": {
+          "IND_W_SEWAGE_CODIGEST_VOL": 0.2,
+          "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": 0.3,
+          "IND_F_DIGESTATE_APPLIED_MASS": 0.25,
+          "IND_F_NUTRIENT_VALUE_APPLIED": 0.15,
+          "IND_F_SYNTH_FERTILIZER_DISPLACED": 0.1
+        }
+      },
+      "formula_human": "GM( n(sewage_codigest_vol), n(biogas_energy_codigest), n(digestate_applied), n(nutrient_value), n(fertilizer_displaced) )",
+      "formula_machine": {
+        "type": "geometric_mean",
+        "inputs": [
+          { "id": "IND_W_SEWAGE_CODIGEST_VOL", "normalized": true },
+          { "id": "IND_E_BIOGAS_FROM_CODIGEST_ENERGY", "normalized": true },
+          { "id": "IND_F_DIGESTATE_APPLIED_MASS", "normalized": true },
+          { "id": "IND_F_NUTRIENT_VALUE_APPLIED", "normalized": true },
+          { "id": "IND_F_SYNTH_FERTILIZER_DISPLACED", "normalized": true }
+        ],
+        "weights": [0.2, 0.3, 0.25, 0.15, 0.1]
+      }
+    },
+    {
+      "id": "KPI_WEF_2",
+      "name": "Constructed wetlands for wastewater treatment and irrigation with energy savings",
+      "wefe_scope": ["W", "E", "F"],
+      "description": "Wastewater treated by constructed wetlands, energy saved, and irrigation use.",
+      "unit": "composite_index",
+      "target_direction": "higher_is_better",
+      "indicator_refs": [
+        { "indicator_id": "IND_W_CW_TREATED_VOL", "role": "input" },
+        { "indicator_id": "IND_E_ENERGY_SAVED_CW", "role": "benefit" },
+        { "indicator_id": "IND_E_CW_ENERGY_INTENSITY", "role": "supporting" },
+        { "indicator_id": "IND_F_CW_IRRIGATION_VOL", "role": "benefit" }
+      ],
+      "normalization": {
+        "method": "min_max",
+        "bounds": {
+          "IND_W_CW_TREATED_VOL": { "min": 0, "max": 1500000 },
+          "IND_E_ENERGY_SAVED_CW": { "min": 0, "max": 15000000 },
+          "IND_E_CW_ENERGY_INTENSITY": { "min": 0.05, "max": 0.6 },
+          "IND_F_CW_IRRIGATION_VOL": { "min": 0, "max": 1200000 }
+        },
+        "inversions": ["IND_E_CW_ENERGY_INTENSITY"]
+      },
+      "aggregation": {
+        "method": "geometric_mean",
+        "weights": {
+          "IND_W_CW_TREATED_VOL": 0.35,
+          "IND_E_ENERGY_SAVED_CW": 0.3,
+          "IND_E_CW_ENERGY_INTENSITY": 0.1,
+          "IND_F_CW_IRRIGATION_VOL": 0.25
+        }
+      },
+      "formula_human": "GM( n(CW_treated_vol), n(energy_saved_CW), n_inv(CW_energy_intensity), n(CW_irrigation_vol) )",
+      "formula_machine": {
+        "type": "geometric_mean",
+        "inputs": [
+          { "id": "IND_W_CW_TREATED_VOL", "normalized": true },
+          { "id": "IND_E_ENERGY_SAVED_CW", "normalized": true },
+          { "id": "IND_E_CW_ENERGY_INTENSITY", "normalized": true, "invert": true },
+          { "id": "IND_F_CW_IRRIGATION_VOL", "normalized": true }
+        ],
+        "weights": [0.35, 0.3, 0.1, 0.25]
+      }
+    }
+  ]
+}
+
+
