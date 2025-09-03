@@ -420,14 +420,23 @@ def calculate_kpi_scores(lab_data: Dict) -> Dict[str, float]:
                 used_weights.append(weights[idx] if idx < len(weights) else 1.0)
         if not normalized_values:
             continue
-        # geometric mean with weights
+        # aggregate according to KPI config (geometric_mean default; supports arithmetic_mean)
         try:
-            if not used_weights:
-                gm = math.exp(sum(math.log(max(v, 1e-9)) for v in normalized_values) / len(normalized_values))
+            agg_conf = kpi.get('aggregation', {}) or {}
+            method = (agg_conf.get('method') or '').lower()
+            if method == 'arithmetic_mean':
+                if not used_weights:
+                    agg = sum(normalized_values) / len(normalized_values)
+                else:
+                    wsum = sum(used_weights)
+                    agg = sum(v * w for v, w in zip(normalized_values, used_weights)) / (wsum if wsum else 1.0)
             else:
-                wsum = sum(used_weights)
-                gm = math.exp(sum(w * math.log(max(v, 1e-9)) for v, w in zip(normalized_values, used_weights)) / wsum)
-            scores[kpi_id] = round(gm * 100.0, 1)
+                if not used_weights:
+                    agg = math.exp(sum(math.log(max(v, 1e-9)) for v in normalized_values) / len(normalized_values))
+                else:
+                    wsum = sum(used_weights)
+                    agg = math.exp(sum(w * math.log(max(v, 1e-9)) for v, w in zip(normalized_values, used_weights)) / (wsum if wsum else 1.0))
+            scores[kpi_id] = round(agg * 100.0, 1)
         except Exception:
             continue
     return scores

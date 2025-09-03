@@ -21,14 +21,14 @@
       "normalization": {
         "method": "min_max",
         "bounds": {
-          "IND_W_WW_TREATED_VOL": { "min": 0, "max": 2000000 },
+          "IND_W_WW_TREATED_VOL": { "min": 0, "max": 84000 },
           "IND_W_WW_TREATED_SHARE": { "min": 0, "max": 100 },
-          "IND_F_TWW_IRRIGATION_VOL": { "min": 0, "max": 1500000 },
+          "IND_F_TWW_IRRIGATION_VOL": { "min": 0, "max": 42000 },
           "IND_F_TWW_IRRIGATION_SHARE": { "min": 0, "max": 100 }
         }
       },
       "aggregation": {
-        "method": "geometric_mean",
+        "method": "arithmetic_mean",
         "weights": {
           "IND_W_WW_TREATED_VOL": 0.35,
           "IND_W_WW_TREATED_SHARE": 0.15,
@@ -64,14 +64,14 @@
       "normalization": {
         "method": "min_max",
         "bounds": {
-          "IND_W_MAR_RECHARGE_VOL": { "min": 0, "max": 1000000 },
+          "IND_W_MAR_RECHARGE_VOL": { "min": 0, "max": 72000 },
           "IND_W_GW_LEVEL_RISE": { "min": 0, "max": 5 },
-          "IND_E_PUMPING_ENERGY_SAVED": { "min": 0, "max": 10000000 },
+          "IND_E_PUMPING_ENERGY_SAVED": { "min": 0, "max": 216000 },
           "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD": { "min": 0, "max": 2 }
         }
       },
       "aggregation": {
-        "method": "geometric_mean",
+        "method": "arithmetic_mean",
         "weights": {
           "IND_W_MAR_RECHARGE_VOL": 0.4,
           "IND_W_GW_LEVEL_RISE": 0.2,
@@ -106,13 +106,13 @@
       "normalization": {
         "method": "min_max",
         "bounds": {
-          "IND_W_WW_TO_AD_VOL": { "min": 0, "max": 1000000 },
-          "IND_E_BIOGAS_FROM_WW_ENERGY": { "min": 0, "max": 20000000 },
-          "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": { "min": 0, "max": 15000000 }
+          "IND_W_WW_TO_AD_VOL": { "min": 0, "max": 14400 },
+          "IND_E_BIOGAS_FROM_WW_ENERGY": { "min": 0, "max": 540000 },
+          "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": { "min": 0, "max": 360000 }
         }
       },
       "aggregation": {
-        "method": "geometric_mean",
+        "method": "arithmetic_mean",
         "weights": {
           "IND_W_WW_TO_AD_VOL": 0.4,
           "IND_E_BIOGAS_FROM_WW_ENERGY": 0.4,
@@ -145,13 +145,13 @@
       "normalization": {
         "method": "min_max",
         "bounds": {
-          "IND_F_ORG_WASTE_TO_AD_MASS": { "min": 0, "max": 500000 },
+          "IND_F_ORG_WASTE_TO_AD_MASS": { "min": 0, "max": 5400 },
           "IND_F_ORG_WASTE_DIVERTED_SHARE": { "min": 0, "max": 100 },
-          "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": { "min": 0, "max": 20000000 }
+          "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": { "min": 0, "max": 720000 }
         }
       },
       "aggregation": {
-        "method": "geometric_mean",
+        "method": "arithmetic_mean",
         "weights": {
           "IND_F_ORG_WASTE_TO_AD_MASS": 0.45,
           "IND_F_ORG_WASTE_DIVERTED_SHARE": 0.15,
@@ -185,14 +185,14 @@
       "normalization": {
         "method": "min_max",
         "bounds": {
-          "IND_W_SEWAGE_CODIGEST_VOL": { "min": 0, "max": 800000 },
-          "IND_F_ORG_WASTE_CODIGEST_MASS": { "min": 0, "max": 400000 },
-          "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": { "min": 0, "max": 30000000 },
-          "IND_E_NET_ENERGY_FROM_CODIGEST": { "min": 0, "max": 25000000 }
+          "IND_W_SEWAGE_CODIGEST_VOL": { "min": 0, "max": 10800 },
+          "IND_F_ORG_WASTE_CODIGEST_MASS": { "min": 0, "max": 4800 },
+          "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": { "min": 0, "max": 1080000 },
+          "IND_E_NET_ENERGY_FROM_CODIGEST": { "min": 0, "max": 960000 }
         }
       },
       "aggregation": {
-        "method": "geometric_mean",
+        "method": "arithmetic_mean",
         "weights": {
           "IND_W_SEWAGE_CODIGEST_VOL": 0.3,
           "IND_F_ORG_WASTE_CODIGEST_MASS": 0.3,
@@ -229,15 +229,15 @@
       "normalization": {
         "method": "min_max",
         "bounds": {
-          "IND_W_SEWAGE_CODIGEST_VOL": { "min": 0, "max": 800000 },
-          "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": { "min": 0, "max": 30000000 },
-          "IND_F_DIGESTATE_APPLIED_MASS": { "min": 0, "max": 300000 },
-          "IND_F_NUTRIENT_VALUE_APPLIED": { "min": 0, "max": 10000000 },
-          "IND_F_SYNTH_FERTILIZER_DISPLACED": { "min": 0, "max": 500000 }
+          "IND_W_SEWAGE_CODIGEST_VOL": { "min": 0, "max": 10800 },
+          "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": { "min": 0, "max": 1080000 },
+          "IND_F_DIGESTATE_APPLIED_MASS": { "min": 0, "max": 6600 },
+          "IND_F_NUTRIENT_VALUE_APPLIED": { "min": 0, "max": 216000 },
+          "IND_F_SYNTH_FERTILIZER_DISPLACED": { "min": 0, "max": 14400 }
         }
       },
       "aggregation": {
-        "method": "geometric_mean",
+        "method": "arithmetic_mean",
         "weights": {
           "IND_W_SEWAGE_CODIGEST_VOL": 0.2,
           "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": 0.3,
@@ -275,15 +275,15 @@
       "normalization": {
         "method": "min_max",
         "bounds": {
-          "IND_W_CW_TREATED_VOL": { "min": 0, "max": 1500000 },
-          "IND_E_ENERGY_SAVED_CW": { "min": 0, "max": 15000000 },
+          "IND_W_CW_TREATED_VOL": { "min": 0, "max": 26400 },
+          "IND_E_ENERGY_SAVED_CW": { "min": 0, "max": 108000 },
           "IND_E_CW_ENERGY_INTENSITY": { "min": 0.05, "max": 0.6 },
-          "IND_F_CW_IRRIGATION_VOL": { "min": 0, "max": 1200000 }
+          "IND_F_CW_IRRIGATION_VOL": { "min": 0, "max": 21600 }
         },
         "inversions": ["IND_E_CW_ENERGY_INTENSITY"]
       },
       "aggregation": {
-        "method": "geometric_mean",
+        "method": "arithmetic_mean",
         "weights": {
           "IND_W_CW_TREATED_VOL": 0.35,
           "IND_E_ENERGY_SAVED_CW": 0.3,

@@ -75,8 +75,26 @@ def render_sidebar_welcome_page():
     st.session_state.current_selected_lab = selected_lab
     st.sidebar.markdown("---")
     
+    # Inject CSS to style ONLY the first sidebar expander (WEFE weights) with red border and red title
+    st.sidebar.markdown(
+        """
+        <style>
+        section[data-testid=\"stSidebar\"] div[data-testid=\"stExpander\"]:first-of-type {
+            border: 2px solid #e74c3c !important;
+            border-radius: 8px !important;
+        }
+        section[data-testid=\"stSidebar\"] div[data-testid=\"stExpander\"]:first-of-type button,
+        section[data-testid=\"stSidebar\"] div[data-testid=\"stExpander\"]:first-of-type div[role=\"button\"] {
+            color: #e74c3c !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     # WEFE weights settings
     with st.sidebar.expander("WEFE weights settings", expanded=False):
+        st.markdown("<span style='color:#e74c3c;font-weight:700;'>WILL BE REMOVED</span>", unsafe_allow_html=True)
         water_w = st.slider("Water", 0, 5, 3, key="water_weight")
         energy_w = st.slider("Energy", 0, 5, 3, key="energy_weight")
         food_w = st.slider("Food", 0, 5, 3, key="food_weight")
@@ -137,6 +155,11 @@ def render_wefe_pillars_view(lab_info):
                             formatted_value = format_indicator_with_unit(ind_name, ind_value, units_dict)
                             display_name = indicator_names.get(ind_name, ind_name)
                             st.markdown(f"**{display_name}**: {formatted_value}")
+    
+    with cols[3]:
+        with st.container(border=True):
+            st.markdown(f"<div style='display:flex;align-items:center;'><span style='font-size:2rem;'>🌿</span> <span style='font-size:2rem;font-weight:700;margin-left:0.5em;color:{pillar['color']}'>Ecosystems</span></div>", unsafe_allow_html=True)
+
 
 def render_overall_wefe_score(lab_info):
     """Render the overall WEFE Nexus score container"""
@@ -186,22 +209,38 @@ def render_overall_wefe_score(lab_info):
                     """,
                     unsafe_allow_html=True
                 )
-            # KPI list table with Influenced by (one indicator per row)
+            # KPI selection and display of affecting indicators
             kpi_scores = breakdown.get("kpi_scores", {})
             if kpi_scores:
                 kpi_defs = get_kpi_def_summaries()
                 indicator_names = get_indicator_display_names()
-                rows = []
-                # Map KPI id to display name and expand per input indicator
-                for kpi_id, score in sorted(kpi_scores.items(), key=lambda x: x[0]):
-                    meta = kpi_defs.get(kpi_id, {"name": kpi_id, "inputs": []})
-                    kpi_name = meta.get("name", kpi_id)
-                    inputs = meta.get("inputs", []) or [""]
-                    for ind in inputs:
-                        human = indicator_names.get(ind, ind)
-                        rows.append({"KPI": kpi_name, "Score": score, "Influenced by": human})
-                df = pd.DataFrame(rows)
-                st.dataframe(df, use_container_width=True)
+
+                # Build options with a default "None"
+                kpi_options = ["None"] + [
+                    f"{kpi_id} - {kpi_defs.get(kpi_id, {}).get('name', kpi_id)}"
+                    for kpi_id in sorted(kpi_scores.keys())
+                ]
+
+                selected_option = st.selectbox(
+                    "Select a KPI to view its affecting indicators",
+                    kpi_options,
+                    index=0,
+                    key="kpi_select_inspect"
+                )
+
+                if selected_option != "None":
+                    selected_kpi_id = selected_option.split(" - ", 1)[0]
+                    selected_meta = kpi_defs.get(selected_kpi_id, {"name": selected_kpi_id, "inputs": []})
+                    affecting_inds = selected_meta.get("inputs", [])
+
+                    st.markdown(f"**KPI:** {selected_meta.get('name', selected_kpi_id)}")
+                    if affecting_inds:
+                        st.markdown("**Indicators affecting this KPI:**")
+                        for ind_id in affecting_inds:
+                            human = indicator_names.get(ind_id, ind_id)
+                            st.markdown(f"- {human}")
+                    else:
+                        st.info("No indicator inputs defined for this KPI.")
     
 
 def render_welcome_page():
