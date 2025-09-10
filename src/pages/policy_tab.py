@@ -1,7 +1,8 @@
 import streamlit as st
 import os
 from src.pages.initial_page import get_selected_lab_info
-from src.policy.data import get_policy_categories, get_policies_by_category, load_policies, get_all_indicators_with_numbers, get_policies_by_indicator, get_indicator_numbering
+from src.policy.data import get_policy_categories, get_policies_by_category, load_policies, get_policies_by_indicator
+from src.core.wefe_calculations import get_all_indicators_with_numbers, get_indicator_numbering
 from src.policy.visualization import create_indicators_heatmap, create_improved_indicators_heatmap, create_and_display_gauge_scoring
 from src.policy.ui import (
     render_policy_details, 

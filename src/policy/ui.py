@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 from typing import Dict, List, Any
-from src.policy.data import load_policies, parse_change_value, get_indicator_with_number
+from src.policy.data import load_policies, parse_change_value
+from src.core.wefe_calculations import get_indicator_with_number, _load_pillars_definitions_local
 
 
 def render_synergy_tradeoff_item(item: Dict, policy_title: str, is_synergy: bool = True):
@@ -22,7 +23,7 @@ def render_synergy_tradeoff_item(item: Dict, policy_title: str, is_synergy: bool
                 indicator = ind.get('indicator')
                 change = ind.get('expected_change')
                 if indicator is not None and change is not None:
-                    st.write(f"- {indicator}: {change}")
+                    st.write(f"- {get_indicator_with_number(indicator)}: {change}")
 
 
 def render_policy_details(policy: Dict):
@@ -81,16 +82,18 @@ def create_and_display_indicator_table(lab_info, selected_policy_titles):
     """Create and display the indicator table showing policy impacts on indicators"""
     all_indicator_rows: List[str] = []
     indicator_to_row: Dict[str, str] = {}
-    wefe = lab_info.get('wefe_pillars', {}) or {}
-    for pillar_key, pillar_obj in wefe.items():
-        indicators_obj = (pillar_obj or {}).get('indicators', {}) or {}
-        for category_key, indicator_group in indicators_obj.items():
-            if isinstance(indicator_group, dict):
-                for indicator_key in indicator_group.keys():
-                    numbered_indicator = get_indicator_with_number(indicator_key)
-                    row_name = f"{pillar_key} / {category_key} / {numbered_indicator}"
-                    all_indicator_rows.append(row_name)
-                    indicator_to_row[indicator_key] = row_name
+    # Build rows from unified KPI indicator definitions so policy indicators match
+    pillars_def = _load_pillars_definitions_local() or {}
+    wefe_defs = (pillars_def.get('wefe_pillars') or {}) if isinstance(pillars_def, dict) else {}
+    for pillar_key, pillar_data in wefe_defs.items():
+        categories = (pillar_data or {}).get('categories', {})
+        for category_key, category_data in (categories or {}).items():
+            indicators = (category_data or {}).get('indicators', {})
+            for indicator_key in (indicators or {}).keys():
+                numbered_indicator = get_indicator_with_number(indicator_key)
+                row_name = f"{pillar_key} / {category_key} / {numbered_indicator}"
+                all_indicator_rows.append(row_name)
+                indicator_to_row[indicator_key] = row_name
 
     policies_by_title = {p['title']: p for p in load_policies()}
 
@@ -143,6 +146,7 @@ def create_and_display_indicator_table(lab_info, selected_policy_titles):
             wefe_col: List[str] = []
             dim_col: List[str] = []
             actual_values = []
+            kpi_indicators = (lab_info.get('kpi_indicators') or {}) if isinstance(lab_info, dict) else {}
             for row_name in indicator_rows:
                 parts = row_name.split(' / ')
                 if len(parts) == 3:
@@ -173,9 +177,12 @@ def create_and_display_indicator_table(lab_info, selected_policy_titles):
                     }
                     dim_col.append(dim_map.get(category_key, category_key[:2].upper()))
                     try:
-                        actual_value = wefe[pillar_key]['indicators'][category_key][raw_indicator_key]
-                        actual_values.append(round(actual_value, 2))
-                    except (KeyError, TypeError):
+                        actual_value = kpi_indicators.get(raw_indicator_key)
+                        if isinstance(actual_value, (int, float)):
+                            actual_values.append(round(float(actual_value), 2))
+                        else:
+                            actual_values.append(0.00)
+                    except Exception:
                         actual_values.append(0.00)
                 else:
                     numbers_col.append('')
@@ -185,7 +192,8 @@ def create_and_display_indicator_table(lab_info, selected_policy_titles):
                     actual_values.append(0.00)
             
             # Insert meta columns at the beginning
-            value_table.insert(0, 'No.', numbers_col)
+            # Ensure No. column is numeric and left-padded when displayed
+            value_table.insert(0, 'No.', [str(n).zfill(2) if str(n).isdigit() else '' for n in numbers_col])
             value_table.insert(1, 'Indicator', names_col)
             value_table.insert(2, 'WEFE', wefe_col)
             value_table.insert(3, 'DIM', dim_col)

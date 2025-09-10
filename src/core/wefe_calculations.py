@@ -482,6 +482,37 @@ def get_indicator_display_names() -> Dict[str, str]:
                     display_names[ind_id] = name
     return display_names
 
+
+def get_indicator_numbering() -> Dict[str, int]:
+    """Return a stable map of indicator_id -> sequential number based on new_pillars.json order."""
+    pillars_definitions = _load_pillars_definitions_local()
+    numbering: Dict[str, int] = {}
+    counter = 1
+    wefe = (pillars_definitions or {}).get('wefe_pillars', {})
+    for _, pillar_data in (wefe or {}).items():
+        categories = (pillar_data or {}).get('categories', {})
+        for _, category_data in (categories or {}).items():
+            indicators = (category_data or {}).get('indicators', {})
+            for ind_key in (indicators or {}).keys():
+                numbering[ind_key] = counter
+                counter += 1
+    return numbering
+
+
+def get_indicator_with_number(indicator_key: str) -> str:
+    """Return a label like 'NN. IND_KEY' using the shared numbering map."""
+    numbering = get_indicator_numbering()
+    num = numbering.get(indicator_key, 0)
+    return f"{num:02d}. {indicator_key}" if num > 0 else indicator_key
+
+
+def get_all_indicators_with_numbers() -> List[str]:
+    """Return all indicator keys prefixed with their numbers, sorted by key."""
+    # Keep same behavior as existing UI which sorts by key
+    numbering = get_indicator_numbering()
+    keys = sorted(numbering.keys())
+    return [get_indicator_with_number(k) for k in keys]
+
 def calculate_new_wefe_score_after_policies(lab_info, selected_policies):
     """
     Calculate the new WEFE score after applying selected policies to indicators
@@ -524,8 +555,8 @@ def calculate_new_wefe_score_after_policies(lab_info, selected_policies):
                 improved_kpis[indicator_name] = improved_value
         improved_lab_info['kpi_indicators'] = improved_kpis
         
-        # Calculate new overall score
-        new_score, _ = calculate_overall_wefe_score(improved_lab_info)
+        # Calculate new overall score using the same KPI-based method as the initial page
+        new_score, _ = calculate_overall_wefe_score_from_kpis(improved_lab_info)
         return new_score
         
     except Exception as e:

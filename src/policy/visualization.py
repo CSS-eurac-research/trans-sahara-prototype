@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import numpy as np
 import streamviz
-from src.core.wefe_calculations import normalize_indicator, get_indicators_to_invert
+from src.core.wefe_calculations import normalize_indicator, get_indicators_to_invert, get_indicator_with_number
 from src.policy.data import load_policies, load_pillars_definitions, parse_change_value
 
 
@@ -89,7 +89,8 @@ def create_indicators_heatmap(lab_info):
             indicators_list = pillar_indicators[pillar_key]
             if i < len(indicators_list):
                 indicator_name = indicators_list[i]['name']
-                hover_row.append(indicator_name)
+                indicator_key = indicators_list[i]['key']
+                hover_row.append(f"{get_indicator_with_number(indicator_key)} — {indicator_name}")
             else:
                 hover_row.append("No indicator")
         hover_text.append(hover_row)
@@ -236,7 +237,8 @@ def create_improved_indicators_heatmap(lab_info, selected_policy_titles):
             indicators_list = pillar_indicators[pillar_key]
             if i < len(indicators_list):
                 indicator_name = indicators_list[i]['name']
-                hover_row.append(indicator_name)
+                indicator_key = indicators_list[i]['key']
+                hover_row.append(f"{get_indicator_with_number(indicator_key)} — {indicator_name}")
             else:
                 hover_row.append("No indicator")
         hover_text.append(hover_row)
@@ -283,9 +285,9 @@ def create_and_display_gauge_scoring(lab_info, selected_policies):
     
     try:
         # Import here to avoid circular imports
-        from src.core.wefe_calculations import calculate_overall_wefe_score, calculate_new_wefe_score_after_policies
+        from src.core.wefe_calculations import calculate_overall_wefe_score_from_kpis, calculate_new_wefe_score_after_policies
         
-        original_score, _ = calculate_overall_wefe_score(lab_info)
+        original_score, _ = calculate_overall_wefe_score_from_kpis(lab_info)
         new_score = calculate_new_wefe_score_after_policies(lab_info, selected_policies) if selected_policies else None
         
         if original_score is not None:

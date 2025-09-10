@@ -4,9 +4,9 @@ import folium
 from folium import plugins
 import pandas as pd
 from src.core.data_loader import load_living_labs, get_regions_from_labs
-from src.core.wefe_calculations import PILLARS, calculate_kpi_scores, calculate_overall_wefe_score_from_kpis, get_indicator_units, format_indicator_with_unit, get_kpi_def_summaries, get_indicator_display_names, _load_kpi_definitions_local
+from src.core.wefe_calculations import PILLARS, calculate_kpi_scores, calculate_overall_wefe_score_from_kpis, get_indicator_units, format_indicator_with_unit, get_kpi_def_summaries, get_indicator_display_names, _load_kpi_definitions_local, get_indicator_numbering
 import streamviz
-from src.policy.data import get_indicator_numbering, get_indicator_with_number
+from src.core.wefe_calculations import get_indicator_with_number
 
 def create_living_labs_map(selected_lab=None):
     """Create an interactive map showing all living lab areas as squares"""
@@ -145,16 +145,24 @@ def render_wefe_pillars_view(lab_info):
                 # Show KPI indicators relevant for this pillar
                 st.divider()
                 # Determine indicators for this pillar from new_pillars.json units dict keys
-                for ind_name in sorted(units_dict.keys()):
-                    # crude filter by prefix convention IND_<PILLARLETTER>_
-                    if pillar["key"] == 'water' and ind_name.startswith('IND_W_') \
-                       or pillar["key"] == 'energy' and ind_name.startswith('IND_E_') \
-                       or pillar["key"] == 'food' and ind_name.startswith('IND_F_'):
-                        if ind_name in data:
-                            ind_value = data[ind_name]
-                            formatted_value = format_indicator_with_unit(ind_name, ind_value, units_dict)
-                            display_name = indicator_names.get(ind_name, ind_name)
-                            st.markdown(f"**{display_name}**: {formatted_value}")
+                numbering = get_indicator_numbering()
+                # sort by ascending numbering, fallback to name
+                sorted_inds = sorted(
+                    [n for n in units_dict.keys() if (
+                        (pillar["key"] == 'water' and n.startswith('IND_W_')) or
+                        (pillar["key"] == 'energy' and n.startswith('IND_E_')) or
+                        (pillar["key"] == 'food' and n.startswith('IND_F_'))
+                    )],
+                    key=lambda k: (numbering.get(k, 9999), k)
+                )
+                for ind_name in sorted_inds:
+                    if ind_name in data:
+                        ind_value = data[ind_name]
+                        formatted_value = format_indicator_with_unit(ind_name, ind_value, units_dict)
+                        display_name = indicator_names.get(ind_name, ind_name)
+                        num = numbering.get(ind_name)
+                        prefix = f"{num:02d}. " if num else ""
+                        st.markdown(f"**{prefix}{display_name}**: {formatted_value}")
     
     with cols[3]:
         with st.container(border=True):
@@ -271,8 +279,11 @@ def render_overall_wefe_score(lab_info):
                                     prefix = 'IND_X_'
                                 pillar_meta_by_indicator[prefix] = (icon, color)
                             
-                            # Render indicators with pillar bullet and colored label
-                            for ind_id, weight in weights.items():
+                            # Render indicators with pillar bullet and colored label, sorted by numbering
+                            numbering = get_indicator_numbering()
+                            for ind_id, weight in sorted(weights.items(), key=lambda kv: (numbering.get(kv[0], 9999), kv[0])):
+                                num = numbering.get(ind_id)
+                                prefix = f"{num:02d}. " if num else ""
                                 display_name = indicator_names.get(ind_id, ind_id)
                                 if ind_id.startswith('IND_W_'):
                                     icon, color = pillar_meta_by_indicator.get('IND_W_', ('💧', '#3498db'))
@@ -282,7 +293,7 @@ def render_overall_wefe_score(lab_info):
                                     icon, color = pillar_meta_by_indicator.get('IND_F_', ('🌾', '#27ae60'))
                                 else:
                                     icon, color = ('🌿', '#16a085')
-                                st.markdown(f"{icon} <span style='color:{color};font-weight:600'>{display_name}</span> — weight {weight:.2f}", unsafe_allow_html=True)
+                                st.markdown(f"{icon} <span style='color:{color};font-weight:600'>{prefix}{display_name}</span> — weight {weight:.2f}", unsafe_allow_html=True)
                     
                     with kpi_col3:
                         # Display gauge for selected KPI score
