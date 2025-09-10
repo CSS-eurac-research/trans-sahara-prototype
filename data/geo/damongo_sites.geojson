@@ -1,0 +1,66 @@
+{
+  "type": "FeatureCollection",
+  "name": "Damongo Boundary and Sites",
+  "crs": { "type": "name", "properties": { "name": "EPSG:4326" } },
+  "properties": {
+    "living_lab_id": 1,
+    "living_lab_name": "Ghana Living Lab - Damango",
+    "country": "Ghana",
+    "climate_type": "semi-arid"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"role": "boundary", "name": "Damongo Area (approximate)"}
+    },
+    {"type":"Feature","properties":{"role":"site","id":1,"name":"Nabori","surface_m3":110000,"land_cover_percent":{"residential":22,"mixed":28,"green":42,"water":8},"land_use_percent":{"residential":22,"mixed":28,"green":42,"water":8}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.90,10.90],[-2.78,10.93],[-2.64,10.92],[-2.58,10.86],[-2.72,10.83],[-2.86,10.85],[-2.90,10.90]
+      ]]}},
+    {"type":"Feature","properties":{"role":"site","id":2,"name":"Soriya","surface_m3":95000,"land_cover_percent":{"residential":30,"mixed":22,"green":40,"water":8},"land_use_percent":{"residential":30,"mixed":22,"green":40,"water":8}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.72,10.83],[-2.58,10.86],[-2.46,10.82],[-2.40,10.75],[-2.55,10.72],[-2.68,10.76],[-2.72,10.83]
+      ]]}},
+    {"type":"Feature","properties":{"role":"site","id":3,"name":"Jeripe","surface_m3":100000,"land_cover_percent":{"residential":24,"mixed":26,"green":44,"water":6},"land_use_percent":{"residential":24,"mixed":26,"green":44,"water":6}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.86,10.85],[-2.72,10.83],[-2.68,10.76],[-2.78,10.70],[-2.90,10.74],[-2.92,10.80],[-2.86,10.85]
+      ]]}},
+    {"type":"Feature","properties":{"role":"site","id":4,"name":"Canteen","surface_m3":105000,"land_cover_percent":{"residential":27,"mixed":25,"green":40,"water":8},"land_use_percent":{"residential":27,"mixed":25,"green":40,"water":8}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.78,10.70],[-2.68,10.76],[-2.55,10.72],[-2.48,10.64],[-2.60,10.60],[-2.72,10.62],[-2.78,10.70]
+      ]]}},
+    {"type":"Feature","properties":{"role":"site","id":5,"name":"Langantere","surface_m3":90000,"land_cover_percent":{"residential":18,"mixed":22,"green":54,"water":6},"land_use_percent":{"residential":18,"mixed":22,"green":54,"water":6}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.60,10.60],[-2.48,10.64],[-2.42,10.56],[-2.45,10.48],[-2.58,10.46],[-2.68,10.52],[-2.60,10.60]
+      ]]}},
+    {"type":"Feature","properties":{"role":"site","id":6,"name":"Busunu","surface_m3":98000,"land_cover_percent":{"residential":20,"mixed":24,"green":50,"water":6},"land_use_percent":{"residential":20,"mixed":24,"green":50,"water":6}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.90,10.74],[-2.78,10.70],[-2.72,10.62],[-2.80,10.54],[-2.92,10.58],[-2.95,10.66],[-2.90,10.74]
+      ]]}},
+    {"type":"Feature","properties":{"role":"site","id":7,"name":"Damongo Central","surface_m3":102000,"land_cover_percent":{"residential":26,"mixed":24,"green":44,"water":6},"land_use_percent":{"residential":26,"mixed":24,"green":44,"water":6}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.72,10.62],[-2.60,10.60],[-2.68,10.52],[-2.78,10.50],[-2.85,10.52],[-2.80,10.54],[-2.72,10.62]
+      ]]}},
+    {"type":"Feature","properties":{"role":"site","id":8,"name":"Jisonaayili","surface_m3":97000,"land_cover_percent":{"residential":28,"mixed":20,"green":46,"water":6},"land_use_percent":{"residential":28,"mixed":20,"green":46,"water":6}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.58,10.46],[-2.45,10.48],[-2.35,10.45],[-2.36,10.38],[-2.48,10.36],[-2.58,10.40],[-2.58,10.46]
+      ]]}},
+    {"type":"Feature","properties":{"role":"site","id":9,"name":"Langatere South","surface_m3":93000,"land_cover_percent":{"residential":21,"mixed":29,"green":44,"water":6},"land_use_percent":{"residential":21,"mixed":29,"green":44,"water":6}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.78,10.50],[-2.68,10.52],[-2.58,10.46],[-2.58,10.40],[-2.70,10.40],[-2.80,10.44],[-2.78,10.50]
+      ]]}},
+    {"type":"Feature","properties":{"role":"site","id":10,"name":"Sakpare","surface_m3":88000,"land_cover_percent":{"residential":23,"mixed":27,"green":44,"water":6},"land_use_percent":{"residential":23,"mixed":27,"green":44,"water":6}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.92,10.58],[-2.80,10.54],[-2.85,10.52],[-2.95,10.50],[-2.98,10.56],[-2.92,10.58]
+      ]]}},
+    {"type":"Feature","properties":{"role":"site","id":11,"name":"Larabanga Road","surface_m3":92000,"land_cover_percent":{"residential":25,"mixed":25,"green":44,"water":6},"land_use_percent":{"residential":25,"mixed":25,"green":44,"water":6}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.64,10.92],[-2.58,10.86],[-2.46,10.82],[-2.44,10.88],[-2.54,10.93],[-2.64,10.92]
+      ]]}},
+    {"type":"Feature","properties":{"role":"site","id":12,"name":"Zongo","surface_m3":96000,"land_cover_percent":{"residential":19,"mixed":23,"green":52,"water":6},"land_use_percent":{"residential":19,"mixed":23,"green":52,"water":6}},
+      "geometry":{"type":"Polygon","coordinates":[[
+        [-2.48,10.64],[-2.42,10.56],[-2.45,10.48],[-2.40,10.50],[-2.36,10.58],[-2.43,10.63],[-2.48,10.64]
+      ]]}}
+  ]
+}
+

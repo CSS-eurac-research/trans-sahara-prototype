@@ -1,0 +1,29 @@
+{
+  "living_lab_id": 2,
+  "living_lab_name": "Ethiopia Living Lab Example",
+  "country": "Ethiopia",
+  "climate_type": "semi-arid",
+  "sites": [
+    {
+      "id": 1,
+      "name": "Site 1",
+      "living_lab_id": 2,
+      "coords": { "lat": 8.55, "lon": 38.55 },
+      "land_cover_percent": { "residential": 22, "mixed": 28, "green": 40, "water": 10 }
+    },
+    {
+      "id": 2,
+      "name": "Site 2",
+      "living_lab_id": 2,
+      "coords": { "lat": 8.45, "lon": 38.45 },
+      "land_cover_percent": { "residential": 26, "mixed": 24, "green": 40, "water": 10 }
+    },
+    {
+      "id": 3,
+      "name": "Site 3",
+      "living_lab_id": 2,
+      "coords": { "lat": 8.5, "lon": 38.5 },
+      "land_cover_percent": { "residential": 20, "mixed": 30, "green": 40, "water": 10 }
+    }
+  ]
+}

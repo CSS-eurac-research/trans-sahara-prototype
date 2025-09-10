@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Ghana Living Lab Example",
+    "name": "Ghana Living Lab - Damango",
     "climate_type": "semi-arid",
     "geolocation_area": {
       "upper_left": {"lat": 11.0, "lon": -3.0},

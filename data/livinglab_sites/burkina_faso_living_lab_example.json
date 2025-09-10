@@ -1,0 +1,29 @@
+{
+  "living_lab_id": 4,
+  "living_lab_name": "Burkina Faso Living Lab Example",
+  "country": "Burkina Faso",
+  "climate_type": "semi-arid",
+  "sites": [
+    {
+      "id": 1,
+      "name": "Site 1",
+      "living_lab_id": 4,
+      "coords": { "lat": 12.55, "lon": -1.55 },
+      "land_cover_percent": { "residential": 20, "mixed": 25, "green": 45, "water": 10 }
+    },
+    {
+      "id": 2,
+      "name": "Site 2",
+      "living_lab_id": 4,
+      "coords": { "lat": 12.45, "lon": -1.45 },
+      "land_cover_percent": { "residential": 24, "mixed": 21, "green": 45, "water": 10 }
+    },
+    {
+      "id": 3,
+      "name": "Site 3",
+      "living_lab_id": 4,
+      "coords": { "lat": 12.5, "lon": -1.5 },
+      "land_cover_percent": { "residential": 18, "mixed": 27, "green": 45, "water": 10 }
+    }
+  ]
+}
