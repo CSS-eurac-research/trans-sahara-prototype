@@ -26,7 +26,7 @@ def initialize_session_state():
     if "current_selected_lab" not in st.session_state:
         st.session_state.current_selected_lab = None
     if "selected_lab" not in st.session_state:
-        st.session_state.selected_lab = "Tunis"  # Default lab
+        st.session_state.selected_lab = "Ghana Living Lab - Damango"  # Default lab
     if "selected_policies" not in st.session_state:
         st.session_state.selected_policies = []
     if "policy_inputs" not in st.session_state:

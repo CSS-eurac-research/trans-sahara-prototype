@@ -19,7 +19,7 @@ trans-sahara-prototype-deployment/
 └── src/
     ├── core/
     │   ├── data_loader.py          # Low-level data loading helpers
-    │   ├── intervention_optimizer.py# Policy simulation / intervention selection
+    │   ├── map_utils.py            # Map helpers (bounds, zoom)
     │   └── wefe_calculations.py    # Scoring, normalization, utilities
     ├── pages/
     │   ├── initial_page.py         # Welcome view, Living Lab details, pillar visuals
@@ -86,7 +86,7 @@ streamlit run app.py
 - `data/pillars.json`: Definitions for indicators (names, units, min/max), grouped by pillar and category
 - `data/livinglab.json`: Living Lab entries and indicator values
 - `data/policies.json`: Policies with synergies/trade-offs and affected indicators
-- `data/interventions/*.json`: Intervention definitions used by the optimizer
+  (Interventions removed per latest requirements)
 
 ## Requirements
 
