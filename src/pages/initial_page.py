@@ -4,7 +4,7 @@ import folium
 from folium import plugins
 import pandas as pd
 from src.core.data_loader import load_living_labs, get_regions_from_labs
-from src.core.wefe_calculations import PILLARS, calculate_kpi_scores, calculate_overall_wefe_score_from_kpis, get_indicator_units, format_indicator_with_unit, get_kpi_def_summaries, get_indicator_display_names
+from src.core.wefe_calculations import PILLARS, calculate_kpi_scores, calculate_overall_wefe_score_from_kpis, get_indicator_units, format_indicator_with_unit, get_kpi_def_summaries, get_indicator_display_names, _load_kpi_definitions_local
 import streamviz
 from src.policy.data import get_indicator_numbering, get_indicator_with_number
 
@@ -165,14 +165,11 @@ def render_overall_wefe_score(lab_info):
     """Render the overall WEFE Nexus score container"""
     if not lab_info or 'wefe_pillars' not in lab_info:
         return
-    
-    # Get weights from session state (from sidebar settings)
-    # These should always be available now since they're set in the sidebar function
+
     weights = st.session_state.get('policy_weights', {
         "Water": 3, "Energy": 3, "Food": 3, "Ecosystem": 3
     })
     
-    # Calculate KPI scores and overall WEFE score from KPIs
     overall_score, breakdown = calculate_overall_wefe_score_from_kpis(lab_info)
     
     if overall_score is not None:
@@ -194,8 +191,6 @@ def render_overall_wefe_score(lab_info):
                     """,
                     unsafe_allow_html=True
                 )
-            # with col2:
-                # streamviz.gauge(overall_score / 100, gSize="SML", sFix="%", gcHigh="#f39c12", gcLow="#e74c3c", gcMid="#27ae60")
             with col2:
                 # Overall score display
                 score_color = "#27ae60" if overall_score >= 70 else "#f39c12" if overall_score >= 50 else "#e74c3c"
@@ -232,15 +227,74 @@ def render_overall_wefe_score(lab_info):
                     selected_kpi_id = selected_option.split(" - ", 1)[0]
                     selected_meta = kpi_defs.get(selected_kpi_id, {"name": selected_kpi_id, "inputs": []})
                     affecting_inds = selected_meta.get("inputs", [])
-
-                    st.markdown(f"**KPI:** {selected_meta.get('name', selected_kpi_id)}")
-                    if affecting_inds:
-                        st.markdown("**Indicators affecting this KPI:**")
-                        for ind_id in affecting_inds:
-                            human = indicator_names.get(ind_id, ind_id)
-                            st.markdown(f"- {human}")
-                    else:
-                        st.info("No indicator inputs defined for this KPI.")
+                    kpi_score = kpi_scores.get(selected_kpi_id, 0)
+                    
+                    # Create three columns: details, weights, gauge
+                    kpi_col1, kpi_col2, kpi_col3 = st.columns([2, 2, 1])
+                    
+                    with kpi_col1:
+                        st.markdown(f"**KPI:** {selected_meta.get('name', selected_kpi_id)}")
+                        st.markdown(f"**Score:** {kpi_score}/100")
+                        
+                        # Display KPI formula
+                        kpi_definitions = _load_kpi_definitions_local().get('kpis', [])
+                        selected_kpi_def = next((kpi for kpi in kpi_definitions if kpi['id'] == selected_kpi_id), None)
+                        if selected_kpi_def:
+                            formula_human = selected_kpi_def.get('formula_human', 'Formula not available')
+                            st.markdown(f"**Formula:** {formula_human}")
+                            
+                            # Display aggregation method
+                            agg_method = selected_kpi_def.get('aggregation', {}).get('method', 'geometric_mean')
+                            st.markdown(f"**Aggregation Method:** {agg_method}")
+                            
+                    with kpi_col2:
+                        # Show weighted indicators only, using pillar icon and color
+                        if selected_kpi_def:
+                            weights = selected_kpi_def.get('aggregation', {}).get('weights', {}) or {}
+                        else:
+                            weights = {}
+                        if weights:
+                            st.markdown("**Weighted indicators:**")
+                            # Build a quick map from indicator id -> pillar meta
+                            pillar_meta_by_indicator = {}
+                            for pillar in PILLARS:
+                                pkey = pillar['key']
+                                icon = pillar.get('icon', '•')
+                                color = pillar.get('color', '#333')
+                                if pkey == 'water':
+                                    prefix = 'IND_W_'
+                                elif pkey == 'energy':
+                                    prefix = 'IND_E_'
+                                elif pkey == 'food':
+                                    prefix = 'IND_F_'
+                                else:
+                                    prefix = 'IND_X_'
+                                pillar_meta_by_indicator[prefix] = (icon, color)
+                            
+                            # Render indicators with pillar bullet and colored label
+                            for ind_id, weight in weights.items():
+                                display_name = indicator_names.get(ind_id, ind_id)
+                                if ind_id.startswith('IND_W_'):
+                                    icon, color = pillar_meta_by_indicator.get('IND_W_', ('💧', '#3498db'))
+                                elif ind_id.startswith('IND_E_'):
+                                    icon, color = pillar_meta_by_indicator.get('IND_E_', ('⚡', '#f39c12'))
+                                elif ind_id.startswith('IND_F_'):
+                                    icon, color = pillar_meta_by_indicator.get('IND_F_', ('🌾', '#27ae60'))
+                                else:
+                                    icon, color = ('🌿', '#16a085')
+                                st.markdown(f"{icon} <span style='color:{color};font-weight:600'>{display_name}</span> — weight {weight:.2f}", unsafe_allow_html=True)
+                    
+                    with kpi_col3:
+                        # Display gauge for selected KPI score
+                        score_color = "#27ae60" if kpi_score >= 70 else "#f39c12" if kpi_score >= 50 else "#e74c3c"
+                        streamviz.gauge(
+                            kpi_score / 100, 
+                            gSize="MED", 
+                            sFix="%", 
+                            gcHigh="#27ae60", 
+                            gcLow="#e74c3c", 
+                            gcMid="#f39c12"
+                        )
     
 
 def render_welcome_page():

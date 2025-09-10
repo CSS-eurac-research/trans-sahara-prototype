@@ -19,8 +19,8 @@
         "category": "Health",
         "affected_indicators": [
           {"indicator": "IND_W_WW_TREATED_SHARE", "expected_change": "+20%"},
-          {"indicator": "IND_W_WW_TREATED_VOL", "expected_change": "+150000"},
-          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+120000"}
+          {"indicator": "IND_W_WW_TREATED_VOL", "expected_change": "+30%"},
+          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+25%"}
         ]
       },
       {
@@ -29,7 +29,7 @@
         "category": "Economic",
         "affected_indicators": [
           {"indicator": "IND_F_TWW_IRRIGATION_SHARE", "expected_change": "+5%"},
-          {"indicator": "IND_F_CW_IRRIGATION_VOL", "expected_change": "+60000"}
+          {"indicator": "IND_F_CW_IRRIGATION_VOL", "expected_change": "+20%"}
         ]
       },
       {
@@ -38,7 +38,7 @@
         "category": "Social",
         "affected_indicators": [
           {"indicator": "IND_W_WW_TREATED_SHARE", "expected_change": "+10%"},
-          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+80000"}
+          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+15%"}
         ]
       }
     ],
@@ -53,7 +53,7 @@
         "category": "Water",
         "affected_indicators": [
           {"indicator": "IND_F_TWW_IRRIGATION_SHARE", "expected_change": "+10%"},
-          {"indicator": "IND_F_CW_IRRIGATION_VOL", "expected_change": "+80000"}
+          {"indicator": "IND_F_CW_IRRIGATION_VOL", "expected_change": "+15%"}
         ]
       },
       {
@@ -61,7 +61,7 @@
         "description": "Energy demand for treatment and distribution may increase despite efficiency gains",
         "category": "Energy",
         "affected_indicators": [
-          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "+0.02"},
+          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "+10%"},
           {"indicator": "IND_E_ENERGY_SAVED_CW", "expected_change": "-5%"}
         ]
       }
@@ -154,9 +154,9 @@
         "description": "Increased and stable food production with improved nutritional quality",
         "category": "Food",
         "affected_indicators": [
-          {"indicator": "IND_F_TWW_IRRIGATION_VOL", "expected_change": "+150000"},
-          {"indicator": "IND_F_DIGESTATE_APPLIED_MASS", "expected_change": "+20000"},
-          {"indicator": "IND_F_NUTRIENT_VALUE_APPLIED", "expected_change": "+300000"}
+          {"indicator": "IND_F_TWW_IRRIGATION_VOL", "expected_change": "+30%"},
+          {"indicator": "IND_F_DIGESTATE_APPLIED_MASS", "expected_change": "+40%"},
+          {"indicator": "IND_F_NUTRIENT_VALUE_APPLIED", "expected_change": "+40%"}
         ]
       },
       {
@@ -165,7 +165,7 @@
         "category": "Ecosystem",
         "affected_indicators": [
           {"indicator": "IND_E_ENERGY_SAVED_CW", "expected_change": "+15%"},
-          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "-0.02"}
+          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "-10%"}
         ]
       },
       {
@@ -173,7 +173,7 @@
         "description": "Improved agricultural resilience to climate change and extreme weather",
         "category": "Climate",
         "affected_indicators": [
-          {"indicator": "IND_W_MAR_RECHARGE_VOL", "expected_change": "+50000"}
+          {"indicator": "IND_W_MAR_RECHARGE_VOL", "expected_change": "+30%"}
         ]
       }
     ],
@@ -321,7 +321,7 @@
         "description": "Potential conflict with other urban development priorities",
         "category": "Land",
         "affected_indicators": [
-          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+30000"}
+          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+12%"}
         ]
       },
       {
@@ -329,7 +329,7 @@
         "description": "Ongoing costs for green infrastructure maintenance and management",
         "category": "Economic",
         "affected_indicators": [
-          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "+0.01"}
+          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "+5%"}
         ]
       }
     ]
@@ -354,7 +354,7 @@
         "category": "Resources",
         "affected_indicators": [
           {"indicator": "IND_E_ENERGY_SAVED_CW", "expected_change": "+10%"},
-          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "-0.02"}
+          {"indicator": "IND_E_CW_ENERGY_INTENSITY", "expected_change": "-10%"}
         ]
       },
       {
@@ -371,7 +371,7 @@
         "description": "Reduced pollution and environmental degradation through waste elimination",
         "category": "Ecosystem",
         "affected_indicators": [
-          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+60000"}
+          {"indicator": "IND_W_CW_TREATED_VOL", "expected_change": "+20%"}
         ]
       }
     ],
