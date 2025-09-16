@@ -1,0 +1,27 @@
+{
+  "id": "INT_W_RAINWATER_HARVESTING",
+  "name": "Rainwater Harvesting from Roofs",
+  "description": "Install rooftop gutters and storage to harvest rainwater for non-potable uses and irrigation.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"site_data": "roof_catchment_area_m2", "relation": ">", "value": 500},
+    {"site_data": "annual_rainfall_mm", "relation": ">", "value": 400}
+  ],
+  "restrictions": [
+    "First flush diversion and basic filtration required",
+    "Tank placement and structural checks"
+  ],
+  "needed_resources": {
+    "storage_l_per_m2_roof": 50,
+    "gutter_material": "PVC or GI",
+    "capex_usd_per_m3": 80
+  },
+  "improvement": {
+    "harvested_water_m3_per_100m2_year": 60,
+    "potable_displacement_share_percent": 20
+  },
+  "fetch_site_info": [
+    "roof_catchment_area_m2",
+    "annual_rainfall_mm"
+  ]
+}

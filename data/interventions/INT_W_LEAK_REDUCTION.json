@@ -1,0 +1,25 @@
+{
+  "id": "INT_W_LEAK_REDUCTION",
+  "name": "Water Network Leak Detection and Repair",
+  "description": "Implement leak detection, pressure management, and pipe repairs to reduce NRW and save energy.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"pillar": "water", "indicator_id": "basic_drinking_water_services", "relation": ">", "value": 60}
+  ],
+  "restrictions": [
+    "Night flow analysis may disrupt supply during testing"
+  ],
+  "needed_resources": {
+    "acoustic_loggers": 20,
+    "pressure_management_valves": 10,
+    "capex_usd_per_km": 15000
+  },
+  "improvement": {
+    "loss_reduction_percent": 15,
+    "IND_E_PUMPING_ENERGY_SAVED": {"kwh_saved_per_m3_nonrevenue": 0.5}
+  },
+  "fetch_site_info": [
+    "network_length_km",
+    "baseline_nrw_percent"
+  ]
+}

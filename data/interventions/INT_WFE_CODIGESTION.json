@@ -1,0 +1,27 @@
+{
+  "id": "INT_WFE_CODIGESTION",
+  "name": "Co-digestion of Sewage/Septage with Organic Waste",
+  "description": "Co-digest sewage/sludge with food and green waste to boost biogas yield and manage waste sustainably.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"site_data": "sewage_sludge_available_t_per_year", "relation": ">", "value": 500},
+    {"site_data": "organic_waste_available_t_per_year", "relation": ">", "value": 800}
+  ],
+  "restrictions": [
+    "Feedstock contamination control",
+    "Odor and leachate management"
+  ],
+  "needed_resources": {
+    "mixing_and_feed_systems": true,
+    "preprocessing": ["shredding", "screening"],
+    "capex_usd_per_t_day": 6000
+  },
+  "improvement": {
+    "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": {"kwh_per_t_feed": 350},
+    "IND_E_NET_ENERGY_FROM_CODIGEST": {"net_share_percent": 85}
+  },
+  "fetch_site_info": [
+    "sewage_sludge_available_t_per_year",
+    "organic_waste_available_t_per_year"
+  ]
+}

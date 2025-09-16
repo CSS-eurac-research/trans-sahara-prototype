@@ -1,0 +1,23 @@
+{
+  "id": "INT_E_PUBLIC_LIGHTING_LED",
+  "name": "LED Retrofit for Public Lighting",
+  "description": "Retrofit street lighting with LED and smart controls to cut energy use and maintenance costs.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"site_data": "num_streetlights", "relation": ">", "value": 200}
+  ],
+  "restrictions": [
+    "Dark-sky compliance and glare limits"
+  ],
+  "needed_resources": {
+    "capex_usd_per_fixture": 120,
+    "controls": ["photocell", "timer", "dimming"]
+  },
+  "improvement": {
+    "energy_savings_percent": 45,
+    "maintenance_cost_reduction_percent": 30
+  },
+  "fetch_site_info": [
+    "num_streetlights"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "INT_W_CONSTRUCTED_WETLANDS",
+  "name": "Constructed Wetlands for Wastewater Treatment",
+  "description": "Build horizontal/vertical flow constructed wetlands to treat wastewater with low energy use and enable reuse.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"pillar": "water", "indicator_id": "basic_sanitation_services", "relation": "<", "value": 90},
+    {"site_data": "wastewater_flow_m3_day", "relation": ">", "value": 200},
+    {"site_data": "available_land_green_m2", "relation": ">", "value": 4000},
+    {"site_data": "soil_permeability_class", "relation": "in", "value": ["medium", "low"]}
+  ],
+  "restrictions": [
+    "Setback from groundwater if permeability is high",
+    "Requires pre-treatment for high TSS/COD"
+  ],
+  "needed_resources": {
+    "capex_usd_per_m3_day": 400,
+    "om_cost_percent_capex_per_year": 3,
+    "substrate": ["gravel", "sand", "plants"],
+    "negative_impacts": [
+      {"indicator_id": "land_use_surfaces_m3", "effect": "increase", "note": "Land occupation"}
+    ]
+  },
+  "improvement": {
+    "IND_W_CW_TREATED_VOL": {"per_m2_year": 150},
+    "IND_E_ENERGY_SAVED_CW": {"vs_conventional_kwh_per_m3": 0.2},
+    "IND_F_CW_IRRIGATION_VOL": {"share_reused_percent": 60}
+  },
+  "fetch_site_info": [
+    "wastewater_flow_m3_day",
+    "available_land_green_m2",
+    "soil_permeability_class"
+  ]
+}

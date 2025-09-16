@@ -1,0 +1,32 @@
+{
+  "id": "INT_F_DRIP_IRRIGATION",
+  "name": "Drip Irrigation Retrofit",
+  "description": "Replace flood/sprinkler irrigation with drip systems to improve water-use efficiency and yields.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"pillar": "food", "indicator_id": "cereal_yield_kg_per_hectare", "relation": "<", "value": 5000},
+    {"site_data": "irrigation_area_m2", "relation": ">", "value": 10000},
+    {"site_data": "current_irrigation_efficiency_percent", "relation": "<", "value": 60}
+  ],
+  "restrictions": [
+    "Requires filtration and pressure regulation",
+    "Crop and soil compatibility needed"
+  ],
+  "needed_resources": {
+    "capex_usd_per_ha": 2500,
+    "filters_per_ha": 1,
+    "dripline_m_per_ha": 8000,
+    "negative_impacts": [
+      {"indicator_id": "waste_generation", "effect": "increase", "note": "Plastic tubing waste end-of-life"}
+    ]
+  },
+  "improvement": {
+    "water_savings_percent_vs_flood": 30,
+    "yield_increase_percent": 10,
+    "energy_savings_percent": 10
+  },
+  "fetch_site_info": [
+    "irrigation_area_m2",
+    "current_irrigation_efficiency_percent"
+  ]
+}

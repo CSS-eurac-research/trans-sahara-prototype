@@ -1,0 +1,31 @@
+{
+  "id": "INT_W_MAR_INFILT_BASINS",
+  "name": "Managed Aquifer Recharge (Infiltration Basins)",
+  "description": "Construct infiltration basins to recharge groundwater during wet periods and reduce pumping energy.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"pillar": "water", "indicator_id": "environmental_flow_requirements", "relation": ">=", "value": 2},
+    {"site_data": "available_land_green_m2", "relation": ">", "value": 5000},
+    {"site_data": "soil_permeability_class", "relation": "in", "value": ["medium", "high"]},
+    {"site_data": "groundwater_depth_m", "relation": ">", "value": 5}
+  ],
+  "restrictions": [
+    "Avoid contamination plumes and protected habitats",
+    "Water quality pretreatment may be required"
+  ],
+  "needed_resources": {
+    "earthworks_m3_per_ha": 3000,
+    "monitoring_wells": 2,
+    "capex_usd_per_ha": 15000
+  },
+  "improvement": {
+    "IND_W_MAR_RECHARGE_VOL": {"per_ha_m3_year": 6000},
+    "IND_W_GW_LEVEL_RISE": {"per_ha_m": 0.05},
+    "IND_E_PUMPING_ENERGY_SAVED": {"kwh_saved_per_m_head_recovery": 0.15}
+  },
+  "fetch_site_info": [
+    "available_land_green_m2",
+    "soil_permeability_class",
+    "groundwater_depth_m"
+  ]
+}

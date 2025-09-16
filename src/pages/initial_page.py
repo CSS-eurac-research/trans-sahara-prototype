@@ -300,11 +300,13 @@ def render_overall_wefe_score(lab_info):
                         score_color = "#27ae60" if kpi_score >= 70 else "#f39c12" if kpi_score >= 50 else "#e74c3c"
                         streamviz.gauge(
                             kpi_score / 100, 
+                            gMode="gauge+number",
                             gSize="MED", 
                             sFix="%", 
                             gcHigh="#27ae60", 
                             gcLow="#e74c3c", 
-                            gcMid="#f39c12"
+                            gcMid="#f39c12",
+
                         )
     
 

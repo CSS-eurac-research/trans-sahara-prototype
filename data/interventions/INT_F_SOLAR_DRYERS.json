@@ -1,0 +1,24 @@
+{
+  "id": "INT_F_SOLAR_DRYERS",
+  "name": "Solar Food Dryers",
+  "description": "Deploy solar dryers to reduce post-harvest losses and add value to crops.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"pillar": "food", "indicator_id": "food_production_value_usd_per_capita", "relation": "<", "value": 200},
+    {"site_data": "crop_types", "relation": "intersects", "value": ["fruits", "vegetables", "grains"]}
+  ],
+  "restrictions": [
+    "Food safety and hygiene standards must be followed"
+  ],
+  "needed_resources": {
+    "dryer_capacity_kg_per_batch": 200,
+    "capex_usd_per_unit": 2500
+  },
+  "improvement": {
+    "post_harvest_loss_reduction_percent": 20,
+    "value_addition_percent": 10
+  },
+  "fetch_site_info": [
+    "crop_types"
+  ]
+}

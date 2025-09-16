@@ -1,0 +1,28 @@
+{
+  "id": "INT_WE_AD_WASTEWATER",
+  "name": "Anaerobic Digestion of Wastewater",
+  "description": "Implement AD on wastewater streams to generate biogas and recover energy.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"pillar": "water", "indicator_id": "basic_sanitation_services", "relation": ">", "value": 30},
+    {"site_data": "wastewater_flow_m3_day", "relation": ">", "value": 500},
+    {"site_data": "wastewater_cod_mg_l", "relation": ">", "value": 1500}
+  ],
+  "restrictions": [
+    "Requires skilled O&M",
+    "Gas safety and flaring provisions"
+  ],
+  "needed_resources": {
+    "digester_volume_m3_per_m3_day": 2.5,
+    "capex_usd_per_m3_day": 1200,
+    "gas_storage_m3_per_m3_day": 1.2
+  },
+  "improvement": {
+    "IND_E_BIOGAS_FROM_WW_ENERGY": {"kwh_per_kg_cod_removed": 1.5},
+    "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": {"conversion_efficiency_percent": 35}
+  },
+  "fetch_site_info": [
+    "wastewater_flow_m3_day",
+    "wastewater_cod_mg_l"
+  ]
+}

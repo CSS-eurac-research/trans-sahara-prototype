@@ -1,0 +1,37 @@
+{
+  "id": "INT_EN_SOLAR_PV",
+  "name": "Rooftop Solar Photovoltaics",
+  "description": "Install rooftop solar PV on buildings to generate renewable electricity and reduce fossil/grid reliance.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"pillar": "energy", "indicator_id": "electricity_access_percent", "relation": "<", "value": 99},
+    {"pillar": "energy", "indicator_id": "renewable_electricity_output", "relation": "<", "value": 90},
+    {"site_data": "available_rooftop_area_m2", "relation": ">", "value": 500},
+    {"site_data": "avg_solar_irradiance_kwh_m2_yr", "relation": ">", "value": 1400}
+  ],
+  "restrictions": [
+    "Roofs must be structurally suitable",
+    "Avoid shading and heritage-protected structures",
+    "Grid interconnection rules apply"
+  ],
+  "needed_resources": {
+    "capex_usd_per_kwp": 900,
+    "om_cost_usd_per_kwp_year": 15,
+    "labor_person_days_per_10kwp": 12,
+    "materials": ["PV modules", "inverters", "mounting racks", "cables", "protection devices"],
+    "negative_impacts": [
+      {"indicator_id": "waste_generation", "effect": "increase", "note": "End-of-life PV waste"}
+    ]
+  },
+  "improvement": {
+    "energy_production_kwh_per_kwp_year": 1500,
+    "self_consumption_share": 0.6,
+    "grid_export_share": 0.4,
+    "peak_power_kwp_per_100m2_roof": 15
+  },
+  "fetch_site_info": [
+    "available_rooftop_area_m2",
+    "avg_solar_irradiance_kwh_m2_yr",
+    "land_slope_percent"
+  ]
+}

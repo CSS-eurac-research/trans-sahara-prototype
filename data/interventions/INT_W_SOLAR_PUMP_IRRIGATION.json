@@ -1,0 +1,33 @@
+{
+  "id": "INT_W_SOLAR_PUMP_IRRIGATION",
+  "name": "Solar-Powered Pumping for Irrigation",
+  "description": "Deploy solar pumps to irrigate fields, reducing diesel use and improving water access for agriculture.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"pillar": "water", "indicator_id": "renewable_freshwater_per_capita", "relation": ">", "value": 400},
+    {"pillar": "energy", "indicator_id": "renewable_energy_consumption", "relation": "<", "value": 95},
+    {"site_data": "irrigation_area_m2", "relation": ">", "value": 20000},
+    {"site_data": "groundwater_depth_m", "relation": "<=", "value": 60}
+  ],
+  "restrictions": [
+    "Abstraction must respect environmental flow requirements",
+    "Pumping limited by groundwater level and recharge"
+  ],
+  "needed_resources": {
+    "capex_usd_per_kw": 2500,
+    "pump_sets": "solar pump kits with controllers",
+    "negative_impacts": [
+      {"indicator_id": "freshwater_withdrawals_percent", "effect": "increase", "note": "Higher irrigation withdrawals if unmanaged"}
+    ]
+  },
+  "improvement": {
+    "water_delivered_m3_per_kw_day": 180,
+    "diesel_displaced_l_per_kw_year": 350,
+    "area_irrigated_m2_per_kw": 800
+  },
+  "fetch_site_info": [
+    "irrigation_area_m2",
+    "groundwater_depth_m",
+    "avg_solar_irradiance_kwh_m2_yr"
+  ]
+}

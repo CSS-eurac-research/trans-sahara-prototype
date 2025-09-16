@@ -1,0 +1,27 @@
+{
+  "id": "INT_E_EFFICIENT_PUMP_MOTORS",
+  "name": "High-Efficiency Pump Motors and VFDs",
+  "description": "Replace/retrofit pumps with high-efficiency motors and variable frequency drives to save energy.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"site_data": "number_of_pumps", "relation": ">=", "value": 2},
+    {"site_data": "avg_pump_efficiency_percent", "relation": "<", "value": 70}
+  ],
+  "restrictions": [
+    "Requires compatible electrical infrastructure",
+    "Process control integration"
+  ],
+  "needed_resources": {
+    "motor_efficiency_class": "IE3/IE4",
+    "vfd_included": true,
+    "capex_usd_per_kw": 300
+  },
+  "improvement": {
+    "energy_savings_percent": 15,
+    "maintenance_cost_reduction_percent": 10
+  },
+  "fetch_site_info": [
+    "number_of_pumps",
+    "avg_pump_efficiency_percent"
+  ]
+}

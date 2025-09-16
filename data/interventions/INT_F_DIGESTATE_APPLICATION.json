@@ -1,0 +1,26 @@
+{
+  "id": "INT_F_DIGESTATE_APPLICATION",
+  "name": "Digestate/Compost Application to Fields",
+  "description": "Apply digestate/compost to agricultural land to recycle nutrients and improve soil health.",
+  "living_lab_ids": [1, 2, 3, 4],
+  "requirements": [
+    {"site_data": "arable_land_area_m2", "relation": ">", "value": 20000}
+  ],
+  "restrictions": [
+    "Application rates must follow nutrient management plans",
+    "Buffer zones near water bodies"
+  ],
+  "needed_resources": {
+    "transport_ton_km": 50,
+    "spreading_equipment": true
+  },
+  "improvement": {
+    "IND_F_DIGESTATE_APPLIED_MASS": {"t_per_ha": 5},
+    "IND_F_NUTRIENT_VALUE_APPLIED": {"kg_npk_per_t": 35},
+    "IND_F_SYNTH_FERTILIZER_DISPLACED": {"kg_per_ha": 120}
+  },
+  "fetch_site_info": [
+    "arable_land_area_m2",
+    "crop_types"
+  ]
+}
