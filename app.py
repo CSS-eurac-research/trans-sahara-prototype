@@ -3,8 +3,8 @@ import os
 import base64
 from src.core.data_loader import initialize_session_state
 from src.pages.initial_page import render_sidebar_welcome_page, render_welcome_page
-from src.pages.policy_tab import render_policy_tab
-from src.pages.intervention_tab import render_intervention_tab
+from src.pages.livinglab_view import render_livinglab_view
+from src.pages.legend import render_legend_page
 
 def render_footer():
     """Render the footer of the app"""
@@ -53,14 +53,18 @@ if not st.session_state.session_started:
 
 
 if st.session_state.session_started:
-    tabs = st.tabs(["Policy View", "Intervention View"])
-    with tabs[0]:
-        render_policy_tab()
-    with tabs[1]:
-        render_intervention_tab()
+    # Use session state to route between in-session pages, avoid rendering sidebar
+    page = st.session_state.get("in_session_page", "Livinglab View")
+    if page == "Legend":
+        render_legend_page()
+    else:
+        render_livinglab_view()
 else:
     render_sidebar_welcome_page()
-    render_welcome_page() 
+    if st.session_state.get("pre_nav") == "Legend":
+        render_legend_page()
+    else:
+        render_welcome_page()
 
 render_footer()
 

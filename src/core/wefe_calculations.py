@@ -8,7 +8,6 @@ import sys
 
 # Add the src directory to the path to import policy modules
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from policy.data import load_policies, parse_change_value
 import math
 
 
@@ -513,52 +512,4 @@ def get_all_indicators_with_numbers() -> List[str]:
     keys = sorted(numbering.keys())
     return [get_indicator_with_number(k) for k in keys]
 
-def calculate_new_wefe_score_after_policies(lab_info, selected_policies):
-    """
-    Calculate the new WEFE score after applying selected policies to indicators
-    """
-    if not lab_info or not selected_policies:
-        return None
-    
-    try:
-        policies = load_policies()
-        policies_by_title = {p['title']: p for p in policies}
-        
-        # Calculate indicator improvements from selected policies
-        indicator_improvements = {}
-        for policy_title in selected_policies:
-            policy_obj = policies_by_title.get(policy_title)
-            if not policy_obj:
-                continue
-            for coll_key in ('synergies', 'trade_offs'):
-                for item in policy_obj.get(coll_key, []) or []:
-                    for ind in (item.get('affected_indicators') or []):
-                        indicator_key = ind.get('indicator')
-                        change_value = parse_change_value(ind.get('expected_change'))
-                        if indicator_key:
-                            if indicator_key not in indicator_improvements:
-                                indicator_improvements[indicator_key] = 0
-                            indicator_improvements[indicator_key] += change_value
-        
-        # Create a copy of lab_info with improved KPI indicators
-        improved_lab_info = lab_info.copy()
-        existing_kpi_indicators = lab_info.get('kpi_indicators', {}) or {}
-        improved_kpis = dict(existing_kpi_indicators)
 
-        # Apply improvements to KPI indicators (percentage values treated as relative % change)
-        for indicator_name, base_value in existing_kpi_indicators.items():
-            if indicator_name in indicator_improvements:
-                change = indicator_improvements[indicator_name]
-                # If expected_change looks like a percentage (parse_change_value returns number),
-                # apply relative change; otherwise it was absolute already converted upstream.
-                improved_value = base_value + (base_value * (change / 100.0))
-                improved_kpis[indicator_name] = improved_value
-        improved_lab_info['kpi_indicators'] = improved_kpis
-        
-        # Calculate new overall score using the same KPI-based method as the initial page
-        new_score, _ = calculate_overall_wefe_score_from_kpis(improved_lab_info)
-        return new_score
-        
-    except Exception as e:
-        print(f"Error calculating new WEFE score: {e}")
-        return None

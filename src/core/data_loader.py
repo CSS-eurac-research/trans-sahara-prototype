@@ -27,14 +27,15 @@ def initialize_session_state():
         st.session_state.current_selected_lab = None
     if "selected_lab" not in st.session_state:
         st.session_state.selected_lab = "Ghana Living Lab - Damango"  # Default lab
-    if "selected_policies" not in st.session_state:
-        st.session_state.selected_policies = []
-    if "policy_inputs" not in st.session_state:
-        st.session_state.policy_inputs = {}
-    if "policy_suggestions" not in st.session_state:
-        st.session_state.policy_suggestions = {}
-    if "active_interventions" not in st.session_state:
-        st.session_state.active_interventions = []
+    # Remove policy/intervention states
+    if "selected_policies" in st.session_state:
+        del st.session_state["selected_policies"]
+    if "policy_inputs" in st.session_state:
+        del st.session_state["policy_inputs"]
+    if "policy_suggestions" in st.session_state:
+        del st.session_state["policy_suggestions"]
+    if "active_interventions" in st.session_state:
+        del st.session_state["active_interventions"]
 
 
 def get_map_data():

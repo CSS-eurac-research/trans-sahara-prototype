@@ -5,9 +5,18 @@ from streamlit.components.v1 import html as st_html
 from src.core.map_utils import build_damongo_sites_map
 
 
-def render_intervention_tab():
-    """Render the intervention management interface (UI only)."""
-    st.title("Intervention: Ghana Living Lab - Damango")
+def render_livinglab_view():
+    """Render the Living Lab view with the Damongo sites map."""
+    st.title("Livinglab View: Ghana Living Lab - Damango")
+
+    top_left, top_right = st.columns([1, 3])
+    with top_left:
+        if st.button("← Back to initial page", type="secondary"):
+            st.session_state.session_started = False
+            st.rerun()
+        if st.button("Legend", type="secondary"):
+            st.session_state.in_session_page = "Legend"
+            st.rerun()
 
     geojson_path = os.path.join("data", "geo", "damongo_sites.geojson")
     try:
@@ -24,3 +33,5 @@ def render_intervention_tab():
         st.empty()
     with right_col:
         st_html(m._repr_html_(), height=900)
+
+

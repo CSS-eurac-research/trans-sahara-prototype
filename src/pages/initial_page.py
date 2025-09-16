@@ -68,47 +68,15 @@ def render_sidebar_welcome_page():
     """Render the initial setup page with sidebar configuration"""
     st.sidebar.header("1. Select Living Lab and Impact Weights")
 
+    st.sidebar.radio("Navigation", ["Welcome", "Legend"], index=0, key="pre_nav")
+    st.sidebar.markdown("---")
+
     livinglabs = load_living_labs()
     regions = get_regions_from_labs(livinglabs)
     
     selected_lab = st.sidebar.selectbox("Select a Living Lab", regions, key="select_lab")
     st.session_state.current_selected_lab = selected_lab
     st.sidebar.markdown("---")
-    
-    # Inject CSS to style ONLY the first sidebar expander (WEFE weights) with red border and red title
-    st.sidebar.markdown(
-        """
-        <style>
-        section[data-testid=\"stSidebar\"] div[data-testid=\"stExpander\"]:first-of-type {
-            border: 2px solid #e74c3c !important;
-            border-radius: 8px !important;
-        }
-        section[data-testid=\"stSidebar\"] div[data-testid=\"stExpander\"]:first-of-type button,
-        section[data-testid=\"stSidebar\"] div[data-testid=\"stExpander\"]:first-of-type div[role=\"button\"] {
-            color: #e74c3c !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # WEFE weights settings
-    with st.sidebar.expander("WEFE weights settings", expanded=False):
-        st.markdown("<span style='color:#e74c3c;font-weight:700;'>WILL BE REMOVED</span>", unsafe_allow_html=True)
-        water_w = st.slider("Water", 0, 5, 3, key="water_weight")
-        energy_w = st.slider("Energy", 0, 5, 3, key="energy_weight")
-        food_w = st.slider("Food", 0, 5, 3, key="food_weight")
-        eco_w = st.slider("Ecosystems", 0, 5, 3, key="eco_weight")
-    
-    # Store current weights in session state immediately (not just when session starts)
-    st.session_state.policy_weights = {
-        "Water": water_w, "Energy": energy_w, "Food": food_w, "Ecosystem": eco_w
-    }
-
-    # Session parameters settings 
-    with st.sidebar.expander("Session parameters settings", expanded=False):
-        budget = st.number_input("Budget (Million USD)", 0, 1000, 10, 1, key="budget")
-        time_range = st.number_input("End of simulation", 2030, 2100, 2030, 5, key="sim_year")
 
     # Scenario definition settings
     with st.sidebar.expander("Scenario definition", expanded=False):
@@ -173,10 +141,6 @@ def render_overall_wefe_score(lab_info):
     """Render the overall WEFE Nexus score container"""
     if not lab_info or 'wefe_pillars' not in lab_info:
         return
-
-    weights = st.session_state.get('policy_weights', {
-        "Water": 3, "Energy": 3, "Food": 3, "Ecosystem": 3
-    })
     
     overall_score, breakdown = calculate_overall_wefe_score_from_kpis(lab_info)
     
