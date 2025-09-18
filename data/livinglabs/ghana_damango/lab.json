@@ -1,0 +1,156 @@
+{
+  "id": 1,
+  "name": "Ghana Living Lab - Damango",
+  "climate_type": "semi-arid",
+  "geolocation_area": {
+    "upper_left": {"lat": 11.0, "lon": -3.0},
+    "lower_right": {"lat": 10.0, "lon": -2.0}
+  },
+  "country": "Ghana",
+  "description": "Living lab focused on WEFE solutions for the northern region of Ghana, addressing water scarcity and agricultural challenges in semi-arid conditions.",
+  "surface_m3": 1500000,
+  "land_use_surfaces_m3": {
+    "residential": 400000,
+    "mixed": 500000,
+    "green": 500000,
+    "water": 100000
+  },
+  "sites": [
+    {
+      "id": 1,
+      "name": "Nabori",
+      "surface_m3": 110000,
+      "land_cover_percent": {"residential": 22, "mixed": 28, "green": 42, "water": 8},
+      "land_use_percent": {"residential": 22, "mixed": 28, "green": 42, "water": 8},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.90, 10.90], [-2.78, 10.93], [-2.64, 10.92], [-2.58, 10.86], [-2.72, 10.83], [-2.86, 10.85], [-2.90, 10.90]]]} 
+    },
+    {
+      "id": 2,
+      "name": "Soriya",
+      "surface_m3": 95000,
+      "land_cover_percent": {"residential": 30, "mixed": 22, "green": 40, "water": 8},
+      "land_use_percent": {"residential": 30, "mixed": 22, "green": 40, "water": 8},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.72, 10.83], [-2.58, 10.86], [-2.46, 10.82], [-2.40, 10.75], [-2.55, 10.72], [-2.68, 10.76], [-2.72, 10.83]]]} 
+    },
+    {
+      "id": 3,
+      "name": "Jeripe",
+      "surface_m3": 100000,
+      "land_cover_percent": {"residential": 24, "mixed": 26, "green": 44, "water": 6},
+      "land_use_percent": {"residential": 24, "mixed": 26, "green": 44, "water": 6},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.86, 10.85], [-2.72, 10.83], [-2.68, 10.76], [-2.78, 10.70], [-2.90, 10.74], [-2.92, 10.80], [-2.86, 10.85]]]} 
+    },
+    {
+      "id": 4,
+      "name": "Canteen",
+      "surface_m3": 105000,
+      "land_cover_percent": {"residential": 27, "mixed": 25, "green": 40, "water": 8},
+      "land_use_percent": {"residential": 27, "mixed": 25, "green": 40, "water": 8},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.78, 10.70], [-2.68, 10.76], [-2.55, 10.72], [-2.48, 10.64], [-2.60, 10.60], [-2.72, 10.62], [-2.78, 10.70]]]} 
+    },
+    {
+      "id": 5,
+      "name": "Langantere",
+      "surface_m3": 90000,
+      "land_cover_percent": {"residential": 18, "mixed": 22, "green": 54, "water": 6},
+      "land_use_percent": {"residential": 18, "mixed": 22, "green": 54, "water": 6},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.60, 10.60], [-2.48, 10.64], [-2.42, 10.56], [-2.45, 10.48], [-2.58, 10.46], [-2.68, 10.52], [-2.60, 10.60]]]} 
+    },
+    {
+      "id": 6,
+      "name": "Busunu",
+      "surface_m3": 98000,
+      "land_cover_percent": {"residential": 20, "mixed": 24, "green": 50, "water": 6},
+      "land_use_percent": {"residential": 20, "mixed": 24, "green": 50, "water": 6},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.90, 10.74], [-2.78, 10.70], [-2.72, 10.62], [-2.80, 10.54], [-2.92, 10.58], [-2.95, 10.66], [-2.90, 10.74]]]} 
+    },
+    {
+      "id": 7,
+      "name": "Damongo Central",
+      "surface_m3": 102000,
+      "land_cover_percent": {"residential": 26, "mixed": 24, "green": 44, "water": 6},
+      "land_use_percent": {"residential": 26, "mixed": 24, "green": 44, "water": 6},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.72, 10.62], [-2.60, 10.60], [-2.68, 10.52], [-2.78, 10.50], [-2.85, 10.52], [-2.80, 10.54], [-2.72, 10.62]]]} 
+    },
+    {
+      "id": 8,
+      "name": "Jisonaayili",
+      "surface_m3": 97000,
+      "land_cover_percent": {"residential": 28, "mixed": 20, "green": 46, "water": 6},
+      "land_use_percent": {"residential": 28, "mixed": 20, "green": 46, "water": 6},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.58, 10.46], [-2.45, 10.48], [-2.35, 10.45], [-2.36, 10.38], [-2.48, 10.36], [-2.58, 10.40], [-2.58, 10.46]]]} 
+    },
+    {
+      "id": 9,
+      "name": "Langatere South",
+      "surface_m3": 93000,
+      "land_cover_percent": {"residential": 21, "mixed": 29, "green": 44, "water": 6},
+      "land_use_percent": {"residential": 21, "mixed": 29, "green": 44, "water": 6},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.78, 10.50], [-2.68, 10.52], [-2.58, 10.46], [-2.58, 10.40], [-2.70, 10.40], [-2.80, 10.44], [-2.78, 10.50]]]} 
+    },
+    {
+      "id": 10,
+      "name": "Sakpare",
+      "surface_m3": 88000,
+      "land_cover_percent": {"residential": 23, "mixed": 27, "green": 44, "water": 6},
+      "land_use_percent": {"residential": 23, "mixed": 27, "green": 44, "water": 6},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.92, 10.58], [-2.80, 10.54], [-2.85, 10.52], [-2.95, 10.50], [-2.98, 10.56], [-2.92, 10.58]]]} 
+    },
+    {
+      "id": 11,
+      "name": "Larabanga Road",
+      "surface_m3": 92000,
+      "land_cover_percent": {"residential": 25, "mixed": 25, "green": 44, "water": 6},
+      "land_use_percent": {"residential": 25, "mixed": 25, "green": 44, "water": 6},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.64, 10.92], [-2.58, 10.86], [-2.46, 10.82], [-2.44, 10.88], [-2.54, 10.93], [-2.64, 10.92]]]} 
+    },
+    {
+      "id": 12,
+      "name": "Zongo",
+      "surface_m3": 96000,
+      "land_cover_percent": {"residential": 19, "mixed": 23, "green": 52, "water": 6},
+      "land_use_percent": {"residential": 19, "mixed": 23, "green": 52, "water": 6},
+      "geometry": {"type": "Polygon", "coordinates": [[[-2.48, 10.64], [-2.42, 10.56], [-2.45, 10.48], [-2.40, 10.50], [-2.36, 10.58], [-2.43, 10.63], [-2.48, 10.64]]]} 
+    }
+  ],
+  "kpi_indicators": {
+    "IND_W_WW_TREATED_VOL": 45000,
+    "IND_W_WW_TREATED_SHARE": 60,
+    "IND_F_TWW_IRRIGATION_VOL": 20000,
+    "IND_F_TWW_IRRIGATION_SHARE": 12,
+    "IND_W_MAR_RECHARGE_VOL": 12000,
+    "IND_W_GW_LEVEL_RISE": 0.6,
+    "IND_E_PUMPING_ENERGY_SAVED": 120000,
+    "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD": 0.15,
+    "IND_W_WW_TO_AD_VOL": 9000,
+    "IND_E_BIOGAS_FROM_WW_ENERGY": 300000,
+    "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": 210000,
+    "IND_F_ORG_WASTE_TO_AD_MASS": 3500,
+    "IND_F_ORG_WASTE_DIVERTED_SHARE": 25,
+    "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": 500000,
+    "IND_W_SEWAGE_CODIGEST_VOL": 5000,
+    "IND_F_ORG_WASTE_CODIGEST_MASS": 2500,
+    "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": 650000,
+    "IND_E_NET_ENERGY_FROM_CODIGEST": 580000,
+    "IND_F_DIGESTATE_APPLIED_MASS": 4000,
+    "IND_F_NUTRIENT_VALUE_APPLIED": 120000,
+    "IND_F_SYNTH_FERTILIZER_DISPLACED": 8000,
+    "IND_W_CW_TREATED_VOL": 15000,
+    "IND_E_ENERGY_SAVED_CW": 60000,
+    "IND_E_CW_ENERGY_INTENSITY": 0.12,
+    "IND_F_CW_IRRIGATION_VOL": 12000
+  },
+  "challenges": [
+    "Water scarcity during dry seasons affecting agricultural productivity",
+    "Limited access to modern irrigation systems",
+    "Dependency on rain-fed agriculture",
+    "Soil degradation and erosion",
+    "Limited access to renewable energy infrastructure",
+    "High energy costs for rural communities",
+    "Food security challenges due to climate variability",
+    "Limited agricultural technology adoption",
+    "Biodiversity loss due to agricultural expansion",
+    "Deforestation for fuelwood collection"
+  ]
+}
+

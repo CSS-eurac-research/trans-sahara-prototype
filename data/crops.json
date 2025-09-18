@@ -1,0 +1,37 @@
+{
+  "food": [
+    "durum wheat",
+    "barley",
+    "maize",
+    "rice (Nile Delta)",
+    "sorghum",
+    "millet",
+    "fava bean (broad bean)",
+    "chickpea",
+    "lentil",
+    "olive",
+    "date (date palm)",
+    "citrus (orange)",
+    "lemon",
+    "tomato",
+    "onion",
+    "pepper (capsicum)",
+    "eggplant (aubergine)",
+    "potato",
+    "sugar beet",
+    "watermelon"
+  ],
+  "non-food": [
+    "cotton",
+    "flax",
+    "alfalfa (lucerne) forage",
+    "berseem clover forage",
+    "tobacco",
+    "henna",
+    "castor bean",
+    "jojoba",
+    "sisal",
+    "esparto grass"
+  ]
+}
+

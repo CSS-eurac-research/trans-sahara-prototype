@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "units": {
+      "food_consumption": "tonnes/year",
+      "water_available": "m3/year",
+      "agricultural_land_available": "hectares",
+      "energy_available": "MWh/year",
+      "funds": "USD/year"
+    }
+  },
+  "food": [
+    {"name": "durum wheat", "annual_consumption": 14000},
+    {"name": "barley", "annual_consumption": 12000},
+    {"name": "maize", "annual_consumption": 38000},
+    {"name": "rice (Nile Delta)", "annual_consumption": 6000},
+    {"name": "sorghum", "annual_consumption": 22000},
+    {"name": "millet", "annual_consumption": 16000},
+    {"name": "fava bean (broad bean)", "annual_consumption": 9000},
+    {"name": "chickpea", "annual_consumption": 7000},
+    {"name": "lentil", "annual_consumption": 6000},
+    {"name": "olive", "annual_consumption": 600},
+    {"name": "date (date palm)", "annual_consumption": 300},
+    {"name": "citrus (orange)", "annual_consumption": 5000},
+    {"name": "lemon", "annual_consumption": 800},
+    {"name": "tomato", "annual_consumption": 18000},
+    {"name": "onion", "annual_consumption": 12000},
+    {"name": "pepper (capsicum)", "annual_consumption": 5000},
+    {"name": "eggplant (aubergine)", "annual_consumption": 2500},
+    {"name": "potato", "annual_consumption": 20000},
+    {"name": "sugar beet", "annual_consumption": 1500},
+    {"name": "watermelon", "annual_consumption": 6000}
+  ],
+  "water_available": {
+    "groundwater": 360000,
+    "treated_wastewater": 12000,
+    "surface_water": 300000
+  },
+  "agricultural_land_available": 68000,
+  "energy_available": {
+    "gasoline": 15000,
+    "hydropower": 22000,
+    "wind": 6000,
+    "solar": 14000,
+    "diesel": 18000
+  },
+  "funds": 1800000
+}
+

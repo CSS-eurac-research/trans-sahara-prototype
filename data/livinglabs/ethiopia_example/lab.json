@@ -1,0 +1,58 @@
+{
+  "id": 2,
+  "name": "Ethiopia Living Lab Example",
+  "climate_type": "semi-arid",
+  "geolocation_area": {
+    "upper_left": {"lat": 9.0, "lon": 38.0},
+    "lower_right": {"lat": 8.0, "lon": 39.0}
+  },
+  "country": "Ethiopia",
+  "description": "Living lab for agricultural innovation and resource management in the Ethiopian highlands, focusing on sustainable farming practices and water conservation.",
+  "surface_m3": 1200000,
+  "land_use_surfaces_m3": {
+    "residential": 300000,
+    "mixed": 400000,
+    "green": 400000,
+    "water": 100000
+  },
+  "kpi_indicators": {
+    "IND_W_WW_TREATED_VOL": 30000,
+    "IND_W_WW_TREATED_SHARE": 45,
+    "IND_F_TWW_IRRIGATION_VOL": 12000,
+    "IND_F_TWW_IRRIGATION_SHARE": 10,
+    "IND_W_MAR_RECHARGE_VOL": 18000,
+    "IND_W_GW_LEVEL_RISE": 0.8,
+    "IND_E_PUMPING_ENERGY_SAVED": 180000,
+    "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD": 0.18,
+    "IND_W_WW_TO_AD_VOL": 6000,
+    "IND_E_BIOGAS_FROM_WW_ENERGY": 200000,
+    "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": 140000,
+    "IND_F_ORG_WASTE_TO_AD_MASS": 2800,
+    "IND_F_ORG_WASTE_DIVERTED_SHARE": 20,
+    "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": 320000,
+    "IND_W_SEWAGE_CODIGEST_VOL": 4000,
+    "IND_F_ORG_WASTE_CODIGEST_MASS": 2000,
+    "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": 500000,
+    "IND_E_NET_ENERGY_FROM_CODIGEST": 440000,
+    "IND_F_DIGESTATE_APPLIED_MASS": 3000,
+    "IND_F_NUTRIENT_VALUE_APPLIED": 90000,
+    "IND_F_SYNTH_FERTILIZER_DISPLACED": 6000,
+    "IND_W_CW_TREATED_VOL": 10000,
+    "IND_E_ENERGY_SAVED_CW": 40000,
+    "IND_E_CW_ENERGY_INTENSITY": 0.11,
+    "IND_F_CW_IRRIGATION_VOL": 8000
+  },
+  "challenges": [
+    "High population pressure on natural resources",
+    "Land degradation and soil erosion in highlands",
+    "Limited access to clean water in rural areas",
+    "Dependency on traditional farming methods",
+    "Climate change impacts on agricultural productivity",
+    "Limited access to modern energy infrastructure",
+    "Food insecurity in drought-prone regions",
+    "Overgrazing and deforestation",
+    "Water pollution from agricultural runoff",
+    "Limited capacity for sustainable resource management"
+  ]
+}
+

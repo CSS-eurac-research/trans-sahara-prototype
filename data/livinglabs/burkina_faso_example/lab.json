@@ -1,0 +1,58 @@
+{
+  "id": 4,
+  "name": "Burkina Faso Living Lab Example",
+  "climate_type": "semi-arid",
+  "geolocation_area": {
+    "upper_left": {"lat": 13.0, "lon": -2.0},
+    "lower_right": {"lat": 12.0, "lon": -1.0}
+  },
+  "country": "Burkina Faso",
+  "description": "Living lab for integrated resource management in Burkina Faso, focusing on sustainable agriculture and water management in semi-arid Sahelian conditions.",
+  "surface_m3": 1100000,
+  "land_use_surfaces_m3": {
+    "residential": 250000,
+    "mixed": 300000,
+    "green": 450000,
+    "water": 100000
+  },
+  "kpi_indicators": {
+    "IND_W_WW_TREATED_VOL": 18000,
+    "IND_W_WW_TREATED_SHARE": 35,
+    "IND_F_TWW_IRRIGATION_VOL": 7000,
+    "IND_F_TWW_IRRIGATION_SHARE": 6,
+    "IND_W_MAR_RECHARGE_VOL": 9000,
+    "IND_W_GW_LEVEL_RISE": 0.5,
+    "IND_E_PUMPING_ENERGY_SAVED": 90000,
+    "IND_E_SPECIFIC_ENERGY_SAVED_PER_HEAD": 0.16,
+    "IND_W_WW_TO_AD_VOL": 3000,
+    "IND_E_BIOGAS_FROM_WW_ENERGY": 120000,
+    "IND_E_ELECTRICITY_HEAT_FROM_BIOGAS": 80000,
+    "IND_F_ORG_WASTE_TO_AD_MASS": 1800,
+    "IND_F_ORG_WASTE_DIVERTED_SHARE": 15,
+    "IND_E_BIOGAS_FROM_ORG_WASTE_ENERGY": 180000,
+    "IND_W_SEWAGE_CODIGEST_VOL": 2000,
+    "IND_F_ORG_WASTE_CODIGEST_MASS": 1000,
+    "IND_E_BIOGAS_FROM_CODIGEST_ENERGY": 240000,
+    "IND_E_NET_ENERGY_FROM_CODIGEST": 210000,
+    "IND_F_DIGESTATE_APPLIED_MASS": 1200,
+    "IND_F_NUTRIENT_VALUE_APPLIED": 36000,
+    "IND_F_SYNTH_FERTILIZER_DISPLACED": 2400,
+    "IND_W_CW_TREATED_VOL": 6000,
+    "IND_E_ENERGY_SAVED_CW": 25000,
+    "IND_E_CW_ENERGY_INTENSITY": 0.14,
+    "IND_F_CW_IRRIGATION_VOL": 4500
+  },
+  "challenges": [
+    "Extreme water scarcity in Sahelian climate",
+    "Limited access to electricity in rural areas",
+    "High food insecurity and malnutrition",
+    "Soil degradation and desertification",
+    "Dependency on traditional energy sources",
+    "Limited agricultural productivity",
+    "Climate variability and extreme weather events",
+    "Limited access to modern farming technologies",
+    "Deforestation for fuelwood and agriculture",
+    "Limited capacity for sustainable development"
+  ]
+}
+
