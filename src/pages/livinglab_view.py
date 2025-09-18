@@ -17,6 +17,9 @@ def render_livinglab_view():
         if st.button("Legend", type="secondary"):
             st.session_state.in_session_page = "Legend"
             st.rerun()
+        if st.button("WEFE Analysis", type="primary"):
+            st.session_state.in_session_page = "WEFE Analysis"
+            st.rerun()
 
     geojson_path = os.path.join("data", "geo", "damongo_sites.geojson")
     try:

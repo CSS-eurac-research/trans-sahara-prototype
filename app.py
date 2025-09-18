@@ -4,6 +4,7 @@ import base64
 from src.core.data_loader import initialize_session_state
 from src.pages.initial_page import render_sidebar_welcome_page, render_welcome_page
 from src.pages.livinglab_view import render_livinglab_view
+from src.pages.wefe_analysis import render_wefe_analysis
 from src.pages.legend import render_legend_page
 
 def render_footer():
@@ -57,6 +58,8 @@ if st.session_state.session_started:
     page = st.session_state.get("in_session_page", "Livinglab View")
     if page == "Legend":
         render_legend_page()
+    elif page == "WEFE Analysis":
+        render_wefe_analysis()
     else:
         render_livinglab_view()
 else:
