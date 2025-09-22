@@ -5,6 +5,7 @@ from src.core.data_loader import initialize_session_state
 from src.pages.initial_page import render_sidebar_welcome_page, render_welcome_page
 from src.pages.livinglab_view import render_livinglab_view
 from src.pages.wefe_analysis import render_wefe_analysis
+from src.pages.session import render_session_page
 from src.pages.legend import render_legend_page
 
 def render_footer():
@@ -55,13 +56,16 @@ if not st.session_state.session_started:
 
 if st.session_state.session_started:
     # Use session state to route between in-session pages, avoid rendering sidebar
-    page = st.session_state.get("in_session_page", "Livinglab View")
+    page = st.session_state.get("in_session_page", "Session")
     if page == "Legend":
         render_legend_page()
     elif page == "WEFE Analysis":
         render_wefe_analysis()
-    else:
+    elif page == "Livinglab View":
         render_livinglab_view()
+    else:
+        # Default tabbed session workspace
+        render_session_page()
 else:
     render_sidebar_welcome_page()
     if st.session_state.get("pre_nav") == "Legend":

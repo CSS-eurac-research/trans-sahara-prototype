@@ -24,3 +24,5 @@ Thumbs.db
 # Streamlit
 .streamlit/
 
+src/pages/__pycache__/
+

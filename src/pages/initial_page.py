@@ -87,7 +87,8 @@ def render_sidebar_welcome_page():
     if st.sidebar.button("Start Session", key="start_session"):
         st.session_state.session_started = True
         st.session_state.selected_lab = selected_lab
-        # Weights are already stored above, no need to set them again here
+        # Route to tabbed session page
+        st.session_state.in_session_page = "Session"
         st.rerun()
 
 def render_wefe_pillars_view(lab_info):
@@ -139,14 +140,14 @@ def render_wefe_pillars_view(lab_info):
 
 def render_overall_wefe_score(lab_info):
     """Render the overall WEFE Nexus score container"""
-    if not lab_info or 'wefe_pillars' not in lab_info:
-        return
-    
-    overall_score, breakdown = calculate_overall_wefe_score_from_kpis(lab_info)
-    
-    if overall_score is not None:
-        # Create the main container
-        with st.container(border=True):
+    # Compute KPI-based overall score if lab info is available; keep section visible regardless
+    if lab_info:
+        overall_score, breakdown = calculate_overall_wefe_score_from_kpis(lab_info)
+    else:
+        overall_score, breakdown = None, {"kpi_scores": {}}
+
+    # Always render the main container
+    with st.container(border=True):
             # Header row
             col1, col2 = st.columns([3, 2])
             
@@ -165,12 +166,17 @@ def render_overall_wefe_score(lab_info):
                 )
             with col2:
                 # Overall score display
-                score_color = "#27ae60" if overall_score >= 70 else "#f39c12" if overall_score >= 50 else "#e74c3c"
+                if overall_score is not None:
+                    score_color = "#27ae60" if overall_score >= 70 else "#f39c12" if overall_score >= 50 else "#e74c3c"
+                    score_value = str(overall_score)
+                else:
+                    score_color = "#95a5a6"
+                    score_value = "N/A"
                 st.markdown(
                     f"""
                     <div style='text-align: center; padding: 10px; background-color: {score_color}; border-radius: 10px; color: white;'>
                         <div style='font-size: 0.9rem; font-weight: 500;'>Overall Score</div>
-                        <div style='font-size: 2.5rem; font-weight: bold; line-height: 1;'>{overall_score}</div>
+                        <div style='font-size: 2.5rem; font-weight: bold; line-height: 1;'>{score_value}</div>
                         <div style='font-size: 0.8rem; opacity: 0.9;'>/ 100</div>
                     </div>
                     """,
@@ -270,6 +276,8 @@ def render_overall_wefe_score(lab_info):
                             gcLow="#e74c3c", 
                             gcMid="#f39c12"
                         )
+            else:
+                st.info("No KPI data available yet for the selected context.")
     
 
 def render_welcome_page():

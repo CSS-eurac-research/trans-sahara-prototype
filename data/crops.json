@@ -1,37 +1,257 @@
 {
   "food": [
-    "durum wheat",
-    "barley",
-    "maize",
-    "rice (Nile Delta)",
-    "sorghum",
-    "millet",
-    "fava bean (broad bean)",
-    "chickpea",
-    "lentil",
-    "olive",
-    "date (date palm)",
-    "citrus (orange)",
-    "lemon",
-    "tomato",
-    "onion",
-    "pepper (capsicum)",
-    "eggplant (aubergine)",
-    "potato",
-    "sugar beet",
-    "watermelon"
+    {
+      "name": "durum wheat",
+      "ideal_soil_ph": {"min": 6.0, "max": 7.5},
+      "water_required_l_per_kg_per_month": 20,
+      "space_m2_per_seed": 0.02,
+      "ideal_temp_c": {"min": 15, "max": 25},
+      "yield_period_days": 120,
+      "average_yield_g_per_week": 5
+    },
+    {
+      "name": "barley",
+      "ideal_soil_ph": {"min": 6.0, "max": 7.5},
+      "water_required_l_per_kg_per_month": 18,
+      "space_m2_per_seed": 0.02,
+      "ideal_temp_c": {"min": 12, "max": 22},
+      "yield_period_days": 110,
+      "average_yield_g_per_week": 5
+    },
+    {
+      "name": "maize",
+      "ideal_soil_ph": {"min": 5.8, "max": 7.2},
+      "water_required_l_per_kg_per_month": 45,
+      "space_m2_per_seed": 0.25,
+      "ideal_temp_c": {"min": 20, "max": 30},
+      "yield_period_days": 120,
+      "average_yield_g_per_week": 50
+    },
+    {
+      "name": "rice (Nile Delta)",
+      "ideal_soil_ph": {"min": 5.5, "max": 6.5},
+      "water_required_l_per_kg_per_month": 120,
+      "space_m2_per_seed": 0.03,
+      "ideal_temp_c": {"min": 20, "max": 30},
+      "yield_period_days": 150,
+      "average_yield_g_per_week": 10
+    },
+    {
+      "name": "sorghum",
+      "ideal_soil_ph": {"min": 5.5, "max": 7.5},
+      "water_required_l_per_kg_per_month": 25,
+      "space_m2_per_seed": 0.2,
+      "ideal_temp_c": {"min": 25, "max": 35},
+      "yield_period_days": 110,
+      "average_yield_g_per_week": 15
+    },
+    {
+      "name": "millet",
+      "ideal_soil_ph": {"min": 5.5, "max": 7.0},
+      "water_required_l_per_kg_per_month": 22,
+      "space_m2_per_seed": 0.15,
+      "ideal_temp_c": {"min": 25, "max": 35},
+      "yield_period_days": 100,
+      "average_yield_g_per_week": 10
+    },
+    {
+      "name": "fava bean (broad bean)",
+      "ideal_soil_ph": {"min": 6.5, "max": 7.5},
+      "water_required_l_per_kg_per_month": 30,
+      "space_m2_per_seed": 0.1,
+      "ideal_temp_c": {"min": 15, "max": 22},
+      "yield_period_days": 120,
+      "average_yield_g_per_week": 12
+    },
+    {
+      "name": "chickpea",
+      "ideal_soil_ph": {"min": 6.0, "max": 8.0},
+      "water_required_l_per_kg_per_month": 20,
+      "space_m2_per_seed": 0.1,
+      "ideal_temp_c": {"min": 15, "max": 25},
+      "yield_period_days": 110,
+      "average_yield_g_per_week": 10
+    },
+    {
+      "name": "lentil",
+      "ideal_soil_ph": {"min": 6.0, "max": 7.5},
+      "water_required_l_per_kg_per_month": 18,
+      "space_m2_per_seed": 0.08,
+      "ideal_temp_c": {"min": 15, "max": 25},
+      "yield_period_days": 105,
+      "average_yield_g_per_week": 8
+    },
+    {
+      "name": "olive",
+      "ideal_soil_ph": {"min": 6.0, "max": 8.5},
+      "water_required_l_per_kg_per_month": 35,
+      "space_m2_per_seed": 9.0,
+      "ideal_temp_c": {"min": 15, "max": 30},
+      "yield_period_days": 180,
+      "average_yield_g_per_week": 500
+    },
+    {
+      "name": "date (date palm)",
+      "ideal_soil_ph": {"min": 6.0, "max": 8.0},
+      "water_required_l_per_kg_per_month": 60,
+      "space_m2_per_seed": 12.0,
+      "ideal_temp_c": {"min": 25, "max": 40},
+      "yield_period_days": 240,
+      "average_yield_g_per_week": 700
+    },
+    {
+      "name": "citrus (orange)",
+      "ideal_soil_ph": {"min": 6.0, "max": 7.5},
+      "water_required_l_per_kg_per_month": 50,
+      "space_m2_per_seed": 9.0,
+      "ideal_temp_c": {"min": 18, "max": 30},
+      "yield_period_days": 210,
+      "average_yield_g_per_week": 600
+    },
+    {
+      "name": "lemon",
+      "ideal_soil_ph": {"min": 5.5, "max": 7.0},
+      "water_required_l_per_kg_per_month": 55,
+      "space_m2_per_seed": 9.0,
+      "ideal_temp_c": {"min": 18, "max": 30},
+      "yield_period_days": 210,
+      "average_yield_g_per_week": 500
+    },
+    {
+      "name": "tomato",
+      "ideal_soil_ph": {"min": 6.0, "max": 6.8},
+      "water_required_l_per_kg_per_month": 50,
+      "space_m2_per_seed": 0.2,
+      "ideal_temp_c": {"min": 20, "max": 30},
+      "yield_period_days": 90,
+      "average_yield_g_per_week": 300
+    },
+    {
+      "name": "onion",
+      "ideal_soil_ph": {"min": 6.0, "max": 7.0},
+      "water_required_l_per_kg_per_month": 35,
+      "space_m2_per_seed": 0.03,
+      "ideal_temp_c": {"min": 13, "max": 24},
+      "yield_period_days": 120,
+      "average_yield_g_per_week": 150
+    },
+    {
+      "name": "pepper (capsicum)",
+      "ideal_soil_ph": {"min": 6.0, "max": 6.8},
+      "water_required_l_per_kg_per_month": 45,
+      "space_m2_per_seed": 0.2,
+      "ideal_temp_c": {"min": 20, "max": 30},
+      "yield_period_days": 100,
+      "average_yield_g_per_week": 200
+    },
+    {
+      "name": "eggplant (aubergine)",
+      "ideal_soil_ph": {"min": 6.0, "max": 7.0},
+      "water_required_l_per_kg_per_month": 45,
+      "space_m2_per_seed": 0.25,
+      "ideal_temp_c": {"min": 22, "max": 32},
+      "yield_period_days": 110,
+      "average_yield_g_per_week": 250
+    },
+    {
+      "name": "potato",
+      "ideal_soil_ph": {"min": 5.0, "max": 6.0},
+      "water_required_l_per_kg_per_month": 40,
+      "space_m2_per_seed": 0.1,
+      "ideal_temp_c": {"min": 15, "max": 20},
+      "yield_period_days": 90,
+      "average_yield_g_per_week": 400
+    },
+    {
+      "name": "sugar beet",
+      "ideal_soil_ph": {"min": 6.0, "max": 7.5},
+      "water_required_l_per_kg_per_month": 60,
+      "space_m2_per_seed": 0.1,
+      "ideal_temp_c": {"min": 15, "max": 25},
+      "yield_period_days": 150,
+      "average_yield_g_per_week": 500
+    },
+    {
+      "name": "watermelon",
+      "ideal_soil_ph": {"min": 6.0, "max": 7.5},
+      "water_required_l_per_kg_per_month": 70,
+      "space_m2_per_seed": 1.0,
+      "ideal_temp_c": {"min": 22, "max": 32},
+      "yield_period_days": 85,
+      "average_yield_g_per_week": 800
+    }
   ],
   "non-food": [
-    "cotton",
-    "flax",
-    "alfalfa (lucerne) forage",
-    "berseem clover forage",
-    "tobacco",
-    "henna",
-    "castor bean",
-    "jojoba",
-    "sisal",
-    "esparto grass"
+    {
+      "name": "cotton",
+      "ideal_soil_ph": {"min": 5.8, "max": 7.5},
+      "water_required_l_per_kg_per_month": 90,
+      "space_m2_per_seed": 0.2,
+      "ideal_temp_c": {"min": 25, "max": 35}
+    },
+    {
+      "name": "flax",
+      "ideal_soil_ph": {"min": 6.0, "max": 7.5},
+      "water_required_l_per_kg_per_month": 40,
+      "space_m2_per_seed": 0.03,
+      "ideal_temp_c": {"min": 10, "max": 25}
+    },
+    {
+      "name": "alfalfa (lucerne) forage",
+      "ideal_soil_ph": {"min": 6.5, "max": 7.5},
+      "water_required_l_per_kg_per_month": 80,
+      "space_m2_per_seed": 0.01,
+      "ideal_temp_c": {"min": 15, "max": 25}
+    },
+    {
+      "name": "berseem clover forage",
+      "ideal_soil_ph": {"min": 6.5, "max": 8.0},
+      "water_required_l_per_kg_per_month": 70,
+      "space_m2_per_seed": 0.01,
+      "ideal_temp_c": {"min": 15, "max": 25}
+    },
+    {
+      "name": "tobacco",
+      "ideal_soil_ph": {"min": 5.5, "max": 6.5},
+      "water_required_l_per_kg_per_month": 70,
+      "space_m2_per_seed": 0.2,
+      "ideal_temp_c": {"min": 20, "max": 30}
+    },
+    {
+      "name": "henna",
+      "ideal_soil_ph": {"min": 6.0, "max": 8.0},
+      "water_required_l_per_kg_per_month": 25,
+      "space_m2_per_seed": 1.0,
+      "ideal_temp_c": {"min": 20, "max": 35}
+    },
+    {
+      "name": "castor bean",
+      "ideal_soil_ph": {"min": 6.0, "max": 7.5},
+      "water_required_l_per_kg_per_month": 40,
+      "space_m2_per_seed": 0.5,
+      "ideal_temp_c": {"min": 20, "max": 30}
+    },
+    {
+      "name": "jojoba",
+      "ideal_soil_ph": {"min": 6.0, "max": 8.0},
+      "water_required_l_per_kg_per_month": 30,
+      "space_m2_per_seed": 4.0,
+      "ideal_temp_c": {"min": 20, "max": 35}
+    },
+    {
+      "name": "sisal",
+      "ideal_soil_ph": {"min": 6.0, "max": 7.5},
+      "water_required_l_per_kg_per_month": 20,
+      "space_m2_per_seed": 2.0,
+      "ideal_temp_c": {"min": 20, "max": 30}
+    },
+    {
+      "name": "esparto grass",
+      "ideal_soil_ph": {"min": 6.5, "max": 8.0},
+      "water_required_l_per_kg_per_month": 10,
+      "space_m2_per_seed": 1.5,
+      "ideal_temp_c": {"min": 10, "max": 25}
+    }
   ]
 }
 
