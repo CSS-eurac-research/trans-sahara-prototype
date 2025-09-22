@@ -4,6 +4,64 @@ import streamlit as st
 from src.core.data_loader import load_crops
 
 
+def _format_crop_info_markdown(info: dict, name: str) -> str:
+    ideal_ph = (info or {}).get("ideal_soil_ph") or {}
+    ideal_temp = (info or {}).get("ideal_temp_c") or {}
+    yield_days = (info or {}).get("yield_period_days")
+    avg_yield = (info or {}).get("average_yield_g_per_week")
+    water = (info or {}).get("water_required_l_per_kg_per_month")
+    space = (info or {}).get("space_m2_per_seed")
+
+    lines = [
+        f"**Crop**: {info.get('name', name)}\n\n",
+        f"- pH ideal range: {ideal_ph.get('min','-')} - {ideal_ph.get('max','-')}\n",
+        f"- Water: {water if water is not None else '-'} L/kg/month\n",
+        f"- Spacing: {space if space is not None else '-'} m²/seed\n",
+        f"- Temp ideal: {ideal_temp.get('min','-')} - {ideal_temp.get('max','-')} °C\n",
+    ]
+    if yield_days is not None:
+        lines.append(f"- Yield period: {yield_days} days\n")
+    if avg_yield is not None:
+        lines.append(f"- Avg. yield: {avg_yield} g/week\n")
+    return "".join(lines)
+
+
+def _render_crop_group(title: str, names: list[str], crop_info_map: dict[str, dict]):
+    st.subheader(title)
+    for name in names:
+        current_value = st.session_state.wefe_crop_self_sufficiency.get(name, 0)
+        enabled = st.session_state.wefe_crop_enabled.get(name, False)
+
+        left, right = st.columns([1, 3])
+        with left:
+            enabled = st.checkbox(name, value=enabled, key=f"wefe_crop_chk_{name}")
+            st.session_state.wefe_crop_enabled[name] = enabled
+        with right:
+            num_col, info_col = st.columns([6, 1])
+            with num_col:
+                new_val = st.number_input(
+                    label=f"{name} (%)",
+                    min_value=0,
+                    max_value=100,
+                    value=int(current_value),
+                    step=1,
+                    disabled=not enabled,
+                    label_visibility="collapsed",
+                    key=f"wefe_crop_num_{name}"
+                )
+            with info_col:
+                info = crop_info_map.get(name, {"name": name})
+                md = _format_crop_info_markdown(info, name)
+                if hasattr(st, "popover"):
+                    with st.popover("ℹ️", use_container_width=True):
+                        st.markdown(md)
+                else:
+                    with st.expander("ℹ️ Info", expanded=False):
+                        st.markdown(md)
+        if enabled:
+            st.session_state.wefe_crop_self_sufficiency[name] = int(new_val)
+
+
 def render_wefe_analysis():
     st.title("WEFE Analysis")
 
@@ -11,9 +69,18 @@ def render_wefe_analysis():
     food_list = crops.get("food", [])
     non_food_list = crops.get("non-food", [])
 
-    # Flatten to a single list of names while keeping category for potential future use
-    crop_names = [c if isinstance(c, str) else c.get("name", "") for c in food_list] + \
-                 [c if isinstance(c, str) else c.get("name", "") for c in non_food_list]
+    # Build lookup from crop name to info dict for quick access
+    crop_info_map = {}
+    for c in food_list + non_food_list:
+        if isinstance(c, dict):
+            name = c.get("name", "")
+            if name:
+                crop_info_map[name] = c
+        else:
+            crop_info_map[str(c)] = {"name": str(c)}
+    
+    food_names = [c if isinstance(c, str) else c.get("name", "") for c in food_list]
+    non_food_names = [c if isinstance(c, str) else c.get("name", "") for c in non_food_list]
 
     # Session state for selections and percentages
     if "wefe_selected_crop" not in st.session_state:
@@ -27,9 +94,8 @@ def render_wefe_analysis():
     if "wefe_energy_shares" not in st.session_state:
         st.session_state.wefe_energy_shares = {"gasoline": 0, "hydropower": 0, "wind": 0, "solar": 0, "diesel": 0}
 
-    col1, col2, col3 = st.columns([2, 1, 1])
+    row1_col1, row1_col2, row1_col3 = st.columns([1, 1, 1])
 
-    # Load pillar icons/colors from data/pillars.json
     try:
         pillars_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'pillars.json')
         with open(pillars_path, 'r', encoding='utf-8') as pf:
@@ -40,7 +106,7 @@ def render_wefe_analysis():
     water_meta = pillars_json.get('water', {"icon": "💧", "color": "#3498db", "label": "Water"})
     energy_meta = pillars_json.get('energy', {"icon": "⚡", "color": "#f39c12", "label": "Energy"})
 
-    with col1:
+    with row1_col1:
         with st.container(border=True):
             st.markdown(
                 f"<div style='display:flex;align-items:center;gap:8px;'>"
@@ -49,29 +115,10 @@ def render_wefe_analysis():
                 f"</div>",
                 unsafe_allow_html=True
             )
-            # Render list with checkbox to enable editing per crop (checkbox on the side)
-            for name in crop_names:
-                current_value = st.session_state.wefe_crop_self_sufficiency.get(name, 0)
-                enabled = st.session_state.wefe_crop_enabled.get(name, False)
-                left, right = st.columns([1, 3])
-                with left:
-                    enabled = st.checkbox(name, value=enabled, key=f"wefe_crop_chk_{name}")
-                    st.session_state.wefe_crop_enabled[name] = enabled
-                with right:
-                    new_val = st.number_input(
-                        label=f"{name} (%)",
-                        min_value=0,
-                        max_value=100,
-                        value=int(current_value),
-                        step=1,
-                        disabled=not enabled,
-                        label_visibility="collapsed",
-                        key=f"wefe_crop_num_{name}"
-                    )
-                if enabled:
-                    st.session_state.wefe_crop_self_sufficiency[name] = int(new_val)
+            _render_crop_group("Food crops", food_names, crop_info_map)
+            _render_crop_group("Non-food crops", non_food_names, crop_info_map)
 
-    with col2:
+    with row1_col2:
         with st.container(border=True):
             st.markdown(
                 f"<div style='display:flex;align-items:center;gap:8px;'>"
@@ -92,7 +139,7 @@ def render_wefe_analysis():
             elif water_total != 100:
                 st.warning(f"Water shares total {water_total}%. Adjust to 100%.")
 
-    with col3:
+    with row1_col2:
         with st.container(border=True):
             st.markdown(
                 f"<div style='display:flex;align-items:center;gap:8px;'>"
@@ -112,5 +159,7 @@ def render_wefe_analysis():
                 st.error(f"Energy shares total {energy_total}%. Reduce values to 100%.")
             elif energy_total != 100:
                 st.warning(f"Energy shares total {energy_total}%. Adjust to 100%.")
+    with row1_col3:
+        st.title("Comparison between different strategies")
 
 
