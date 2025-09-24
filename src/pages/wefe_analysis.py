@@ -26,40 +26,151 @@ def _format_crop_info_markdown(info: dict, name: str) -> str:
     return "".join(lines)
 
 
-def _render_crop_group(title: str, names: list[str], crop_info_map: dict[str, dict]):
+def _render_crop_group(title: str, names: list[str], crop_info_map: dict[str, dict], defaults_map: dict[str, dict]):
     st.subheader(title)
+    header = st.columns([1, 2, 2, 3, 1])
+    with header[0]:
+        st.markdown("**Select**")
+    with header[1]:
+        st.markdown("**Crop**")
+    with header[2]:
+        st.markdown("**Starting self-sufficiency**")
+    with header[3]:
+        st.markdown("**New self-sufficiency (%)**")
+    with header[4]:
+        st.markdown("**Info**")
+
     for name in names:
         current_value = st.session_state.wefe_crop_self_sufficiency.get(name, 0)
         enabled = st.session_state.wefe_crop_enabled.get(name, False)
+        default_meta = (defaults_map or {}).get(name, {})
+        default_pct = default_meta.get('default_percent')
+        default_label = f"~{default_pct:.0f}%" if isinstance(default_pct, (int, float)) else "n/a"
 
-        left, right = st.columns([1, 3])
-        with left:
-            enabled = st.checkbox(name, value=enabled, key=f"wefe_crop_chk_{name}")
+        row = st.columns([1, 2, 2, 3, 1])
+        with row[0]:
+            enabled_new = st.checkbox(
+                label=f"select_{name}",
+                value=enabled,
+                key=f"wefe_crop_sel_{name}",
+                label_visibility="collapsed"
+            )
+            enabled = enabled_new
             st.session_state.wefe_crop_enabled[name] = enabled
-        with right:
-            num_col, info_col = st.columns([6, 1])
-            with num_col:
-                new_val = st.number_input(
-                    label=f"{name} (%)",
-                    min_value=0,
-                    max_value=100,
-                    value=int(current_value),
-                    step=1,
-                    disabled=not enabled,
-                    label_visibility="collapsed",
-                    key=f"wefe_crop_num_{name}"
-                )
-            with info_col:
-                info = crop_info_map.get(name, {"name": name})
-                md = _format_crop_info_markdown(info, name)
-                if hasattr(st, "popover"):
-                    with st.popover("ℹ️", use_container_width=True):
-                        st.markdown(md)
-                else:
-                    with st.expander("ℹ️ Info", expanded=False):
-                        st.markdown(md)
+        with row[1]:
+            st.markdown(name)
+        with row[2]:
+            st.markdown(default_label)
+        with row[3]:
+            new_val = st.number_input(
+                label=f"{name} (%)",
+                min_value=0,
+                max_value=100,
+                value=int(current_value),
+                step=1,
+                disabled=not enabled,
+                label_visibility="collapsed",
+                key=f"wefe_crop_num_{name}"
+            )
+        with row[4]:
+            info = crop_info_map.get(name, {"name": name})
+            md = _format_crop_info_markdown(info, name)
+            if hasattr(st, "popover"):
+                with st.popover("ℹ️", use_container_width=True):
+                    st.markdown(md)
+            else:
+                with st.expander("ℹ️ Info", expanded=False):
+                    st.markdown(md)
         if enabled:
             st.session_state.wefe_crop_self_sufficiency[name] = int(new_val)
+
+
+def _load_damango_lab_and_resources():
+    try:
+        base = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'livinglabs', 'ghana_damango')
+        with open(os.path.join(base, 'lab.json'), 'r', encoding='utf-8') as lf:
+            lab = json.load(lf)
+        with open(os.path.join(base, 'lab_resources_info.json'), 'r', encoding='utf-8') as rf:
+            resources = json.load(rf)
+        return lab, resources
+    except Exception:
+        return None, None
+
+
+def calculate_self_sufficiency(crop_info_map: dict[str, dict]) -> dict[str, dict]:
+    """
+    Compute default self-sufficiency for enabled crops across the Damango living lab.
+
+    Returns a map: { crop_name: { 'default_percent': number|None, 'status': 'computed'|'n/a' } }
+    - Non-preselected crops are returned with status 'n/a' and default_percent None.
+    """
+    lab, resources = _load_damango_lab_and_resources()
+    result: dict[str, dict] = {}
+    if not lab or not resources:
+        return result
+
+    # Build annual consumption map (tonnes/year -> kg/year)
+    consumption_list = (resources.get('food') or [])
+    crop_to_consumption_kg_per_year: dict[str, float] = {}
+    for entry in consumption_list:
+        if not isinstance(entry, dict):
+            continue
+        name = entry.get('name')
+        val_tonnes = entry.get('annual_consumption')
+        if isinstance(name, str) and isinstance(val_tonnes, (int, float)):
+            crop_to_consumption_kg_per_year[name] = float(val_tonnes) * 1000.0
+
+    # Area allocation from lab crop_distribution
+    crop_to_area_m2: dict[str, float] = {}
+    for site in lab.get('sites', []):
+        props = site or {}
+        total_area_m2 = float(props.get('surface_m3', 0) or 0)
+        land_cover = props.get('land_cover_percent', {}) or {}
+        green_pct = float(land_cover.get('green', 0) or 0)
+        green_area_m2 = total_area_m2 * (max(0.0, min(1.0, green_pct / 100.0)))
+        for dist in (props.get('crop_distribution') or []):
+            name = dist.get('name')
+            share_pct = float(dist.get('green_share_percent', 0) or 0)
+            if not isinstance(name, str) or name.lower() == 'unused greenland':
+                continue
+            crop_to_area_m2[name] = crop_to_area_m2.get(name, 0.0) + green_area_m2 * (max(0.0, min(1.0, share_pct / 100.0)))
+
+    # Compute default self-sufficiency for enabled crops
+    enabled_map = st.session_state.get('wefe_crop_enabled', {}) or {}
+    for crop_name, info in crop_info_map.items():
+        is_enabled = enabled_map.get(crop_name, False)
+        if not is_enabled:
+            result[crop_name] = { 'default_percent': None, 'status': 'n/a' }
+            continue
+        area_m2 = crop_to_area_m2.get(crop_name, 0.0)
+        if area_m2 <= 0:
+            result[crop_name] = { 'default_percent': None, 'status': 'n/a' }
+            continue
+        consumption_kg = crop_to_consumption_kg_per_year.get(crop_name)
+        if not isinstance(consumption_kg, (int, float)) or consumption_kg <= 0:
+            result[crop_name] = { 'default_percent': None, 'status': 'n/a' }
+            continue
+        space = info.get('space_m2_per_seed')
+        weekly_yield_g = info.get('average_yield_g_per_week')
+        yield_days = info.get('yield_period_days')
+        if not all(isinstance(x, (int, float)) and x > 0 for x in [space, weekly_yield_g, yield_days]):
+            result[crop_name] = { 'default_percent': None, 'status': 'n/a' }
+            continue
+        plants_per_m2 = 1.0 / float(space)
+        # Annual yield per plant (kg/year)
+        weeks_per_cycle = float(yield_days) / 7.0
+        cycles_per_year = 52.1429 / max(weeks_per_cycle, 1e-6)
+        annual_yield_per_plant_kg = (float(weekly_yield_g) / 1000.0) * weeks_per_cycle * cycles_per_year
+        annual_yield_per_m2_kg = plants_per_m2 * annual_yield_per_plant_kg
+        total_production_kg = annual_yield_per_m2_kg * area_m2
+        default_percent = max(0.0, (total_production_kg / float(consumption_kg)) * 100.0)
+        result[crop_name] = { 'default_percent': default_percent, 'status': 'computed' }
+
+        # Prefill session default if not set
+        if crop_name not in st.session_state.wefe_crop_self_sufficiency or st.session_state.wefe_crop_self_sufficiency.get(crop_name, 0) == 0:
+            st.session_state.wefe_crop_self_sufficiency[crop_name] = int(min(100, round(default_percent)))
+
+    return result
 
 
 def render_wefe_analysis():
@@ -93,6 +204,27 @@ def render_wefe_analysis():
     if "wefe_energy_shares" not in st.session_state:
         st.session_state.wefe_energy_shares = {"gasoline": 0, "hydropower": 0, "wind": 0, "solar": 0, "diesel": 0}
 
+    # Default-enable crops that appear in crop_distribution in Damango lab
+    try:
+        lab_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'livinglabs', 'ghana_damango', 'lab.json')
+        with open(lab_path, 'r', encoding='utf-8') as lf:
+            lab = json.load(lf)
+        crops_in_distribution = set()
+        for site in lab.get('sites', []):
+            for entry in site.get('crop_distribution', []) or []:
+                name = entry.get('name')
+                if isinstance(name, str) and name and name.lower() != 'unused greenland':
+                    if float(entry.get('green_share_percent', 0) or 0) > 0:
+                        crops_in_distribution.add(name)
+        for name in food_names + non_food_names:
+            if name in crops_in_distribution and name not in st.session_state.wefe_crop_enabled:
+                st.session_state.wefe_crop_enabled[name] = True
+    except Exception:
+        pass
+
+    # Compute defaults for self-sufficiency for enabled crops
+    defaults_map = calculate_self_sufficiency(crop_info_map)
+
     row1_col1, row1_col2, row1_col3 = st.columns([1, 1, 1])
 
     try:
@@ -114,8 +246,8 @@ def render_wefe_analysis():
                 f"</div>",
                 unsafe_allow_html=True
             )
-            _render_crop_group("Food crops", food_names, crop_info_map)
-            _render_crop_group("Non-food crops", non_food_names, crop_info_map)
+            _render_crop_group("Food crops", food_names, crop_info_map, defaults_map)
+            _render_crop_group("Non-food crops", non_food_names, crop_info_map, defaults_map)
 
     with row1_col2:
         with st.container(border=True):

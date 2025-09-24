@@ -1,0 +1,201 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "description": "Agroforestry strategies with attributes for spatial analysis and WEFE impact mapping",
+    "created_date": "2025",
+    "land_type_enums": [
+      "green",
+      "residential",
+      "mixed",
+      "water",
+      "undefined"
+    ],
+    "indicator_source": "data/new_pillars.json",
+    "notes": [
+      "impacted_indicators reference indicator IDs defined under water/energy/food in new_pillars.json",
+      "Costs are planning-level placeholders (USD per square meter of intervention footprint)"
+    ]
+  },
+  "strategies": [
+    {
+      "key": "alley_cropping",
+      "name": "Alley cropping",
+      "affected_land_types": ["green", "mixed"],
+      "impacted_indicators": [
+        "IND_W_MAR_RECHARGE_VOL",
+        "IND_W_GW_LEVEL_RISE",
+        "IND_E_PUMPING_ENERGY_SAVED"
+      ],
+      "cost_per_sqm_usd": 2.0,
+      "description": "Planting rows of trees/shrubs with alleys of crops to reduce wind/erosion, improve infiltration, and enhance soil fertility.",
+      "time_horizon_years": {
+        "establishment": 3,
+        "full_benefit": 7
+      },
+      "maintenance_intensity": "medium",
+      "expected_co_benefits": [
+        "soil_carbon_sequestration",
+        "biodiversity_habitat",
+        "microclimate_regulation"
+      ],
+      "data_assumptions": "Infiltration gains proxy groundwater recharge (link to IND_W_MAR_RECHARGE_VOL). Energy savings derive from reduced pumping where GW rise is observed."
+    },
+    {
+      "key": "silvopasture",
+      "name": "Silvopasture",
+      "affected_land_types": ["green", "mixed"],
+      "impacted_indicators": [
+        "IND_W_MAR_RECHARGE_VOL",
+        "IND_W_GW_LEVEL_RISE",
+        "IND_E_PUMPING_ENERGY_SAVED"
+      ],
+      "cost_per_sqm_usd": 1.2,
+      "description": "Integrating trees with pasture and livestock to improve shade, forage quality, water retention, and resilience to drought.",
+      "time_horizon_years": {
+        "establishment": 2,
+        "full_benefit": 6
+      },
+      "maintenance_intensity": "medium",
+      "expected_co_benefits": [
+        "livestock_productivity",
+        "heat_stress_reduction",
+        "erosion_control"
+      ],
+      "data_assumptions": "Recharge benefits depend on stocking density control and ground cover persistence."
+    },
+    {
+      "key": "forest_farming",
+      "name": "Forest farming",
+      "affected_land_types": ["green", "mixed", "residential"],
+      "impacted_indicators": [
+        "IND_W_MAR_RECHARGE_VOL",
+        "IND_W_GW_LEVEL_RISE"
+      ],
+      "cost_per_sqm_usd": 2.5,
+      "description": "Cultivation of specialty crops under an established forest canopy, enhancing infiltration and understory diversity.",
+      "time_horizon_years": {
+        "establishment": 3,
+        "full_benefit": 8
+      },
+      "maintenance_intensity": "low",
+      "expected_co_benefits": [
+        "non_timber_forest_products",
+        "pollinator_habitat",
+        "soil_moisture_retention"
+      ],
+      "data_assumptions": "Indicator impacts map through increased canopy cover and litter, improving soil infiltration."
+    },
+    {
+      "key": "windbreaks",
+      "name": "Windbreaks",
+      "affected_land_types": ["green", "mixed", "residential"],
+      "impacted_indicators": [
+        "IND_W_MAR_RECHARGE_VOL",
+        "IND_W_GW_LEVEL_RISE"
+      ],
+      "cost_per_sqm_usd": 1.6,
+      "description": "Linear plantings that reduce wind speed, decrease evapotranspiration, trap snow/rain, and reduce erosion.",
+      "time_horizon_years": {
+        "establishment": 1,
+        "full_benefit": 4
+      },
+      "maintenance_intensity": "low",
+      "expected_co_benefits": [
+        "crop_yield_stability",
+        "dust_reduction",
+        "wildlife_corridors"
+      ],
+      "data_assumptions": "Recharge proxy via increased infiltration on leeward side and reduced soil sealing."
+    },
+    {
+      "key": "riparian_upland_buffers",
+      "name": "Riparian and upland forest buffers",
+      "affected_land_types": ["green", "mixed", "water"],
+      "impacted_indicators": [
+        "IND_W_MAR_RECHARGE_VOL",
+        "IND_W_GW_LEVEL_RISE",
+        "IND_E_PUMPING_ENERGY_SAVED"
+      ],
+      "cost_per_sqm_usd": 3.0,
+      "description": "Vegetated strips along waterways and on slopes to filter runoff, stabilize banks, and promote groundwater recharge.",
+      "time_horizon_years": {
+        "establishment": 2,
+        "full_benefit": 5
+      },
+      "maintenance_intensity": "medium",
+      "expected_co_benefits": [
+        "water_quality_improvement",
+        "flood_mitigation",
+        "habitat_connectivity"
+      ],
+      "data_assumptions": "Direct connection to hydrology justifies mapping to recharge and groundwater level indicators."
+    },
+    {
+      "key": "urban_forest_gardens",
+      "name": "Urban and community forest gardens",
+      "affected_land_types": ["residential", "mixed", "green"],
+      "impacted_indicators": [
+        "IND_W_MAR_RECHARGE_VOL",
+        "IND_W_GW_LEVEL_RISE"
+      ],
+      "cost_per_sqm_usd": 6.0,
+      "description": "Multi-layered edible landscapes in urban/community areas that increase permeable cover and provide local foods.",
+      "time_horizon_years": {
+        "establishment": 1,
+        "full_benefit": 3
+      },
+      "maintenance_intensity": "high",
+      "expected_co_benefits": [
+        "urban_heat_island_reduction",
+        "food_security_local",
+        "social_cohesion"
+      ],
+      "data_assumptions": "Higher costs reflect urban establishment and maintenance. Indicators focus on infiltration-driven recharge."
+    },
+    {
+      "key": "multipurpose_trees_in_croplands",
+      "name": "Multipurpose trees in croplands",
+      "affected_land_types": ["green", "mixed"],
+      "impacted_indicators": [
+        "IND_W_MAR_RECHARGE_VOL",
+        "IND_W_GW_LEVEL_RISE",
+        "IND_E_PUMPING_ENERGY_SAVED"
+      ],
+      "cost_per_sqm_usd": 1.8,
+      "description": "Integration of nitrogen-fixing and fruit/fodder trees within fields to enhance fertility, shade, and water regulation.",
+      "time_horizon_years": {
+        "establishment": 2,
+        "full_benefit": 6
+      },
+      "maintenance_intensity": "medium",
+      "expected_co_benefits": [
+        "nutrient_cycling",
+        "fuelwood_fodder_supply",
+        "crop_resilience"
+      ],
+      "data_assumptions": "Energy savings only applicable where irrigation pumping is reduced by higher groundwater levels."
+    },
+    {
+      "key": "improved_fallow",
+      "name": "Improved fallow",
+      "affected_land_types": ["green", "mixed", "undefined"],
+      "impacted_indicators": [
+        "IND_W_MAR_RECHARGE_VOL",
+        "IND_W_GW_LEVEL_RISE"
+      ],
+      "cost_per_sqm_usd": 0.6,
+      "description": "Short-term fallow with fast-growing species to restore soil fertility, structure, and infiltration before returning to cropping.",
+      "time_horizon_years": {
+        "establishment": 1,
+        "full_benefit": 3
+      },
+      "maintenance_intensity": "low",
+      "expected_co_benefits": [
+        "soil_fertility_recovery",
+        "weed_pressure_reduction",
+        "erosion_reduction"
+      ],
+      "data_assumptions": "Suitable for degraded parcels; indicator mapping focuses on infiltration and soil structure improvements."
+    }
+  ]
+}
