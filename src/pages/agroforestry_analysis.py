@@ -183,11 +183,9 @@ def render_agroforestry_analysis():
         st.info("No strategies found. Please ensure data/agroforestry_strategies.json exists.")
         return
 
-    # Build selector options
     strategy_name_to_obj = {s.get("name", s.get("key")): s for s in strategies}
     strategy_names = list(strategy_name_to_obj.keys())
 
-    # UI: Strategy selector
     selected_strategy_name = st.selectbox("Select an agroforestry strategy", strategy_names, index=0)
     selected_strategy = strategy_name_to_obj.get(selected_strategy_name, {})
 
